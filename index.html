@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link href="/css/cyber.css?v=r20" rel="stylesheet">
+    <link href="/css/cyber.css?v=r23" rel="stylesheet">
 </head>
 
 <body class="banner-on">
@@ -601,16 +601,29 @@
             syncHeight();
             window.addEventListener('resize', syncHeight);
 
+            /* Dropping the banner shortens the document by its height, which
+               invalidates every start/end ScrollTrigger has already measured.
+               motion.js only refreshes on window load, and that fired ten
+               seconds before this runs, so without re-measuring here the
+               pinned shield section engages a banner-height early and the
+               credibility strip scrolls straight over it. */
+            function relayout() {
+                if (!window.ScrollTrigger) return;
+                requestAnimationFrame(function () { ScrollTrigger.refresh(); });
+            }
+
             function teardown(canvas) {
                 if (banner.parentNode) banner.parentNode.removeChild(banner);
                 if (canvas && canvas.parentNode) canvas.parentNode.removeChild(canvas);
                 document.body.classList.remove('banner-on');
+                relayout();
             }
 
             // fallback: plain slide-away (used if the canvas path can't run)
             function slideAway(canvas) {
                 banner.classList.add('is-hiding');
                 document.body.classList.remove('banner-on');
+                relayout();
                 setTimeout(function () { teardown(canvas); }, 750);
             }
 
@@ -685,6 +698,7 @@
                 textEl.classList.add('is-out');        // hand the glyphs over to the points
                 banner.classList.add('is-hiding');
                 document.body.classList.remove('banner-on');
+                relayout();   // header glides back now; re-measure before the 1250ms dissolve
 
                 var t0 = performance.now(), DUR = 1250;
                 (function frame(now) {
@@ -727,8 +741,8 @@
         })();
     </script>
 
-    <script src="/js/motion.js?v=r20" defer></script>
-    <script src="/js/cyber.js?v=r20" defer></script>
+    <script src="/js/motion.js?v=r23" defer></script>
+    <script src="/js/cyber.js?v=r23" defer></script>
 </body>
 
 </html>

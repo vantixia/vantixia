@@ -79,6 +79,35 @@
 
   function dashPrep(p) { var len = p.getTotalLength ? p.getTotalLength() : 0; p.style.strokeDasharray = len; return len; }
 
+  /* Shield draw curves, shared by the desktop (scroll-scrubbed) and mobile
+     (fixed-duration) branches so both read identically.
+
+          progress │ outline │ tick │ readout
+          ─────────┼─────────┼──────┼────────
+                0% │      0% │   0% │      0%
+               40% │     40% │  20% │     45%
+               70% │     70% │  60% │     78%
+               85% │     85% │  80% │     89%
+              100% │    100% │ 100% │    100%
+
+     The outline is linear, so it needs no map. The tick trails it early and
+     catches up; the readout runs a little ahead of both. All land together. */
+  var TICK_CURVE = [[0, 0], [0.40, 0.20], [0.70, 0.60], [0.85, 0.80], [1, 1]];
+  var READOUT    = [[0, 0], [0.40, 0.45], [0.70, 0.78], [0.85, 0.89], [1, 1]];
+
+  // straight-line interpolation between the points above
+  function curve(map, x) {
+    if (x <= 0) return 0;
+    if (x >= 1) return 1;
+    for (var i = 1; i < map.length; i++) {
+      if (x <= map[i][0]) {
+        var a = map[i - 1], b = map[i];
+        return a[1] + (b[1] - a[1]) * ((x - a[0]) / (b[0] - a[0]));
+      }
+    }
+    return 1;
+  }
+
   /* ============================================================
      1 · SHIELD PROTOCOL (home only)
      ============================================================ */
@@ -96,18 +125,42 @@
       if (check) gsap.set(check, { strokeDashoffset: chkLen });
       gsap.set(lines, { autoAlpha: 0, y: 26 });
 
+      /* Outline, tick and readout all run across the full timeline so nothing
+         sits still while the rest moves. The outline tracks progress linearly;
+         the tick trails it early on and catches up; the readout runs slightly
+         ahead of both. All three land on 100% together.
+
+              progress │ outline │ tick │ readout
+              ─────────┼─────────┼──────┼────────
+                    0% │      0% │   0% │      0%
+                   40% │     40% │  20% │     45%
+                   70% │     70% │  60% │     78%
+                   85% │     85% │  80% │     89%
+                  100% │    100% │ 100% │    100%                                */
+      var TOTAL = 8;   // timeline length the scrub maps onto
+
       var tl = gsap.timeline({
         defaults: { ease: "none" },
         scrollTrigger: {
           trigger: story, start: "top top", end: "+=2600", scrub: 1,
-          pin: true, anticipatePin: 1, invalidateOnRefresh: true,
-          onUpdate: function (self) { if (integ) integ.textContent = Math.round(self.progress * 100) + "%"; }
+          pin: true, anticipatePin: 1, invalidateOnRefresh: true
         }
       });
-      tl.to(outline, { strokeDashoffset: 0, duration: 6 }, 0);
-      lines.forEach(function (ln, i) { tl.to(ln, { autoAlpha: 1, y: 0, duration: 1, ease: "power2.out" }, 0.8 + i * 1.5); });
-      if (check) tl.to(check, { strokeDashoffset: 0, duration: 1.4 }, 6);
-      tl.call(function () {}, null, 8);
+      tl.to(outline, { strokeDashoffset: 0, duration: TOTAL }, 0);
+      if (check) {
+        tl.to(check, {
+          strokeDashoffset: 0, duration: TOTAL,
+          ease: function (p) { return curve(TICK_CURVE, p); }
+        }, 0);
+      }
+      lines.forEach(function (ln, i) { tl.to(ln, { autoAlpha: 1, y: 0, duration: 1, ease: "power2.out" }, 0.8 + i * 1.2); });
+
+      /* Read the timeline, not the scroll position. Under scrub:1 the drawing
+         lags the scroll by design, so driving the number off scroll progress
+         would put it ahead of the graphic it is supposed to describe. */
+      tl.eventCallback("onUpdate", function () {
+        if (integ) integ.textContent = Math.round(curve(READOUT, tl.progress()) * 100) + "%";
+      });
 
       ScrollTrigger.create({
         trigger: story, start: "top top", end: "+=2600",
@@ -138,9 +191,25 @@
       ScrollTrigger.create({
         trigger: story.querySelector(".shield-svg"), start: "top 82%", once: true,
         onEnter: function () {
-          gsap.to(outline, { strokeDashoffset: 0, duration: 1.5, ease: "power2.out" });
-          if (check) gsap.to(check, { strokeDashoffset: 0, duration: 0.8, delay: 1.2, ease: "power2.out" });
-          if (integ) { var o = { v: 0 }; gsap.to(o, { v: 100, duration: 1.8, ease: "power1.out", onUpdate: function () { integ.textContent = Math.round(o.v) + "%"; } }); }
+          // Same shape as desktop, played out over a fixed duration instead of
+          // scroll: outline, tick and counter all run together and finish together.
+          var DUR = 1.8;
+          gsap.to(outline, { strokeDashoffset: 0, duration: DUR, ease: "none" });
+          if (check) {
+            gsap.to(check, {
+              strokeDashoffset: 0, duration: DUR,
+              ease: function (p) { return curve(TICK_CURVE, p); }
+            });
+          }
+          if (integ) {
+            var o = { v: 0 };
+            gsap.to(o, {
+              v: 1, duration: DUR, ease: "none",
+              onUpdate: function () {
+                integ.textContent = Math.round(curve(READOUT, o.v) * 100) + "%";
+              }
+            });
+          }
         }
       });
       ScrollTrigger.batch(lines, { start: "top 90%", once: true, onEnter: function (b) { gsap.to(b, { autoAlpha: 1, y: 0, stagger: 0.14, duration: 0.6, ease: "power2.out" }); } });
