@@ -48,7 +48,7 @@ Join us in shaping a secure digital future, where cybersecurity knows no bounds.
 
 **Connect with Vantixia:**
 
-* [Website](https://www.cyberxield.in) 🌐
+* [Website](https://vantixia.in) 🌐
 
 * [LinkedIn](https://www.linkedin.com/company/cyberxield) 🔗
 
