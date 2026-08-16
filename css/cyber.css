@@ -208,7 +208,12 @@ body.banner-on .scan-progress { top: var(--banner-h, 46px); }
 
 .wrap { width: min(1180px, 92vw); margin-inline: auto; }
 
-section { position: relative; padding: clamp(60px, 7vw, 96px) 0; }
+section { position: relative; padding: clamp(44px, 5vw, 76px) 0; }
+
+/* A section whose only job is to hold a pinned 100vh stage must not add its own
+   band of padding on top - the stage already fills the viewport, so the two
+   stack into a few hundred pixels of dead space at the boundary. */
+.stage-section { padding: 0; }
 
 .eyebrow {
   display: flex;
@@ -452,7 +457,7 @@ section { position: relative; padding: clamp(60px, 7vw, 96px) 0; }
 
 /* credibility strip - sits directly under the hero, before the story pin */
 .cred-strip {
-  padding: 0 0 clamp(28px, 4vw, 52px);
+  padding: 0 0 clamp(18px, 2vw, 28px);
 }
 .cred-row {
   list-style: none;
@@ -1875,11 +1880,14 @@ html.lenis, html.lenis body { height: auto; }
 
 .story {
   position: relative;
-  min-height: 100vh;
+  /* tall enough to read as a full-screen beat while pinned, but capped so a
+     529px block does not sit centred in a 900px box with 145px of blank above
+     and below it on the way in */
+  min-height: min(100vh, 720px);
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding: 40px 0;
+  padding: 16px 0;
 }
 .story-grid {
   display: grid;
@@ -1977,7 +1985,7 @@ html.lenis, html.lenis body { height: auto; }
     flex-direction: column;
     align-items: stretch;      /* keep the track's left edge at 0 for the x-scrub maths */
     justify-content: center;
-    min-height: 100vh;
+    min-height: min(100vh, 680px);
     padding-top: calc(var(--head-h) + 10px);   /* clear the fixed header while pinned */
     padding-bottom: 18px;
     gap: clamp(14px, 2vw, 26px);
