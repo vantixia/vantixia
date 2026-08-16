@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Cloud Configuration Audits (AWS, Azure, GCP) - Vantixia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Benchmark-driven cloud configuration audits across AWS, Azure and GCP: IAM, storage, network, logging and encryption reviewed against CIS Benchmarks with prioritised remediation.">
+    <meta property="og:title" content="Cloud Configuration Audits (AWS, Azure, GCP) - Vantixia">
+    <meta property="og:description" content="Benchmark-driven cloud configuration audits across AWS, Azure and GCP: IAM, storage, network, logging and encryption reviewed against CIS Benchmarks with prioritised remediation.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cyberxield.in/services/cloud-config-audit/">
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="/css/cyber.css?v=r14" rel="stylesheet">
+</head>
+
+<body>
+    <canvas id="net-bg" aria-hidden="true"></canvas>
+    <div class="scan-progress" aria-hidden="true"><span></span></div>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-head" id="siteHead">
+        <div class="head-inner">
+            <a href="/" class="brand" aria-label="Vantixia home">
+                <span class="wordmark">Vanti<span class="x">xia</span></span>
+            </a>
+            <nav class="site-nav" id="siteNav" aria-label="Main navigation">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/services/" class="nav-link">Services</a>
+                <a href="/about/" class="nav-link">About</a>
+                <a href="/blog.html" class="nav-link">Blog</a>
+                <a href="/contact/" class="nav-link">Contact</a>
+                <a href="https://cal.com/cyberxield/" target="_blank" rel="noopener" class="btn btn-red">Book a call</a>
+            </nav>
+            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="siteNav">
+                <span class="bars"></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main">
+
+        <section class="page-head" style="overflow:hidden;">
+            <span class="orb red" data-parallax="0.14" style="top:-160px;left:-140px;"></span>
+            <span class="orb cyan" data-parallax="0.2" style="top:-80px;right:-160px;"></span>
+            <div class="wrap">
+                <p class="crumbs mono" data-reveal><a href="/">~</a><span class="sep">/</span><a href="/services/">services</a><span class="sep">/</span><span>cloud-config-audit</span></p>
+                <h1 data-reveal style="--d:.08s"><span class="glitch" data-text="Cloud Configuration Audits">Cloud Configuration Audits</span></h1>
+                <p class="sub" data-reveal style="--d:.16s">Most cloud breaches aren't clever exploits - they're an open bucket and a wildcard IAM policy nobody reviewed. We find those first.</p>
+            </div>
+        </section>
+
+        <section aria-label="Overview">
+            <span class="sec-num" data-parallax="0.08">01</span>
+            <div class="wrap dossier">
+                <div data-reveal="left">
+                    <p class="eyebrow"><b>//: 01</b> BRIEFING</p>
+                    <h2>Why it matters</h2>
+                    <p class="lead-para">The cloud gives you speed and takes back nothing in return - except the assumption that defaults are safe. They rarely are. Vantixia audits your <strong>AWS, Azure and GCP</strong> configuration against CIS Benchmarks and provider best practice, surfacing the public storage, over-permissive identities, exposed services and missing logging that turn a minor mistake into a headline breach.</p>
+                    <p class="lead-para">This is a configuration and posture review, not a live attack simulation - though every finding is framed by how an attacker would use it. You receive <strong>severity-prioritised findings</strong> mapped to the shared-responsibility model, concrete remediation steps, and guidance on the guardrails that stop the same misconfiguration coming back.</p>
+                    
+                </div>
+                <div class="stat-panel" data-reveal="right" style="--d:.12s">
+                    <div class="stat-head">SYS://ENGAGEMENT/SNAPSHOT</div>
+                    <div style="padding: 24px 20px;">
+                        <ul class="check-list">
+                            <li>Covers <strong>AWS, Azure and GCP</strong></li>
+                            <li>Mapped to <strong>CIS Benchmarks</strong> and well-architected guidance</li>
+                            <li>IAM, storage, network, logging and encryption review</li>
+                            <li>Severity-prioritised, zero false positives</li>
+                            <li>Guardrail &amp; policy-as-code recommendations to prevent recurrence</li>
+                            <li>Manual-led, comprehensive testing - <strong>AI-augmented testing optional</strong>, per your need</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="has-scanline" aria-label="Testing approach" data-fx="scanline">
+            <span class="scanline-bar" aria-hidden="true"></span>
+            <span class="sec-num" data-parallax="0.08">02</span>
+            <div class="wrap">
+                <div class="section-head" data-reveal>
+                    <p class="eyebrow"><b>//: 02</b> TESTING APPROACH</p>
+                    <h2>How we run this assessment</h2>
+                </div>
+                <div class="grid-3">
+                    <article class="hud-card red" data-reveal style="--d:.08s">
+                        <span class="corner tl"></span><span class="corner br"></span>
+                        <span class="tag">STEP 01</span>
+                        <h3>Scope &amp; inventory</h3>
+                        <p>We enumerate the accounts, subscriptions and projects in scope and build a picture of your cloud estate and its exposure.</p>
+                    </article>
+                    <article class="hud-card cyan" data-reveal style="--d:.16s">
+                        <span class="corner tl"></span><span class="corner br"></span>
+                        <span class="tag">STEP 02</span>
+                        <h3>Benchmark review</h3>
+                        <p>Configuration is assessed against CIS Benchmarks and provider security guidance across identity, storage, network, logging and encryption.</p>
+                    </article>
+                    <article class="hud-card red" data-reveal>
+                        <span class="corner tl"></span><span class="corner br"></span>
+                        <span class="tag">STEP 03</span>
+                        <h3>Identity deep-dive</h3>
+                        <p>We hunt the over-permissive roles, wildcard policies and unused privileges that quietly grant far more access than intended.</p>
+                    </article>
+                    <article class="hud-card cyan" data-reveal style="--d:.08s">
+                        <span class="corner tl"></span><span class="corner br"></span>
+                        <span class="tag">STEP 04</span>
+                        <h3>Exposure analysis</h3>
+                        <p>Public storage, open management ports and internet-facing services are identified and rated by real-world risk.</p>
+                    </article>
+                    <article class="hud-card red" data-reveal style="--d:.16s">
+                        <span class="corner tl"></span><span class="corner br"></span>
+                        <span class="tag">STEP 05</span>
+                        <h3>Prioritised findings</h3>
+                        <p>Everything is ranked by severity and mapped to the shared-responsibility model so you fix what matters first.</p>
+                    </article>
+                    <article class="hud-card cyan" data-reveal>
+                        <span class="corner tl"></span><span class="corner br"></span>
+                        <span class="tag">STEP 06</span>
+                        <h3>Remediation &amp; guardrails</h3>
+                        <p>Concrete fixes plus policy-as-code and guardrail recommendations so the same misconfiguration cannot silently return.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section aria-label="Coverage">
+            <span class="sec-num" data-parallax="0.08">03</span>
+            <div class="wrap split">
+                <div data-reveal="left">
+                    <p class="eyebrow"><b>//: 03</b> AUDIT SCOPE</p>
+                    <h2>What we review</h2>
+                    <p class="prose">A benchmark-driven pass across your cloud estate, mapped to CIS foundations and each provider's well-architected security guidance.</p>
+                </div>
+                <div data-reveal="right" style="--d:.1s">
+                    <ul class="check-list">
+                        <li><strong>Identity &amp; access</strong> - over-permissive IAM, unused privileges, missing MFA, risky trust policies</li>
+                        <li><strong>Storage</strong> - public buckets and blobs, unencrypted data, weak access policies</li>
+                        <li><strong>Network</strong> - exposed management ports, permissive security groups, unnecessary public endpoints</li>
+                        <li><strong>Logging &amp; monitoring</strong> - missing audit trails, disabled logging, no alerting on critical events</li>
+                        <li><strong>Encryption</strong> - keys, secrets management and data-at-rest / in-transit protection</li>
+                        <li><strong>Benchmark compliance</strong> - findings mapped to CIS Benchmarks and the shared-responsibility model</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section aria-label="What to expect">
+            <span class="sec-num" data-parallax="0.08">04</span>
+            <div class="wrap">
+                <div class="section-head center" data-reveal>
+                    <p class="eyebrow center"><b>//: 04</b> WHAT TO EXPECT</p>
+                    <h2>Every engagement ships with</h2>
+                </div>
+                <div class="grid-4">
+                    <article class="hud-card red" data-reveal="zoom">
+                        <span class="corner tl"></span><span class="corner br"></span>
+                        <span class="tag">CREW</span>
+                        <span class="icon"><i class="fas fa-user-shield" aria-hidden="true"></i></span>
+                        <h3>Team of master experts</h3>
+                        <p>Operators certified in CEH, CPENT | LPT, eWPTX, eCPPT, eMAPT and CRTP, applying current industry best practice to every test.</p>
+                    </article>
+                    <article class="hud-card cyan" data-reveal="zoom" style="--d:.08s">
+                        <span class="corner tl"></span><span class="corner br"></span>
+                        <span class="tag">INTEL</span>
+                        <span class="icon"><i class="fas fa-file-lines" aria-hidden="true"></i></span>
+                        <h3>In-depth analytics &amp; report</h3>
+                        <p>Clear explanations, impact assessment and prioritised recommendations - not just a list of CVEs.</p>
+                    </article>
+                    <article class="hud-card red" data-reveal="zoom" style="--d:.16s">
+                        <span class="corner tl"></span><span class="corner br"></span>
+                        <span class="tag">PROOF</span>
+                        <span class="icon"><i class="fas fa-certificate" aria-hidden="true"></i></span>
+                        <h3>Security certificate</h3>
+                        <p>A certificate on completion that shows stakeholders your proactive commitment to security.</p>
+                    </article>
+                    <article class="hud-card cyan" data-reveal="zoom" style="--d:.24s">
+                        <span class="corner tl"></span><span class="corner br"></span>
+                        <span class="tag">ASSURANCE</span>
+                        <span class="icon"><i class="fas fa-rotate" aria-hidden="true"></i></span>
+                        <h3>Free retest</h3>
+                        <p>After you remediate, we retest at no cost to confirm every finding is properly closed.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section aria-label="Call to action">
+            <div class="wrap">
+                <div class="cta-band" data-reveal="zoom">
+                    <p class="eyebrow center"><b>//:</b> OPEN UPLINK</p>
+                    <h2>Not sure what your cloud is exposing?</h2>
+                    <p>Neither are most teams until they look. Let us audit your AWS, Azure or GCP configuration and hand you a prioritised fix list.</p>
+                    <div class="cta-actions">
+                        <a href="/contact/" class="btn btn-red">Contact us</a>
+                        <a href="https://cal.com/cyberxield/" target="_blank" rel="noopener" class="btn btn-cyan">Reserve a meeting</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-foot">
+        <div class="wrap">
+            <div class="foot-grid">
+                <div>
+                    <a href="/" class="brand"><span class="wordmark">Vanti<span class="x">xia</span></span></a>
+                    <p class="tagline">Unbreakable Shield, Unmatched Security. We are your shield in cyberspace.</p>
+                    <div class="foot-social">
+                        <a href="https://linkedin.com/company/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                        <a href="https://x.com/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on X (Twitter)"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://facebook.com/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/@cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        <a href="https://whatsapp.com/channel/0029Va56mGj1CYoKA9UcJI2r" target="_blank" rel="noopener" aria-label="Vantixia WhatsApp channel"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h5>Navigate</h5>
+                    <div class="foot-links">
+                        <a href="/">Home</a>
+                        <a href="/services/">Services</a>
+                        <a href="/about/">About us</a>
+                        <a href="/blog.html">Blog</a>
+                        <a href="/contact/">Contact</a>
+                    </div>
+                </div>
+                <div>
+                    <h5>Capabilities</h5>
+                    <div class="foot-links">
+                        <a href="/services/genai-llm-pentest/">Gen-AI / LLM pentest</a>
+                        <a href="/services/web-app-pentest/">Web app pentest</a>
+                        <a href="/services/infrastructure-pentest/">Network VAPT</a>
+                        <a href="/services/mobile-app-pentest/">Mobile pentest</a>
+                        <a href="/services/cloud-config-audit/">Cloud config audit</a>
+                        <a href="/services/secure-code-review/">Code review</a>
+                    </div>
+                </div>
+                <div>
+                    <h5>Direct line</h5>
+                    <div class="foot-contact">
+                        <a href="https://maps.app.goo.gl/Fr34EhDzWp6BSTnC6" target="_blank" rel="noopener"><i class="fas fa-location-dot" aria-hidden="true"></i> Delhi, India</a>
+                        <a href="https://wa.me/message/5FCTHDC4VX2RO1" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i> Connect on WhatsApp</a>
+                        <a href="mailto:rajnish@cyberxield.in"><i class="fas fa-envelope" aria-hidden="true"></i> rajnish@cyberxield.in</a>
+                        <a href="https://cal.com/cyberxield/" target="_blank" rel="noopener"><i class="fas fa-calendar-check" aria-hidden="true"></i> Book a meeting</a>
+                    </div>
+                </div>
+            </div>
+            <div class="foot-bottom">
+                <span>&copy; <span id="year">2026</span> VANTIXIA // ALL RIGHTS RESERVED</span>
+                <span>
+                    <a href="/privacy/">PRIVACY</a>
+                    &nbsp;&middot;&nbsp;
+                    <a href="/terms/">TERMS</a>
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-top" aria-label="Back to top"><i class="fas fa-arrow-up" aria-hidden="true"></i></a>
+
+    <!-- Scroll-motion layer: GSAP + ScrollTrigger + Lenis (progressive enhancement) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+    <script src="/js/motion.js?v=r14" defer></script>
+    <script src="/js/cyber.js?v=r14" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Secrets Management for AI Applications - Vantixia Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI apps sprinkle API keys, vector DB creds and model tokens everywhere. Prompts and logs then quietly exfiltrate them.">
+    <meta property="og:title" content="Secrets Management for AI Applications - Vantixia Blog">
+    <meta property="og:description" content="AI apps sprinkle API keys, vector DB creds and model tokens everywhere. Prompts and logs then quietly exfiltrate them.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cyberxield.in/blogs/secrets-management-for-ai-apps/">
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="/css/cyber.css?v=r14" rel="stylesheet">
+</head>
+
+<body>
+    <canvas id="net-bg" aria-hidden="true"></canvas>
+    <div class="scan-progress" aria-hidden="true"><span></span></div>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-head" id="siteHead">
+        <div class="head-inner">
+            <a href="/" class="brand" aria-label="Vantixia home">
+                <span class="wordmark">Vanti<span class="x">xia</span></span>
+            </a>
+            <nav class="site-nav" id="siteNav" aria-label="Main navigation">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/services/" class="nav-link">Services</a>
+                <a href="/about/" class="nav-link">About</a>
+                <a href="/blog.html" class="nav-link">Blog</a>
+                <a href="/contact/" class="nav-link">Contact</a>
+                <a href="https://cal.com/cyberxield/" target="_blank" rel="noopener" class="btn btn-red">Book a call</a>
+            </nav>
+            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="siteNav">
+                <span class="bars"></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main">
+
+        <section class="page-head" style="overflow:hidden;">
+            <span class="orb red" data-parallax="0.14" style="top:-160px;left:-140px;"></span>
+            <span class="orb cyan" data-parallax="0.2" style="top:-80px;right:-160px;"></span>
+            <div class="wrap">
+                <p class="crumbs mono" data-reveal><a href="/">~</a><span class="sep">/</span><a href="/blog.html">blog</a><span class="sep">/</span><a href="/blog.html#ai-security">ai security</a></p>
+                <h1 data-reveal style="--d:.08s"><span class="glitch" data-text="Secrets Management for AI Applications">Secrets Management for AI Applications</span></h1>
+                <p class="sub" data-reveal style="--d:.16s">AI apps sprinkle API keys, vector DB creds and model tokens everywhere. Prompts and logs then quietly exfiltrate them.</p>
+            </div>
+        </section>
+
+        <section aria-label="Article">
+            <div class="wrap">
+                <div class="article-meta" data-reveal>
+                    <span class="badge red">AI Security</span>
+                    <span>By RAJNISH KUMAR</span>
+                    <span class="dot">&bull;</span>
+                    <span>03 Jul 2026</span>
+                    <span class="dot">&bull;</span>
+                    <span>6 min read</span>
+                </div>
+                <div class="article-hero" data-reveal="zoom">
+                    <img class="par" data-fx="parallax" src="/img/blog/tips.png" alt="">
+                </div>
+                <div class="article-prose" data-fx="prose">
+<p>Every AI feature adds new places for credentials to live and new paths for them to escape. A typical LLM application holds a provider API key, database credentials for retrieval, tokens for every tool it can call, and - worse - a context window that users and documents fill with whatever they happen to contain, including secrets nobody intended to share. Traditional secrets hygiene covers the first category. Most teams have not mapped the rest.</p>
+
+<h2>Where AI stacks actually leak</h2>
+<p>The failure modes are specific and repeatable. Keys end up hardcoded in system prompts because a developer wanted the model to "call the API itself." Full prompts and completions get shipped to logging and observability platforms, capturing every secret a user pasted into the chat box along the way. Mobile and browser clients call model APIs directly, embedding the provider key in something an attacker can unpack in minutes. And anything placed in model context can come back out: models repeat what they are given, and prompt-extraction techniques make that reliable rather than accidental.</p>
+
+<h2>The model never gets the key</h2>
+<p>Treat the context window as output-adjacent: if a secret enters it, assume a sufficiently motivated user can read it. That rules out putting credentials, connection strings, or signed URLs into system prompts entirely. The correct pattern is tool calling with a privileged backend - the model emits a structured request such as "fetch invoice 4412," and your server, which alone holds the credential, validates the request, executes it, and returns only the result. The model gets capability without custody, and a jailbroken session has nothing to exfiltrate but its own conversation.</p>
+
+<h2>Vault, scope, and separate</h2>
+<p>The vaulting layer itself is standard engineering; the AI-specific work is in how you cut the keys. Provider keys are spend instruments as much as access tokens, so scope them like both:</p>
+<ul>
+<li>One key per service per environment - never a shared organization-wide key baked into application code</li>
+<li>Hard spend caps and rate limits on every key, so a leak is bounded in dollars as well as data</li>
+<li>Model and endpoint allowlists where the provider supports them</li>
+<li>Short-lived credentials issued from the vault at runtime, rather than long-lived keys sitting in environment files</li>
+<li>Per-tenant scoping for retrieval and tool credentials, so a compromised session cannot read across customers</li>
+</ul>
+
+<h2>Logs are the second copy of every secret</h2>
+<p>LLM observability tooling defaults to capturing full prompts and responses - that is its job. It also quietly turns your tracing platform into a searchable archive of everything sensitive that ever passed through the application. Redact known credential patterns before storage, classify prompt logs at the same sensitivity as the data they carry, restrict who can query them, and set retention that reflects the risk rather than the vendor default. If users can paste secrets into your product, your logging pipeline is part of your secrets attack surface, whether or not you designed it that way.</p>
+
+<h2>When a key gets out</h2>
+<p>Assume exposure means use. Rotate immediately rather than investigating first - rotation is cheap, and the investigation goes faster once the key is dead. Treat anything committed to version control as permanently public even after history rewrites, because clones and mirrors outlive force-pushes. Then audit provider usage across the exposure window: unfamiliar models, spend spikes, and traffic from unexpected regions are the typical fingerprints of a harvested AI key, which attackers tend to resell and burn quickly rather than sit on.</p>
+
+<h2>The short version</h2>
+<p>Secrets management for AI is ordinary secrets management plus three new rules: nothing sensitive goes into model context, every provider key is scoped and capped like a budget line, and prompt logs are treated as the sensitive data store they inevitably become. Get those three right and the rest is the vaulting discipline your team already knows how to run.</p>
+                </div>
+            </div>
+        </section>
+
+        <section aria-label="Related articles">
+            <div class="wrap">
+                <div class="section-head" data-reveal>
+                    <p class="eyebrow"><b>//:</b> RELATED DISPATCHES</p>
+                    <h2>Keep reading</h2>
+                </div>
+                <div class="grid-3">
+                    <article class="hud-card red post-card" data-reveal="zoom">
+                        <span class="corner tl"></span><span class="corner br"></span>
+                        <div class="post-img"><span class="cat-badge">AI Security</span><img src="/img/blog/risecybercrime.jpeg" alt="" loading="lazy"></div>
+                        <div class="post-body">
+                            <span class="meta"><b>RAJNISH KUMAR</b> &middot; 29 Jun 2026</span>
+                            <h3>Jailbreaks Explained: Why 'Ignore Previous Instructions' Still Works</h3>
+                            <a href="/blogs/jailbreaks-explained/" class="card-link stretch">Read dispatch</a>
+                        </div>
+                    </article>
+                    <article class="hud-card red post-card" data-reveal="zoom" style="--d:.08s">
+                        <span class="corner tl"></span><span class="corner br"></span>
+                        <div class="post-img"><span class="cat-badge">AI Security</span><img src="/img/blog/scammers.jpg" alt="" loading="lazy"></div>
+                        <div class="post-body">
+                            <span class="meta"><b>RAJNISH KUMAR</b> &middot; 25 Jun 2026</span>
+                            <h3>Protecting Vector Databases From Embedding Inversion</h3>
+                            <a href="/blogs/protecting-vector-databases/" class="card-link stretch">Read dispatch</a>
+                        </div>
+                    </article>
+                    <article class="hud-card red post-card" data-reveal="zoom" style="--d:.16s">
+                        <span class="corner tl"></span><span class="corner br"></span>
+                        <div class="post-img"><span class="cat-badge">AI Security</span><img src="/img/blog/dangers.jpeg" alt="" loading="lazy"></div>
+                        <div class="post-body">
+                            <span class="meta"><b>RAJNISH KUMAR</b> &middot; 21 Jun 2026</span>
+                            <h3>Threat Modeling Machine Learning Systems</h3>
+                            <a href="/blogs/ai-governance-threat-modeling-ml/" class="card-link stretch">Read dispatch</a>
+                        </div>
+                    </article>
+                </div>
+                <div style="margin-top:36px;" data-reveal>
+                    <a href="/blog.html" class="btn btn-ghost">&larr; All dispatches</a>
+                </div>
+            </div>
+        </section>
+
+        <section aria-label="Call to action">
+            <div class="wrap">
+                <div class="cta-band" data-reveal="zoom">
+                    <p class="eyebrow center"><b>//:</b> OPEN UPLINK</p>
+                    <h2>Turn this into action</h2>
+                    <p>Reading about the risk is step one. Let Vantixia's operators pressure-test your systems and people against it.</p>
+                    <div class="cta-actions">
+                        <a href="/contact/" class="btn btn-red">Contact us</a>
+                        <a href="https://cal.com/cyberxield/" target="_blank" rel="noopener" class="btn btn-cyan">Reserve a meeting</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-foot">
+        <div class="wrap">
+            <div class="foot-grid">
+                <div>
+                    <a href="/" class="brand"><span class="wordmark">Vanti<span class="x">xia</span></span></a>
+                    <p class="tagline">Unbreakable Shield, Unmatched Security. We are your shield in cyberspace.</p>
+                    <div class="foot-social">
+                        <a href="https://linkedin.com/company/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                        <a href="https://x.com/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on X (Twitter)"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://facebook.com/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/@cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        <a href="https://whatsapp.com/channel/0029Va56mGj1CYoKA9UcJI2r" target="_blank" rel="noopener" aria-label="Vantixia WhatsApp channel"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h5>Navigate</h5>
+                    <div class="foot-links">
+                        <a href="/">Home</a>
+                        <a href="/services/">Services</a>
+                        <a href="/about/">About us</a>
+                        <a href="/blog.html">Blog</a>
+                        <a href="/contact/">Contact</a>
+                    </div>
+                </div>
+                <div>
+                    <h5>Capabilities</h5>
+                    <div class="foot-links">
+                        <a href="/services/genai-llm-pentest/">Gen-AI / LLM pentest</a>
+                        <a href="/services/web-app-pentest/">Web app pentest</a>
+                        <a href="/services/infrastructure-pentest/">Network VAPT</a>
+                        <a href="/services/mobile-app-pentest/">Mobile pentest</a>
+                        <a href="/services/cloud-config-audit/">Cloud config audit</a>
+                        <a href="/services/secure-code-review/">Code review</a>
+                    </div>
+                </div>
+                <div>
+                    <h5>Direct line</h5>
+                    <div class="foot-contact">
+                        <a href="https://maps.app.goo.gl/Fr34EhDzWp6BSTnC6" target="_blank" rel="noopener"><i class="fas fa-location-dot" aria-hidden="true"></i> Delhi, India</a>
+                        <a href="https://wa.me/message/5FCTHDC4VX2RO1" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i> Connect on WhatsApp</a>
+                        <a href="mailto:rajnish@cyberxield.in"><i class="fas fa-envelope" aria-hidden="true"></i> rajnish@cyberxield.in</a>
+                        <a href="https://cal.com/cyberxield/" target="_blank" rel="noopener"><i class="fas fa-calendar-check" aria-hidden="true"></i> Book a meeting</a>
+                    </div>
+                </div>
+            </div>
+            <div class="foot-bottom">
+                <span>&copy; <span id="year">2026</span> VANTIXIA // ALL RIGHTS RESERVED</span>
+                <span>
+                    <a href="/privacy/">PRIVACY</a>
+                    &nbsp;&middot;&nbsp;
+                    <a href="/terms/">TERMS</a>
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-top" aria-label="Back to top"><i class="fas fa-arrow-up" aria-hidden="true"></i></a>
+
+    <!-- Scroll-motion layer: GSAP + ScrollTrigger + Lenis (progressive enhancement) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+    <script src="/js/motion.js?v=r14" defer></script>
+    <script src="/js/cyber.js?v=r14" defer></script>
+</body>
+
+</html>

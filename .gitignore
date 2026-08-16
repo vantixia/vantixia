@@ -1,0 +1,13 @@
+# Local Claude Code tooling / agent definitions - not part of the website
+.claude/
+
+# OS + editor cruft
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*~
+
+# Local preview / scratch artifacts
+.playwright-mcp/
+*.log

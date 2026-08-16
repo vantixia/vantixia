@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Understanding the MITRE ATT&CK Framework - Vantixia Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ATT&CK is the shared language of how attackers actually operate. Learn to read it and your detections stop being guesswork.">
+    <meta property="og:title" content="Understanding the MITRE ATT&CK Framework - Vantixia Blog">
+    <meta property="og:description" content="ATT&CK is the shared language of how attackers actually operate. Learn to read it and your detections stop being guesswork.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cyberxield.in/blogs/understanding-mitre-attack/">
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="/css/cyber.css?v=r14" rel="stylesheet">
+</head>
+
+<body>
+    <canvas id="net-bg" aria-hidden="true"></canvas>
+    <div class="scan-progress" aria-hidden="true"><span></span></div>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-head" id="siteHead">
+        <div class="head-inner">
+            <a href="/" class="brand" aria-label="Vantixia home">
+                <span class="wordmark">Vanti<span class="x">xia</span></span>
+            </a>
+            <nav class="site-nav" id="siteNav" aria-label="Main navigation">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/services/" class="nav-link">Services</a>
+                <a href="/about/" class="nav-link">About</a>
+                <a href="/blog.html" class="nav-link">Blog</a>
+                <a href="/contact/" class="nav-link">Contact</a>
+                <a href="https://cal.com/cyberxield/" target="_blank" rel="noopener" class="btn btn-red">Book a call</a>
+            </nav>
+            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="siteNav">
+                <span class="bars"></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main">
+
+        <section class="page-head" style="overflow:hidden;">
+            <span class="orb red" data-parallax="0.14" style="top:-160px;left:-140px;"></span>
+            <span class="orb cyan" data-parallax="0.2" style="top:-80px;right:-160px;"></span>
+            <div class="wrap">
+                <p class="crumbs mono" data-reveal><a href="/">~</a><span class="sep">/</span><a href="/blog.html">blog</a><span class="sep">/</span><a href="/blog.html#cyber-defense">cyber defense</a></p>
+                <h1 data-reveal style="--d:.08s"><span class="glitch" data-text="Understanding the MITRE ATT&CK Framework">Understanding the MITRE ATT&CK Framework</span></h1>
+                <p class="sub" data-reveal style="--d:.16s">ATT&CK is the shared language of how attackers actually operate. Learn to read it and your detections stop being guesswork.</p>
+            </div>
+        </section>
+
+        <section aria-label="Article">
+            <div class="wrap">
+                <div class="article-meta" data-reveal>
+                    <span class="badge">Cyber Defense</span>
+                    <span>By RAJNISH KUMAR</span>
+                    <span class="dot">&bull;</span>
+                    <span>05 Feb 2026</span>
+                    <span class="dot">&bull;</span>
+                    <span>8 min read</span>
+                </div>
+                <div class="article-hero" data-reveal="zoom">
+                    <img class="par" data-fx="parallax" src="/img/blog/cybersecfuture.png" alt="">
+                </div>
+                <div class="article-prose" data-fx="prose">
+<p>Ask three security teams what attackers actually do once inside a network and you may get three different vocabularies, three sets of assumptions, and three uncoordinated defenses. MITRE ATT&CK exists to fix that. It is a free, publicly maintained knowledge base of adversary behavior, compiled from real-world intrusion reporting, and it has quietly become the closest thing the industry has to a shared language for describing attacks.</p>
+
+<h2>Tactics, techniques and procedures, decoded</h2>
+<p>The framework organizes behavior on three levels. <strong>Tactics</strong> are the adversary's goals at each stage of an intrusion - gaining initial access, executing code, escalating privileges, evading defenses, moving laterally, exfiltrating data, and so on. <strong>Techniques</strong> are the methods used to achieve those goals: dumping credentials from memory, abusing scheduled tasks, tunneling traffic over legitimate protocols. Many techniques break down further into sub-techniques. <strong>Procedures</strong> are the ground level: the specific way a particular threat group or malware family implements a technique in practice.</p>
+<p>Laid out visually, the tactics form the columns of the famous ATT&CK matrix, with techniques stacked beneath each one. Separate matrices exist for enterprise IT, mobile platforms and industrial control systems. Reading the enterprise matrix left to right is, in effect, reading the life cycle of a typical intrusion.</p>
+
+<h2>From encyclopedia to engineering tool</h2>
+<p>The matrix becomes powerful the moment you map your own defenses onto it. For each technique, ask: would we detect this? Would anything block it? Would we even have the logs to investigate it afterward? Annotating the matrix with honest answers produces a coverage map - and, more usefully, a gap map. Teams routinely discover that their monitoring is dense around a few fashionable techniques and nearly blind elsewhere, a pattern invisible until laid against a neutral reference.</p>
+<p>The same mapping disciplines vendor conversations. When a product claims to "stop advanced threats," asking which specific techniques it detects, and how that was validated, converts marketing into something testable.</p>
+
+<h2>Purple teaming and threat-informed defense</h2>
+<p>ATT&CK also gives offense and defense a common script. In a purple team exercise, the offensive side emulates specific techniques while defenders watch their tooling in real time: did the alert fire, was the log captured, did the analyst recognize what they saw? Each technique becomes a small, repeatable experiment rather than a vague sparring match.</p>
+<p>Threat-informed defense extends the logic outward. Because public threat intelligence is increasingly annotated with ATT&CK identifiers, you can identify the groups known to target your industry, compile the techniques they favor, and prioritize detection engineering against that specific list. Defense stops being an attempt to guard against everything equally and becomes a bet placed on the adversaries most likely to show up.</p>
+
+<h2>Starting without boiling the ocean</h2>
+<p>The framework's size is its most common failure mode - hundreds of techniques invite paralysis or, worse, a shallow checkbox exercise. Sustainable adoption starts narrow:</p>
+<ul>
+<li>Pick a small set of techniques that are both prevalent in current intrusion reporting and relevant to your environment.</li>
+<li>Assess coverage honestly, distinguishing "we have a log source" from "we would actually catch this."</li>
+<li>Test each claim with a controlled emulation before marking it covered.</li>
+<li>Expand outward only as each batch is genuinely validated.</li>
+</ul>
+<p>Resist treating full-matrix coverage as the goal. Techniques differ wildly in prevalence and impact, some are inherently hard to detect, and a fully shaded heatmap says nothing about detection quality. For teams whose scope includes machine learning systems, MITRE maintains a sibling framework, ATLAS, that catalogs adversary behavior against those systems in the same spirit.</p>
+
+<h2>The essentials</h2>
+<p>ATT&CK will not detect anything on its own; it is a map, not a sensor. Its value lies in replacing intuition with structure - a shared vocabulary between analysts, red teams, vendors and executives, and a rigorous way to ask the only question that matters: against the behaviors real adversaries actually use, where are we strong, where are we blind, and what should we fix next? Used narrowly and honestly, it turns security improvement from guesswork into engineering.</p>
+                </div>
+            </div>
+        </section>
+
+        <section aria-label="Related articles">
+            <div class="wrap">
+                <div class="section-head" data-reveal>
+                    <p class="eyebrow"><b>//:</b> RELATED DISPATCHES</p>
+                    <h2>Keep reading</h2>
+                </div>
+                <div class="grid-3">
+                    <article class="hud-card cyan post-card" data-reveal="zoom">
+                        <span class="corner tl"></span><span class="corner br"></span>
+                        <div class="post-img"><span class="cat-badge">Cyber Defense</span><img src="/img/blog/safeguards.png" alt="" loading="lazy"></div>
+                        <div class="post-body">
+                            <span class="meta"><b>RAJNISH KUMAR</b> &middot; 01 Feb 2026</span>
+                            <h3>Defense in Depth: Layering Controls That Actually Work</h3>
+                            <a href="/blogs/defense-in-depth/" class="card-link stretch">Read dispatch</a>
+                        </div>
+                    </article>
+                    <article class="hud-card cyan post-card" data-reveal="zoom" style="--d:.08s">
+                        <span class="corner tl"></span><span class="corner br"></span>
+                        <div class="post-img"><span class="cat-badge">Cyber Defense</span><img src="/img/blog/safety.png" alt="" loading="lazy"></div>
+                        <div class="post-body">
+                            <span class="meta"><b>RAJNISH KUMAR</b> &middot; 28 Jan 2026</span>
+                            <h3>Social Engineering: Hacking the Human Firewall</h3>
+                            <a href="/blogs/social-engineering-human-firewall/" class="card-link stretch">Read dispatch</a>
+                        </div>
+                    </article>
+                    <article class="hud-card cyan post-card" data-reveal="zoom" style="--d:.16s">
+                        <span class="corner tl"></span><span class="corner br"></span>
+                        <div class="post-img"><span class="cat-badge">Cyber Defense</span><img src="/img/blog/tips.png" alt="" loading="lazy"></div>
+                        <div class="post-body">
+                            <span class="meta"><b>RAJNISH KUMAR</b> &middot; 24 Jan 2026</span>
+                            <h3>Cloud Misconfigurations: The Silent Breach Enabler</h3>
+                            <a href="/blogs/cloud-misconfigurations/" class="card-link stretch">Read dispatch</a>
+                        </div>
+                    </article>
+                </div>
+                <div style="margin-top:36px;" data-reveal>
+                    <a href="/blog.html" class="btn btn-ghost">&larr; All dispatches</a>
+                </div>
+            </div>
+        </section>
+
+        <section aria-label="Call to action">
+            <div class="wrap">
+                <div class="cta-band" data-reveal="zoom">
+                    <p class="eyebrow center"><b>//:</b> OPEN UPLINK</p>
+                    <h2>Turn this into action</h2>
+                    <p>Reading about the risk is step one. Let Vantixia's operators pressure-test your systems and people against it.</p>
+                    <div class="cta-actions">
+                        <a href="/contact/" class="btn btn-red">Contact us</a>
+                        <a href="https://cal.com/cyberxield/" target="_blank" rel="noopener" class="btn btn-cyan">Reserve a meeting</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-foot">
+        <div class="wrap">
+            <div class="foot-grid">
+                <div>
+                    <a href="/" class="brand"><span class="wordmark">Vanti<span class="x">xia</span></span></a>
+                    <p class="tagline">Unbreakable Shield, Unmatched Security. We are your shield in cyberspace.</p>
+                    <div class="foot-social">
+                        <a href="https://linkedin.com/company/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                        <a href="https://x.com/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on X (Twitter)"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://facebook.com/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/@cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        <a href="https://whatsapp.com/channel/0029Va56mGj1CYoKA9UcJI2r" target="_blank" rel="noopener" aria-label="Vantixia WhatsApp channel"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h5>Navigate</h5>
+                    <div class="foot-links">
+                        <a href="/">Home</a>
+                        <a href="/services/">Services</a>
+                        <a href="/about/">About us</a>
+                        <a href="/blog.html">Blog</a>
+                        <a href="/contact/">Contact</a>
+                    </div>
+                </div>
+                <div>
+                    <h5>Capabilities</h5>
+                    <div class="foot-links">
+                        <a href="/services/genai-llm-pentest/">Gen-AI / LLM pentest</a>
+                        <a href="/services/web-app-pentest/">Web app pentest</a>
+                        <a href="/services/infrastructure-pentest/">Network VAPT</a>
+                        <a href="/services/mobile-app-pentest/">Mobile pentest</a>
+                        <a href="/services/cloud-config-audit/">Cloud config audit</a>
+                        <a href="/services/secure-code-review/">Code review</a>
+                    </div>
+                </div>
+                <div>
+                    <h5>Direct line</h5>
+                    <div class="foot-contact">
+                        <a href="https://maps.app.goo.gl/Fr34EhDzWp6BSTnC6" target="_blank" rel="noopener"><i class="fas fa-location-dot" aria-hidden="true"></i> Delhi, India</a>
+                        <a href="https://wa.me/message/5FCTHDC4VX2RO1" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i> Connect on WhatsApp</a>
+                        <a href="mailto:rajnish@cyberxield.in"><i class="fas fa-envelope" aria-hidden="true"></i> rajnish@cyberxield.in</a>
+                        <a href="https://cal.com/cyberxield/" target="_blank" rel="noopener"><i class="fas fa-calendar-check" aria-hidden="true"></i> Book a meeting</a>
+                    </div>
+                </div>
+            </div>
+            <div class="foot-bottom">
+                <span>&copy; <span id="year">2026</span> VANTIXIA // ALL RIGHTS RESERVED</span>
+                <span>
+                    <a href="/privacy/">PRIVACY</a>
+                    &nbsp;&middot;&nbsp;
+                    <a href="/terms/">TERMS</a>
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-top" aria-label="Back to top"><i class="fas fa-arrow-up" aria-hidden="true"></i></a>
+
+    <!-- Scroll-motion layer: GSAP + ScrollTrigger + Lenis (progressive enhancement) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+    <script src="/js/motion.js?v=r14" defer></script>
+    <script src="/js/cyber.js?v=r14" defer></script>
+</body>
+
+</html>

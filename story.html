@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Vantixia - Scroll-Story Prototype (GSAP + ScrollTrigger + Lenis)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A self-contained scroll-driven story prototype for Vantixia: sticky hero-to-features pinning, SVG shield draw, terminal typing and scroll reveals built with GSAP ScrollTrigger and Lenis.">
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================================
+           SELF-CONTAINED PROTOTYPE - copy this whole file anywhere.
+           Everything below (theme, layout, motion CSS) lives here so the
+           file has no local dependencies; only GSAP + Lenis load from CDN.
+           ============================================================ */
+        :root {
+            --void: #04070e;
+            --panel: #0a1120;
+            --line: rgba(102, 140, 255, 0.16);
+            --red: #ff3b57;
+            --cyan: #39d0ff;
+            --text: #dbe6ff;
+            --muted: #8294b8;
+            --grad: linear-gradient(90deg, var(--red), var(--cyan));
+            --display: 'Chakra Petch', sans-serif;
+            --body: 'IBM Plex Sans', sans-serif;
+            --mono: 'IBM Plex Mono', monospace;
+        }
+
+        * { box-sizing: border-box; }
+
+        /* Lenis' required helper rules (from the library's stylesheet). */
+        html.lenis, html.lenis body { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto !important; }
+        .lenis.lenis-stopped { overflow: hidden; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            background: var(--void);
+            background-image:
+                linear-gradient(rgba(90, 130, 255, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(90, 130, 255, 0.035) 1px, transparent 1px);
+            background-size: 44px 44px;
+            color: var(--text);
+            font-family: var(--body);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 { font-family: var(--display); line-height: 1.1; margin: 0; text-transform: uppercase; }
+        :focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
+
+        .wrap { width: min(1180px, 92vw); margin-inline: auto; }
+
+        .eyebrow {
+            font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.24em;
+            text-transform: uppercase; color: var(--muted); margin: 0 0 18px;
+        }
+        .eyebrow b { color: var(--red); font-weight: 500; }
+
+        /* ---------- 1. HERO ---------- */
+        .s-hero {
+            min-height: 100vh; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; text-align: center;
+            padding: 100px 20px 60px; position: relative;
+        }
+        .s-hero h1 {
+            font-size: clamp(2.6rem, 8vw, 6rem); font-weight: 700; letter-spacing: 0.01em;
+        }
+        .s-hero h1 .c { color: var(--cyan); }
+        .s-hero p { color: var(--muted); font-size: 1.1rem; max-width: 46ch; margin: 26px auto 0; }
+        .cue {
+            position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+            font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.3em;
+            text-transform: uppercase; color: var(--muted);
+            animation: bob 2.2s ease-in-out infinite;
+        }
+        @keyframes bob { 50% { transform: translate(-50%, 8px); opacity: 0.4; } }
+
+        /* Split-flap style hero words we reveal on load. */
+        .reveal-word { display: inline-block; overflow: hidden; vertical-align: top; }
+        .reveal-word > span { display: inline-block; }
+
+        /* ---------- 2. STICKY HERO → FEATURES ---------- */
+        /* .s-pin gets pinned; .panels (a wide flex row) scrolls horizontally
+           past the locked headline as you scroll vertically. */
+        .s-pin { position: relative; }
+        .pin-stage {
+            height: 100vh; display: flex; flex-direction: column; justify-content: center;
+            gap: clamp(24px, 4vw, 48px); overflow: hidden;
+        }
+        .pin-head { text-align: center; padding: 0 20px; }
+        .pin-head h2 { font-size: clamp(1.8rem, 4.5vw, 3.4rem); }
+        .pin-head h2 span { color: var(--cyan); }
+        .panels { display: flex; gap: 26px; padding: 0 6vw; width: max-content; }
+        .panel {
+            width: min(78vw, 420px); flex-shrink: 0;
+            background: linear-gradient(180deg, rgba(19, 30, 56, 0.55), rgba(9, 15, 30, 0.75));
+            border: 1px solid var(--line);
+            clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+            padding: 34px 30px;
+        }
+        .panel .tag {
+            font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.22em;
+            text-transform: uppercase; color: var(--red); display: block; margin-bottom: 16px;
+        }
+        .panel:nth-child(even) .tag { color: var(--cyan); }
+        .panel h3 { font-size: 1.35rem; margin-bottom: 12px; text-transform: none; }
+        .panel p { color: var(--muted); margin: 0; }
+        .panel .big {
+            font-family: var(--display); font-weight: 700; font-size: 3rem;
+            background: var(--grad); -webkit-background-clip: text; background-clip: text;
+            color: transparent; line-height: 1; margin-bottom: 8px;
+        }
+
+        /* ---------- 3. SHIELD DRAW ---------- */
+        .s-shield {
+            min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
+            gap: clamp(30px, 6vw, 80px); align-items: center; padding: 100px 0;
+        }
+        .s-shield .svg-wrap { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+        .s-shield svg { width: min(340px, 70vw); height: auto; overflow: visible; }
+        .sp-plate { fill: rgba(57, 208, 255, 0.03); stroke: var(--line); stroke-width: 1; }
+        .sp-outline { fill: none; stroke: url(#g); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+        .sp-check { fill: none; stroke: var(--cyan); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+        .integrity {
+            font-family: var(--display); font-weight: 700; font-size: 2.6rem; line-height: 1;
+            background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;
+        }
+        .integrity + span { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); }
+        .s-shield h2 { font-size: clamp(1.8rem, 4vw, 3rem); margin-bottom: 20px; }
+        .s-shield p { color: var(--muted); max-width: 40ch; }
+
+        /* ---------- 4. TERMINAL TYPING ---------- */
+        .s-term { padding: 120px 0; }
+        .s-term h2 { font-size: clamp(1.6rem, 3.6vw, 2.6rem); text-align: center; margin-bottom: 40px; }
+        .term {
+            max-width: 720px; margin-inline: auto; border: 1px solid var(--line);
+            background: rgba(6, 11, 22, 0.9);
+            clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+            font-family: var(--mono); font-size: 0.85rem;
+        }
+        .term-bar { display: flex; gap: 8px; align-items: center; padding: 12px 16px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 0.7rem; letter-spacing: 0.14em; }
+        .term-bar i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+        .term-bar i:nth-child(1) { background: var(--red); }
+        .term-bar i:nth-child(2) { background: #ffb02e; }
+        .term-bar i:nth-child(3) { background: #2ee6a8; }
+        .term-body { padding: 20px; min-height: 260px; white-space: pre-wrap; color: #a9c4ff; line-height: 1.9; }
+        .term-body .ok { color: #2ee6a8; } .term-body .warn { color: #ffb02e; } .term-body .red { color: var(--red); } .term-body .cy { color: var(--cyan); }
+        .caret { display: inline-block; width: 9px; height: 15px; background: var(--cyan); vertical-align: -2px; animation: blink 0.9s steps(1) infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* ---------- 5. STAGGERED REVEAL ---------- */
+        .s-reveal { padding: 120px 0 160px; text-align: center; }
+        .s-reveal h2 { font-size: clamp(1.8rem, 5vw, 3.4rem); }
+        .s-reveal .line { display: block; }
+        .s-reveal .sub { color: var(--muted); margin-top: 24px; font-size: 1.05rem; }
+
+        .foot-note {
+            text-align: center; padding: 40px 20px 70px; color: var(--muted);
+            font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.06em;
+        }
+        .foot-note a { color: var(--cyan); }
+
+        /* Motion-off baseline: everything visible if JS/GSAP never runs. */
+        .no-motion .panels { flex-wrap: wrap; width: auto; justify-content: center; }
+        .no-motion .pin-stage { height: auto; padding: 90px 0; }
+
+        @media (max-width: 767px) {
+            .s-shield { grid-template-columns: 1fr; text-align: center; }
+            .s-shield p { margin-inline: auto; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
+    </style>
+</head>
+
+<body class="no-motion">
+
+    <!-- 1 · HERO -->
+    <section class="s-hero">
+        <p class="eyebrow"><b>//: PROTOTYPE</b> GSAP · SCROLLTRIGGER · LENIS</p>
+        <h1>
+            <span class="reveal-word"><span>Vanti</span></span><span class="reveal-word"><span class="c">xia</span></span><br>
+            <span class="reveal-word"><span>Scroll</span></span> <span class="reveal-word"><span>to</span></span> <span class="reveal-word"><span>decrypt.</span></span>
+        </h1>
+        <p>A scroll-driven story: the headline locks, the shield draws itself, and the
+            interface responds to every pixel you scroll.</p>
+        <span class="cue">▼ scroll</span>
+    </section>
+
+    <!-- 2 · STICKY HERO → FEATURES (the centerpiece) -->
+    <section class="s-pin" id="pin">
+        <div class="pin-stage">
+            <div class="pin-head">
+                <p class="eyebrow"><b>//: 01</b> CAPABILITIES</p>
+                <h2>We test what <span>attackers</span> target.</h2>
+            </div>
+            <div class="panels" id="panels">
+                <article class="panel">
+                    <span class="tag">Offensive // AI</span>
+                    <div class="big">01</div>
+                    <h3>Gen-AI &amp; LLM Pentest</h3>
+                    <p>Prompt injection, jailbreaks, tool abuse and data leakage - mapped to the OWASP LLM Top 10.</p>
+                </article>
+                <article class="panel">
+                    <span class="tag">Offensive // Web</span>
+                    <div class="big">02</div>
+                    <h3>Web App Pentest</h3>
+                    <p>Architecture-deep testing that finds the elusive flaws automated scanners never reach.</p>
+                </article>
+                <article class="panel">
+                    <span class="tag">Offensive // Network</span>
+                    <div class="big">03</div>
+                    <h3>Network VAPT</h3>
+                    <p>External, internal and wireless - every weak link across your infrastructure, exposed.</p>
+                </article>
+                <article class="panel">
+                    <span class="tag">Human // Layer</span>
+                    <div class="big">04</div>
+                    <h3>Social Engineering</h3>
+                    <p>Phishing, vishing and physical intrusion that measure - and train - your human firewall.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3 · SHIELD DRAW -->
+    <section class="s-shield wrap" id="shield">
+        <div class="svg-wrap">
+            <svg viewBox="0 0 200 240" role="img" aria-label="Shield drawing to 100% integrity">
+                <defs>
+                    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0" stop-color="#ff3b57"></stop>
+                        <stop offset="1" stop-color="#39d0ff"></stop>
+                    </linearGradient>
+                </defs>
+                <path class="sp-plate" d="M100 14 L182 48 L182 122 C182 182 144 216 100 232 C56 216 18 182 18 122 L18 48 Z"></path>
+                <path class="sp-outline" id="spOutline" d="M100 14 L182 48 L182 122 C182 182 144 216 100 232 C56 216 18 182 18 122 L18 48 Z"></path>
+                <path class="sp-check" id="spCheck" d="M64 122 L90 150 L140 90"></path>
+            </svg>
+            <div style="text-align:center;">
+                <div class="integrity" id="integrity">0%</div>
+                <span>Shield integrity</span>
+            </div>
+        </div>
+        <div>
+            <p class="eyebrow"><b>//: 02</b> SVG STROKE-DASHOFFSET</p>
+            <h2>The shield draws as you scroll.</h2>
+            <p>The outline is a single SVG path. We measure its length, set
+                <code>stroke-dasharray</code> to that length, then scrub
+                <code>stroke-dashoffset</code> from full to zero against scroll -
+                so the line paints itself, pixel by pixel.</p>
+        </div>
+    </section>
+
+    <!-- 4 · TERMINAL TYPING (triggered when it enters the viewport) -->
+    <section class="s-term wrap" id="termSection">
+        <h2>Terminal boots on scroll.</h2>
+        <div class="term">
+            <div class="term-bar"><i></i><i></i><i></i><span style="margin-left:10px;">ops@vantixia: ~/engagement</span></div>
+            <div class="term-body" id="termBody"></div>
+        </div>
+    </section>
+
+    <!-- 5 · STAGGERED REVEAL -->
+    <section class="s-reveal wrap" id="revealSection">
+        <h2>
+            <span class="line" data-rise>Unbreakable shield.</span>
+            <span class="line" data-rise>Unmatched security.</span>
+        </h2>
+        <p class="sub" data-rise>Every element rises into place as it crosses the fold.</p>
+    </section>
+
+    <p class="foot-note">
+        Prototype for Vantixia · built with GSAP ScrollTrigger + Lenis ·
+        <a href="/">back to the live site</a>
+    </p>
+
+    <!-- ============================================================
+         LIBRARIES (CDN) - GSAP core, ScrollTrigger plugin, Lenis.
+         Loaded deferred and in order so dependencies resolve cleanly.
+         ============================================================ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+
+    <script defer>
+        // Wait until the deferred libraries above have parsed.
+        window.addEventListener("DOMContentLoaded", function () {
+            var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+            // ---- Baseline: if GSAP is missing or motion is reduced, do nothing.
+            //      The page already shows every element (class "no-motion").
+            if (reduce || !window.gsap || !window.ScrollTrigger) return;
+
+            document.body.classList.remove("no-motion");
+            gsap.registerPlugin(ScrollTrigger);
+
+            /* ---------- Lenis smooth scroll, wired into GSAP's ticker ---------- */
+            if (window.Lenis) {
+                var lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+                document.documentElement.classList.add("lenis", "lenis-smooth");
+                lenis.on("scroll", ScrollTrigger.update);
+                gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
+                gsap.ticker.lagSmoothing(0);
+            }
+
+            /* ---------- 1 · hero words rise on load ---------- */
+            gsap.from(".reveal-word > span", {
+                yPercent: 120, opacity: 0, duration: 0.9, ease: "power3.out", stagger: 0.08, delay: 0.15
+            });
+
+            /* ---------- 2 · STICKY HERO → FEATURES ----------
+               Pin .s-pin for the full sequence and translate the wide .panels
+               row leftwards as the user scrolls down - the headline stays put
+               while the feature cards travel past it. */
+            var panels = document.getElementById("panels");
+            var mm = gsap.matchMedia();
+
+            mm.add("(min-width: 768px)", function () {
+                var distance = panels.scrollWidth - window.innerWidth + window.innerWidth * 0.12;
+                var horiz = gsap.to(panels, {
+                    x: -distance, ease: "none",
+                    scrollTrigger: {
+                        trigger: "#pin",
+                        start: "top top",
+                        end: function () { return "+=" + distance; },
+                        scrub: 1,
+                        pin: true,
+                        anticipatePin: 1,
+                        invalidateOnRefresh: true
+                    }
+                });
+                // subtle depth: cards lift slightly as they enter centre
+                gsap.utils.toArray(".panel").forEach(function (p) {
+                    gsap.from(p, {
+                        y: 40, opacity: 0.4, ease: "none",
+                        scrollTrigger: { trigger: p, containerAnimation: horiz, start: "left 80%", end: "left 40%", scrub: true }
+                    });
+                });
+            });
+
+            mm.add("(max-width: 767px)", function () {
+                // On phones, drop the pin: cards simply reveal in a column.
+                gsap.set(panels, { flexWrap: "wrap", width: "auto", justifyContent: "center", x: 0 });
+                gsap.utils.toArray(".panel").forEach(function (p) {
+                    gsap.from(p, { y: 40, autoAlpha: 0, duration: 0.6, scrollTrigger: { trigger: p, start: "top 88%" } });
+                });
+            });
+
+            /* ---------- 3 · SHIELD DRAW (stroke-dashoffset scrub) ---------- */
+            var outline = document.getElementById("spOutline");
+            var check = document.getElementById("spCheck");
+            var integ = document.getElementById("integrity");
+            var oLen = outline.getTotalLength();
+            var cLen = check.getTotalLength();
+            gsap.set(outline, { strokeDasharray: oLen, strokeDashoffset: oLen });
+            gsap.set(check, { strokeDasharray: cLen, strokeDashoffset: cLen });
+
+            var shieldTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#shield", start: "top 70%", end: "bottom 60%", scrub: 1,
+                    onUpdate: function (self) { integ.textContent = Math.round(self.progress * 100) + "%"; }
+                }
+            });
+            shieldTl.to(outline, { strokeDashoffset: 0, ease: "none", duration: 5 }, 0)
+                    .to(check, { strokeDashoffset: 0, ease: "none", duration: 1.6 }, 4);
+
+            /* ---------- 4 · TERMINAL TYPING, triggered on enter ---------- */
+            var LINES = [
+                ["", "$ ./vantixia --engage --target=your-perimeter"],
+                ["cy", "[*] initializing VANTIXIA protocol ..."],
+                ["ok", "[+] recon      : attack surface mapped"],
+                ["warn", "[!] exploit    : 3 vectors validated manually"],
+                ["red", "[!] critical   : privilege escalation confirmed"],
+                ["ok", "[+] report     : zero false positives"],
+                ["cy", "[✓] STATUS - PERIMETER HARDENED. SHIELD UP."]
+            ];
+            var termBody = document.getElementById("termBody");
+            var typed = false;
+            function typeTerminal() {
+                if (typed) return; typed = true;
+                var li = 0, ci = 0, out = "";
+                (function step() {
+                    if (li >= LINES.length) { termBody.innerHTML = out + ' <span class="caret"></span>'; return; }
+                    var ln = LINES[li];
+                    if (ci === 0) out += '<span class="' + ln[0] + '">';
+                    if (ci < ln[1].length) {
+                        out += ln[1].charAt(ci).replace(/&/g, "&amp;").replace(/</g, "&lt;");
+                        ci++; termBody.innerHTML = out + '</span><span class="caret"></span>';
+                        setTimeout(step, 16 + Math.random() * 22);
+                    } else {
+                        out += "</span>\n"; li++; ci = 0;
+                        termBody.innerHTML = out + '<span class="caret"></span>';
+                        setTimeout(step, li === 1 ? 380 : 170);
+                    }
+                })();
+            }
+            ScrollTrigger.create({ trigger: "#termSection", start: "top 65%", once: true, onEnter: typeTerminal });
+
+            /* ---------- 5 · STAGGERED TEXT REVEAL ---------- */
+            gsap.utils.toArray("[data-rise]").forEach(function (el) {
+                gsap.from(el, {
+                    yPercent: 60, autoAlpha: 0, duration: 0.8, ease: "power3.out",
+                    scrollTrigger: { trigger: el, start: "top 88%" }
+                });
+            });
+
+            window.addEventListener("load", function () { ScrollTrigger.refresh(); });
+        });
+    </script>
+</body>
+
+</html>
