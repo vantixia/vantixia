@@ -1398,6 +1398,20 @@ main > section:last-of-type { padding-bottom: clamp(28px, 3.5vw, 44px); }
   white-space: nowrap;
 }
 
+/* Inline icons, replacing Font Awesome. The webfont cost ~295KB (156KB solid +
+   117KB brands + 22KB CSS) to draw 64 glyphs; the same icons inlined as SVG
+   paths cost a couple of KB per page and no extra request. Sized in em so they
+   still scale with whatever text they sit beside, exactly as the glyphs did. */
+.icn {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  vertical-align: -0.125em;
+  flex-shrink: 0;
+  display: inline-block;
+  overflow: visible;
+}
+
 /* visually hidden, still read by screen readers */
 .sr-only {
   position: absolute;
