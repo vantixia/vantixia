@@ -317,17 +317,28 @@ section { position: relative; padding: clamp(60px, 7vw, 96px) 0; }
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 11px;
   font-family: var(--font-logo);
-  font-size: 1.35rem;
+  font-size: 1.12rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
-  color: var(--red);
+  letter-spacing: 0.15em;   /* echoes the spaced wordmark in the logo lockup */
+  color: #eef3ff;           /* the mark carries the colour; the word stays clean */
   white-space: nowrap;
+  transition: color 0.2s ease, filter 0.2s ease;
 }
-.brand img { width: 40px; height: 40px; }
-.brand .x { color: var(--blue); }
-.brand:hover { color: var(--red); filter: drop-shadow(0 0 8px var(--red-glow)); }
+/* the V mark - height-driven so its natural aspect ratio is preserved */
+.brand-mark {
+  height: 34px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+}
+.brand:hover { color: #fff; filter: drop-shadow(0 0 10px rgba(57, 208, 255, 0.3)); }
+
+@media (max-width: 400px) {
+  .brand { font-size: 0.98rem; letter-spacing: 0.12em; gap: 8px; }
+  .brand-mark { height: 28px; }
+}
 
 .site-nav {
   display: flex;
@@ -900,7 +911,8 @@ main > section:last-of-type { padding-bottom: clamp(28px, 3.5vw, 44px); }
   color: var(--muted);
   margin-bottom: 20px;
 }
-.foot-grid .brand { font-size: 1.5rem; margin-bottom: 14px; }
+.foot-grid .brand { font-size: 1.25rem; margin-bottom: 14px; }
+.foot-grid .brand-mark { height: 40px; }
 .foot-grid .tagline { color: var(--muted); font-size: 0.92rem; max-width: 32ch; }
 .foot-links { display: grid; gap: 10px; }
 .foot-links a {
