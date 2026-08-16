@@ -11,3 +11,15 @@ Desktop.ini
 # Local preview / scratch artifacts
 .playwright-mcp/
 *.log
+
+# Internal planning docs. These live in the repo root for convenience, but the
+# site is served from the root, so committing them would publish our own
+# strategy, pricing and content critique at vantixia.in/<filename>.
+VANTIXIA-SITE-BRIEF.md
+vantixia-content-audit.html
+
+# Source headshots dropped in the repo root. The processed avatar that the site
+# actually uses is img/founder-rajnish.png; these originals stay local so they
+# are not served at vantixia.in/<filename>.
+cropped_circle_image.png
+cropped_circle_image-removebg-preview.png

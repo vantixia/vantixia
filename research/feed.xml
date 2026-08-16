@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Vantixia research feed.
+
+    This channel is intentionally empty: no research piece has been published
+    yet. An empty channel is valid RSS 2.0, so subscribers can add the feed now
+    and receive the first piece the moment it lands.
+
+    To publish a piece, add an <item> below in reverse-chronological order
+    (newest first) and update <lastBuildDate>. Template:
+
+    <item>
+      <title>Piece title</title>
+      <link>https://vantixia.in/research/piece-slug/</link>
+      <guid isPermaLink="true">https://vantixia.in/research/piece-slug/</guid>
+      <pubDate>Mon, 01 Sep 2026 00:00:00 +0000</pubDate>
+      <dc:creator>Rajnish Kumar</dc:creator>
+      <description>One or two sentences on what was found.</description>
+    </item>
+-->
+<rss version="2.0"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Vantixia Research</title>
+    <link>https://vantixia.in/research/</link>
+    <atom:link href="https://vantixia.in/research/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Original findings from our own work: novel attack paths in GenAI and agentic systems, responsible disclosures, and the tooling we build along the way.</description>
+    <language>en</language>
+    <copyright>Vantixia</copyright>
+    <managingEditor>rajnish@cyberxield.in (Rajnish Kumar)</managingEditor>
+    <webMaster>rajnish@cyberxield.in (Rajnish Kumar)</webMaster>
+    <lastBuildDate>Sun, 16 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <ttl>1440</ttl>
+  </channel>
+</rss>

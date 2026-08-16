@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link href="/css/cyber.css?v=r15" rel="stylesheet">
+    <link href="/css/cyber.css?v=r20" rel="stylesheet">
 </head>
 
 <body>
@@ -34,6 +34,7 @@
             <nav class="site-nav" id="siteNav" aria-label="Main navigation">
                 <a href="/" class="nav-link">Home</a>
                 <a href="/services/" class="nav-link">Services</a>
+                <a href="/research/" class="nav-link">Research</a>
                 <a href="/about/" class="nav-link">About</a>
                 <a href="/blog.html" class="nav-link">Blog</a>
                 <a href="/contact/" class="nav-link">Contact</a>
@@ -54,6 +55,14 @@
                 <p class="crumbs mono" data-reveal><a href="/">~</a><span class="sep">/</span><a href="/services/">services</a><span class="sep">/</span><span>secure-code-review</span></p>
                 <h1 data-reveal style="--d:.08s"><span class="glitch" data-text="Secure Source Code Review">Secure Source Code Review</span></h1>
                 <p class="sub" data-reveal style="--d:.16s">Most breaches trace back to a line of code. We read yours the way an attacker would - before it ever ships.</p>
+                <p class="price-flag mono" data-reveal style="--d:.24s">
+                    <span class="pf-amount">Scoped per engagement</span>
+                    <span class="pf-sep" aria-hidden="true">//</span>
+                    <span>Fixed quote after the scoping call</span>
+                    <span class="pf-sep" aria-hidden="true">//</span>
+                    <span>3 free retests</span>
+                    <a href="/services/genai-llm-pentest/#pricing">How we scope</a>
+                </p>
             </div>
         </section>
 
@@ -114,7 +123,7 @@
                         <span class="corner tl"></span><span class="corner br"></span>
                         <span class="tag">STEP 04</span>
                         <h3>Vulnerability validation</h3>
-                        <p>Every candidate finding is verified for real exploitability. Zero false positives, zero noise.</p>
+                        <p>Every candidate finding is verified for real exploitability. Every finding is manually validated with a reproducible proof-of-concept before it reaches your report, so your engineers never chase noise.</p>
                     </article>
                     <article class="hud-card red" data-reveal style="--d:.16s">
                         <span class="corner tl"></span><span class="corner br"></span>
@@ -181,8 +190,8 @@
                         <span class="corner tl"></span><span class="corner br"></span>
                         <span class="tag">PROOF</span>
                         <span class="icon"><i class="fas fa-certificate" aria-hidden="true"></i></span>
-                        <h3>Security certificate</h3>
-                        <p>A certificate on completion that shows stakeholders your proactive commitment to security.</p>
+                        <h3>Attestation letter</h3>
+                        <p>A signed letter stating the scope, dates and methodology of the test and confirming that the agreed findings were retested. Written for your customers, auditors and procurement reviews. It attests to what we tested, not that the system is secure.</p>
                     </article>
                     <article class="hud-card cyan" data-reveal="zoom" style="--d:.24s">
                         <span class="corner tl"></span><span class="corner br"></span>
@@ -215,7 +224,7 @@
             <div class="foot-grid">
                 <div>
                     <a href="/" class="brand"><img class="brand-mark" src="/img/vantixia-mark.png" alt="" width="157" height="120"><span class="wordmark">VANTIXIA</span></a>
-                    <p class="tagline">Unbreakable Shield, Unmatched Security. We are your shield in cyberspace.</p>
+                    <p class="tagline">Adversary-led testing, evidence-backed reporting. We are your shield in cyberspace.</p>
                     <div class="foot-social">
                         <a href="https://linkedin.com/company/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
                         <a href="https://x.com/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on X (Twitter)"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
@@ -230,6 +239,7 @@
                     <div class="foot-links">
                         <a href="/">Home</a>
                         <a href="/services/">Services</a>
+                        <a href="/research/">Research</a>
                         <a href="/about/">About us</a>
                         <a href="/blog.html">Blog</a>
                         <a href="/contact/">Contact</a>
@@ -239,11 +249,11 @@
                     <h5>Capabilities</h5>
                     <div class="foot-links">
                         <a href="/services/genai-llm-pentest/">Gen-AI / LLM pentest</a>
+                        <a href="/continuous-ai-assurance/">Continuous AI Assurance</a>
+                        <a href="/eu-ai-act-testing/">EU AI Act testing</a>
+                        <a href="/iso-42001-penetration-testing/">ISO/IEC 42001 testing</a>
                         <a href="/services/web-app-pentest/">Web app pentest</a>
                         <a href="/services/infrastructure-pentest/">Network VAPT</a>
-                        <a href="/services/mobile-app-pentest/">Mobile pentest</a>
-                        <a href="/services/cloud-config-audit/">Cloud config audit</a>
-                        <a href="/services/secure-code-review/">Code review</a>
                     </div>
                 </div>
                 <div>
@@ -273,8 +283,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
-    <script src="/js/motion.js?v=r15" defer></script>
-    <script src="/js/cyber.js?v=r15" defer></script>
+    <script src="/js/motion.js?v=r20" defer></script>
+    <script src="/js/cyber.js?v=r20" defer></script>
 </body>
 
 </html>

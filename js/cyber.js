@@ -283,11 +283,15 @@
     }
   }
 
-  /* ---------- animated counters ---------- */
+  /* ---------- animated counters ----------
+     The real value is hard-coded in the HTML, so it is correct with JS off,
+     with the CDN blocked, or if this observer never fires. The animation
+     only ever counts up to that same value. */
   var counters = document.querySelectorAll("[data-count]");
   if (counters.length) {
     var runCounter = function (el) {
-      var target = parseInt(el.getAttribute("data-count"), 10) || 0;
+      var target = parseInt(el.getAttribute("data-count"), 10);
+      if (isNaN(target)) return;                 // leave the static text alone
       if (reduceMotion) { el.textContent = target; return; }
       var start = null;
       var dur = 1400;
@@ -307,7 +311,7 @@
             cio.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.4 });
+      }, { threshold: 0, rootMargin: "0px 0px -8% 0px" });
       counters.forEach(function (el) { cio.observe(el); });
     } else {
       counters.forEach(runCounter);
@@ -324,7 +328,7 @@
       ["ln-ok", "[+] scan         : automated sweep complete"],
       ["ln-warn", "[!] exploit      : 3 vectors validated manually"],
       ["ln-red", "[!] critical     : privilege escalation confirmed"],
-      ["ln-ok", "[+] report       : zero false positives"],
+      ["ln-ok", "[+] report       : every finding manually validated"],
       ["ln-ok", "[+] retest       : all findings remediated"],
       ["ln-cyan", "[✓] STATUS - PERIMETER HARDENED. SHIELD UP."]
     ];
@@ -407,12 +411,97 @@
   var yr = document.getElementById("year");
   if (yr) yr.textContent = new Date().getFullYear();
 
+  /* ---------- email capture / sample-report request (EmailJS) ----------
+     There is only one EmailJS template, so these reuse it and identify
+     themselves in the message body. Each signup lands as an email. */
+  var captures = document.querySelectorAll("[data-mailcapture]");
+  if (captures.length && window.emailjs) {
+    emailjs.init("Abmv_rFKaV1wgG-zJ");
+    Array.prototype.forEach.call(captures, function (cap) {
+      var input = cap.querySelector("input[type=email]");
+      var btn = cap.querySelector("button[type=submit]");
+      var out = cap.querySelector(".mc-status");
+      var kind = cap.getAttribute("data-mailcapture") || "subscribe";
+      var say = function (txt, bad) {
+        if (!out) return;
+        out.classList.toggle("err", !!bad);
+        out.textContent = txt;
+      };
+      cap.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (!cap.checkValidity()) { cap.reportValidity(); return; }
+        say("> transmitting ...");
+        if (btn) btn.disabled = true;
+        var nameEl = cap.querySelector("input[name=name]");
+        emailjs
+          .send("service_webiste", "template_o8eqp0f", {
+            name: nameEl && nameEl.value ? nameEl.value : "(not given)",
+            email: input.value,
+            message:
+              "--- " + kind.toUpperCase() + " ---\n" +
+              "Source page: " + location.pathname
+          })
+          .then(
+            function () {
+              say(kind === "sample-report"
+                ? "> received. the report is on its way to your inbox."
+                : "> subscribed. new research lands in your inbox.");
+              cap.reset();
+              if (btn) btn.disabled = false;
+            },
+            function (err) {
+              console.error(err);
+              say("> failed. email us directly: rajnish@cyberxield.in", true);
+              if (btn) btn.disabled = false;
+            }
+          );
+      });
+    });
+  }
+
   /* ---------- contact form (EmailJS) ---------- */
   var form = document.getElementById("contact-form");
   if (form && window.emailjs) {
     emailjs.init("Abmv_rFKaV1wgG-zJ");
     var statusEl = document.getElementById("form-status");
     var submitBtn = form.querySelector("button[type=submit]");
+
+    /* The homepage links here as /contact/?request=sample-report. Say so in the
+       free-text box rather than silently dropping the intent. */
+    if (/[?&]request=sample-report(&|$)/.test(location.search)) {
+      var msgBox = document.getElementById("message");
+      if (msgBox && !msgBox.value) {
+        msgBox.value = "I would like to see a sample report.";
+      }
+    }
+
+    /* The EmailJS template only has {{name}}, {{email}} and {{message}}, so the
+       scoping answers are folded into the message body. If the template ever
+       gains its own fields, send them separately and drop this. */
+    var SCOPE_FIELDS = [
+      ["company", "Company"],
+      ["role", "Role"],
+      ["target", "Wants tested"],
+      ["aitype", "AI type"],
+      ["tools", "Tools the AI can invoke"],
+      ["deadline", "Deadline driver"],
+      ["eu", "Serves EU users"],
+      ["budget", "Budget range"]
+    ];
+
+    var buildMessage = function (freeText) {
+      var lines = [];
+      SCOPE_FIELDS.forEach(function (f) {
+        var el = document.getElementById(f[0]);
+        var val = el && el.value ? el.value.trim() : "";
+        if (val) lines.push(f[1] + ": " + val);
+      });
+      var parts = [];
+      if (lines.length) parts.push("--- SCOPING ---\n" + lines.join("\n"));
+      if (freeText) parts.push("--- NOTES ---\n" + freeText);
+      return parts.join("\n\n") || "(no details supplied)";
+    };
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var name = document.getElementById("name");
@@ -431,7 +520,7 @@
         .send("service_webiste", "template_o8eqp0f", {
           name: name.value,
           email: email.value,
-          message: message.value
+          message: buildMessage(message ? message.value.trim() : "")
         })
         .then(
           function () {

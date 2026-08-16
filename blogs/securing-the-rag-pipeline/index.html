@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link href="/css/cyber.css?v=r15" rel="stylesheet">
+    <link href="/css/cyber.css?v=r20" rel="stylesheet">
 </head>
 
 <body>
@@ -34,6 +34,7 @@
             <nav class="site-nav" id="siteNav" aria-label="Main navigation">
                 <a href="/" class="nav-link">Home</a>
                 <a href="/services/" class="nav-link">Services</a>
+                <a href="/research/" class="nav-link">Research</a>
                 <a href="/about/" class="nav-link">About</a>
                 <a href="/blog.html" class="nav-link">Blog</a>
                 <a href="/contact/" class="nav-link">Contact</a>
@@ -90,6 +91,18 @@
 <h2>Where this leaves you</h2>
 <p>RAG moves the attack surface from the prompt to the pipeline. The chat window is the last hop; the real perimeter is every system that can write into your corpus, plus the store that serves it. Treat ingestion as untrusted input, the vector database as a crown-jewel datastore, and retrieval results as hostile until sanitized - and your RAG deployment stops being the softest way into your data.</p>
                 </div>
+                <aside class="mail-capture" aria-label="Research updates">
+                    <div>
+                        <p class="mc-kicker">AI security research, monthly. No spam.</p>
+                        <h3>Get new findings as we publish them</h3>
+                    </div>
+                    <form class="mc-form" data-mailcapture="subscribe" novalidate>
+                        <label class="sr-only" for="mc-email-securing-the-rag-pipeline">Email address</label>
+                        <input type="email" id="mc-email-securing-the-rag-pipeline" name="email" placeholder="you@company.com" autocomplete="email" required>
+                        <button class="btn btn-cyan" type="submit">Subscribe</button>
+                        <p class="form-status mc-status" role="status" aria-live="polite"></p>
+                    </form>
+                </aside>
             </div>
         </section>
 
@@ -154,7 +167,7 @@
             <div class="foot-grid">
                 <div>
                     <a href="/" class="brand"><img class="brand-mark" src="/img/vantixia-mark.png" alt="" width="157" height="120"><span class="wordmark">VANTIXIA</span></a>
-                    <p class="tagline">Unbreakable Shield, Unmatched Security. We are your shield in cyberspace.</p>
+                    <p class="tagline">Adversary-led testing, evidence-backed reporting. We are your shield in cyberspace.</p>
                     <div class="foot-social">
                         <a href="https://linkedin.com/company/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
                         <a href="https://x.com/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on X (Twitter)"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
@@ -169,6 +182,7 @@
                     <div class="foot-links">
                         <a href="/">Home</a>
                         <a href="/services/">Services</a>
+                        <a href="/research/">Research</a>
                         <a href="/about/">About us</a>
                         <a href="/blog.html">Blog</a>
                         <a href="/contact/">Contact</a>
@@ -178,11 +192,11 @@
                     <h5>Capabilities</h5>
                     <div class="foot-links">
                         <a href="/services/genai-llm-pentest/">Gen-AI / LLM pentest</a>
+                        <a href="/continuous-ai-assurance/">Continuous AI Assurance</a>
+                        <a href="/eu-ai-act-testing/">EU AI Act testing</a>
+                        <a href="/iso-42001-penetration-testing/">ISO/IEC 42001 testing</a>
                         <a href="/services/web-app-pentest/">Web app pentest</a>
                         <a href="/services/infrastructure-pentest/">Network VAPT</a>
-                        <a href="/services/mobile-app-pentest/">Mobile pentest</a>
-                        <a href="/services/cloud-config-audit/">Cloud config audit</a>
-                        <a href="/services/secure-code-review/">Code review</a>
                     </div>
                 </div>
                 <div>
@@ -208,12 +222,13 @@
 
     <a href="#" class="back-top" aria-label="Back to top"><i class="fas fa-arrow-up" aria-hidden="true"></i></a>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <!-- Scroll-motion layer: GSAP + ScrollTrigger + Lenis (progressive enhancement) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
-    <script src="/js/motion.js?v=r15" defer></script>
-    <script src="/js/cyber.js?v=r15" defer></script>
+    <script src="/js/motion.js?v=r20" defer></script>
+    <script src="/js/cyber.js?v=r20" defer></script>
 </body>
 
 </html>

@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link href="/css/cyber.css?v=r15" rel="stylesheet">
+    <link href="/css/cyber.css?v=r20" rel="stylesheet">
 </head>
 
 <body>
@@ -34,6 +34,7 @@
             <nav class="site-nav" id="siteNav" aria-label="Main navigation">
                 <a href="/" class="nav-link">Home</a>
                 <a href="/services/" class="nav-link">Services</a>
+                <a href="/research/" class="nav-link">Research</a>
                 <a href="/about/" class="nav-link">About</a>
                 <a href="/blog.html" class="nav-link">Blog</a>
                 <a href="/contact/" class="nav-link">Contact</a>
@@ -102,25 +103,101 @@
             <div class="wrap">
                 <div class="section-head center" data-reveal>
                     <p class="eyebrow center"><b>//: 02</b> SECURE TRANSMISSION</p>
-                    <h2>Send us a message</h2>
-                    <p>Tell us what you want tested and what worries you. We reply within one business day.</p>
+                    <h2>Scope your engagement</h2>
+                    <p>The more of this you fill in, the more precise the quote we can come back with.
+                        Only the first two fields are required. <b>We reply within one business day.</b></p>
                 </div>
-                <form id="contact-form" class="form-hud" novalidate style="max-width: 640px; margin-inline: auto;">
-                    <div>
+                <form id="contact-form" class="form-hud form-scope" novalidate>
+                    <div class="fld">
                         <label for="name">Callsign / Name</label>
                         <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" required>
                     </div>
-                    <div>
-                        <label for="email">Return address / Email</label>
+                    <div class="fld">
+                        <label for="email">Work email</label>
                         <input type="email" id="email" name="email" placeholder="you@company.com" autocomplete="email" required>
                     </div>
-                    <div>
-                        <label for="message">Payload / Message</label>
-                        <textarea id="message" name="message" placeholder="Tell us about your systems, your concerns, or the assessment you need." required></textarea>
+                    <div class="fld">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" name="company" placeholder="Company name" autocomplete="organization">
                     </div>
-                    <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-                    <div>
-                        <button class="btn btn-red" type="submit">Send message</button>
+                    <div class="fld">
+                        <label for="role">Role</label>
+                        <input type="text" id="role" name="role" placeholder="CTO, Head of Security, Founder ..." autocomplete="organization-title">
+                    </div>
+
+                    <div class="fld">
+                        <label for="target">What would you like tested?</label>
+                        <select id="target" name="target">
+                            <option value="">Select one</option>
+                            <option>AI system</option>
+                            <option>Web app &amp; API</option>
+                            <option>Network &amp; infrastructure</option>
+                            <option>Mobile</option>
+                            <option>Not sure</option>
+                        </select>
+                    </div>
+                    <div class="fld">
+                        <label for="aitype">If AI, what type?</label>
+                        <select id="aitype" name="aitype">
+                            <option value="">Select one</option>
+                            <option>Chatbot</option>
+                            <option>RAG pipeline</option>
+                            <option>Tool-using agent</option>
+                            <option>Multi-agent</option>
+                            <option>MCP-connected</option>
+                            <option>Not sure</option>
+                        </select>
+                    </div>
+                    <div class="fld">
+                        <label for="tools">Roughly how many tools or functions can the AI invoke?</label>
+                        <select id="tools" name="tools">
+                            <option value="">Select one</option>
+                            <option>None</option>
+                            <option>1 to 5</option>
+                            <option>6 to 20</option>
+                            <option>20+</option>
+                            <option>Not sure</option>
+                        </select>
+                    </div>
+                    <div class="fld">
+                        <label for="deadline">Is there a deadline, and what is driving it?</label>
+                        <select id="deadline" name="deadline">
+                            <option value="">Select one</option>
+                            <option>Audit</option>
+                            <option>Customer requirement</option>
+                            <option>Launch</option>
+                            <option>Incident</option>
+                            <option>No fixed date</option>
+                        </select>
+                    </div>
+                    <div class="fld">
+                        <label for="eu">Do you serve users in the EU?</label>
+                        <select id="eu" name="eu">
+                            <option value="">Select one</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                            <option>Not sure</option>
+                        </select>
+                    </div>
+                    <div class="fld">
+                        <label for="budget">Budget range</label>
+                        <select id="budget" name="budget">
+                            <option value="">Select one</option>
+                            <option>Under $5K</option>
+                            <option>$5K to $15K</option>
+                            <option>$15K to $40K</option>
+                            <option>$40K+</option>
+                            <option>Not sure yet</option>
+                        </select>
+                    </div>
+
+                    <div class="fld span-2">
+                        <label for="message">Anything else we should know</label>
+                        <textarea id="message" name="message" placeholder="Architecture notes, constraints, what worries you, or what you want out of the engagement."></textarea>
+                    </div>
+                    <p class="form-status span-2" id="form-status" role="status" aria-live="polite"></p>
+                    <div class="span-2">
+                        <button class="btn btn-red" type="submit">Send scoping request</button>
                     </div>
                 </form>
             </div>
@@ -161,7 +238,7 @@
                         <span class="tag">STEP 04</span>
                         <span class="icon"><i class="fas fa-clipboard-check" aria-hidden="true"></i></span>
                         <h3>Report &amp; retest</h3>
-                        <p>You receive an actionable report and a debrief. Once you have remediated, we retest for free and can issue a security certificate.</p>
+                        <p>You receive an actionable report and a debrief. Once you have remediated, we retest for free and can issue an attestation letter for your customers and auditors.</p>
                     </article>
                 </div>
             </div>
@@ -206,7 +283,7 @@
             <div class="foot-grid">
                 <div>
                     <a href="/" class="brand"><img class="brand-mark" src="/img/vantixia-mark.png" alt="" width="157" height="120"><span class="wordmark">VANTIXIA</span></a>
-                    <p class="tagline">Unbreakable Shield, Unmatched Security. We are your shield in cyberspace.</p>
+                    <p class="tagline">Adversary-led testing, evidence-backed reporting. We are your shield in cyberspace.</p>
                     <div class="foot-social">
                         <a href="https://linkedin.com/company/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
                         <a href="https://x.com/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on X (Twitter)"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
@@ -221,6 +298,7 @@
                     <div class="foot-links">
                         <a href="/">Home</a>
                         <a href="/services/">Services</a>
+                        <a href="/research/">Research</a>
                         <a href="/about/">About us</a>
                         <a href="/blog.html">Blog</a>
                         <a href="/contact/">Contact</a>
@@ -230,11 +308,11 @@
                     <h5>Capabilities</h5>
                     <div class="foot-links">
                         <a href="/services/genai-llm-pentest/">Gen-AI / LLM pentest</a>
+                        <a href="/continuous-ai-assurance/">Continuous AI Assurance</a>
+                        <a href="/eu-ai-act-testing/">EU AI Act testing</a>
+                        <a href="/iso-42001-penetration-testing/">ISO/IEC 42001 testing</a>
                         <a href="/services/web-app-pentest/">Web app pentest</a>
                         <a href="/services/infrastructure-pentest/">Network VAPT</a>
-                        <a href="/services/mobile-app-pentest/">Mobile pentest</a>
-                        <a href="/services/cloud-config-audit/">Cloud config audit</a>
-                        <a href="/services/secure-code-review/">Code review</a>
                     </div>
                 </div>
                 <div>
@@ -265,8 +343,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
-    <script src="/js/motion.js?v=r15" defer></script>
-    <script src="/js/cyber.js?v=r15" defer></script>
+    <script src="/js/motion.js?v=r20" defer></script>
+    <script src="/js/cyber.js?v=r20" defer></script>
 </body>
 
 </html>

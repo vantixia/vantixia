@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Research - Vantixia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Original findings from our own work: novel attack paths in GenAI and agentic systems, responsible disclosures, and the tooling we build along the way. Nothing published yet - subscribe to get the first pieces.">
+    <meta property="og:title" content="Research - Vantixia">
+    <meta property="og:description" content="Original findings from our own work: novel attack paths in GenAI and agentic systems, responsible disclosures, and the tooling we build along the way. Nothing published yet - subscribe to get the first pieces.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vantixia.in/research/">
+    <link rel="alternate" type="application/rss+xml" title="Vantixia Research" href="/research/feed.xml">
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="/css/cyber.css?v=r20" rel="stylesheet">
+</head>
+
+<body>
+    <canvas id="net-bg" aria-hidden="true"></canvas>
+    <div class="scan-progress" aria-hidden="true"><span></span></div>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-head" id="siteHead">
+        <div class="head-inner">
+            <a href="/" class="brand" aria-label="Vantixia home">
+                <img class="brand-mark" src="/img/vantixia-mark.png" alt="" width="157" height="120">
+                <span class="wordmark">VANTIXIA</span>
+            </a>
+            <nav class="site-nav" id="siteNav" aria-label="Main navigation">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/services/" class="nav-link">Services</a>
+                <a href="/research/" class="nav-link">Research</a>
+                <a href="/about/" class="nav-link">About</a>
+                <a href="/blog.html" class="nav-link">Blog</a>
+                <a href="/contact/" class="nav-link">Contact</a>
+                <a href="https://cal.com/cyberxield/" target="_blank" rel="noopener" class="btn btn-red">Book a call</a>
+            </nav>
+            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="siteNav">
+                <span class="bars"></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main">
+
+        <section class="page-head" style="overflow:hidden;" aria-label="Research introduction">
+            <span class="orb red" data-parallax="0.14" style="top:-160px;left:-140px;"></span>
+            <span class="orb cyan" data-parallax="0.2" style="top:-80px;right:-160px;"></span>
+            <div class="wrap">
+                <p class="crumbs mono" data-reveal><a href="/">~</a><span class="sep">/</span><span>research</span></p>
+                <h1 data-reveal style="--d:.08s"><span class="glitch" data-text="Research">Research</span></h1>
+                <p class="sub" data-reveal style="--d:.16s">Original findings from our own work: novel attack paths in GenAI and agentic systems, responsible disclosures, and the tooling we build along the way.</p>
+                <p class="sub" data-reveal style="--d:.24s">Everything here is work we did, not commentary on work other people did. Where a finding affects third-party software, it is disclosed to the vendor first and published only after the disclosure window closes.</p>
+                <p class="price-flag mono" data-reveal style="--d:.32s">
+                    <span class="pf-amount">0 pieces published</span>
+                    <span class="pf-sep" aria-hidden="true">//</span>
+                    <span>New section, first pieces pending</span>
+                    <span class="pf-sep" aria-hidden="true">//</span>
+                    <a href="#updates">Get them on release</a>
+                </p>
+            </div>
+        </section>
+
+        <section aria-label="Publishing standards">
+            <span class="sec-num" data-parallax="0.08">01</span>
+            <div class="wrap dossier">
+                <div data-reveal="left">
+                    <p class="eyebrow"><b>//: 01</b> STANDARDS</p>
+                    <h2>What gets published here</h2>
+                    <p class="lead-para">These are the standards this section holds itself to. They describe how we
+                        intend to publish. They are not a claim about work already on this page, because there is
+                        none on it yet.</p>
+                    <p class="lead-para">A research piece earns its place here by being ours: something we found,
+                        reproduced and can show the steps for. If a finding lands in software we do not own, the
+                        vendor hears about it first and the write-up waits.</p>
+                </div>
+                <div class="stat-panel" data-reveal="right" style="--d:.12s">
+                    <div class="stat-head">SYS://RESEARCH/COMMITMENTS</div>
+                    <div style="padding: 24px 20px;">
+                        <ul class="check-list">
+                            <li>One clean URL per piece, so it can be linked and cited</li>
+                            <li>Full text in HTML on this site, never a gated PDF</li>
+                            <li>An author byline and a publication date on every piece</li>
+                            <li>A "responsibly disclosed [date], fixed in [version]" line wherever a finding
+                                affects third-party software</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="has-scanline" aria-label="Subject areas" data-fx="scanline">
+            <span class="scanline-bar" aria-hidden="true"></span>
+            <span class="sec-num" data-parallax="0.08">02</span>
+            <div class="wrap">
+                <div class="std-panel" data-reveal>
+                    <div class="std-head">
+                        <p class="eyebrow"><b>//: 02</b> SUBJECT AREAS</p>
+                        <h2>The ground this section covers</h2>
+                        <p>The areas our own testing work sits in. A topic listed here means we work in it and that
+                            a piece on it would belong here. It does not mean a piece on it exists yet.</p>
+                    </div>
+                    <div class="std-grid">
+                        <span>Direct prompt injection</span>
+                        <span>Indirect injection via retrieved content</span>
+                        <span>Agent tool and function-call abuse</span>
+                        <span>Retrieval corpus poisoning</span>
+                        <span>Multi-agent trust boundaries</span>
+                        <span>Model and plugin supply chain</span>
+                        <span>Output handling and downstream sinks</span>
+                        <span>Vendor disclosures</span>
+                        <span>Tooling we build and release</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section aria-label="Published research index">
+            <span class="sec-num" data-parallax="0.08">03</span>
+            <div class="wrap">
+                <div class="section-head" data-reveal>
+                    <p class="eyebrow"><b>//: 03</b> THE INDEX</p>
+                    <h2>Nothing is published here yet</h2>
+                </div>
+
+                <div class="stat-panel" data-reveal style="--d:.08s">
+                    <div class="stat-head">SYS://RESEARCH/INDEX &middot; 0 PIECES PUBLISHED</div>
+                    <div style="padding: 26px 24px;">
+                        <p class="lead-para">This section is new, and it is honest about it: we have not published
+                            anything here yet. When we do, each piece will appear as a card with its byline, its
+                            date and, where third-party software is affected, the disclosure line described in
+                            section 01.</p>
+                        <p class="lead-para">Where a finding does affect someone else's software, the vendor gets it
+                            first and we hold the write-up until the disclosure window closes. That means this page
+                            will always run behind the work. We would rather leave it empty than pad it out with
+                            commentary on other people's research.</p>
+                    </div>
+                </div>
+
+                <!--
+                    CARD GRID GOES HERE.
+
+                    When a real piece is published, replace this comment with a <div class="grid-3"> and one
+                    <article> per piece, newest first. Intended markup for a single card, using classes that
+                    already exist in /css/cyber.css:
+
+                    <div class="grid-3">
+                        <article class="hud-card cyan" data-reveal style="--d:.08s">
+                            <span class="corner tl"></span><span class="corner br"></span>
+                            <span class="tag">DISCLOSURE</span>
+                            <span class="icon"><i class="fas fa-bug" aria-hidden="true"></i></span>
+                            <h3>[Title of the piece]</h3>
+                            <p>[Two sentences on what was found and why it matters. No hype, no severity inflation.]</p>
+                            <p class="meta mono">[Author name] <span class="pf-sep" aria-hidden="true">//</span> [DD Mon YYYY]</p>
+                            <a href="/research/[slug-of-the-piece]/" class="card-link stretch">Read the finding</a>
+                        </article>
+                    </div>
+
+                    Rules for each card, so the section keeps its own standards:
+                      - tag        one of DISCLOSURE / RESEARCH / TOOLING
+                      - hud-card   alternate the "red" and "cyan" modifier down the grid
+                      - href       a real published URL under /research/, never a PDF
+                      - meta       real author byline and real publication date, both required
+                      - disclosure where third-party software is affected, the piece itself must carry the
+                                   "responsibly disclosed [date], fixed in [version]" line
+                    Do not add a card until the piece it points at is actually live.
+                -->
+
+                <aside class="mail-capture" id="updates" aria-label="Research updates">
+                    <div>
+                        <p class="mc-kicker">AI security research, monthly. No spam.</p>
+                        <h3>Get new findings as we publish them</h3>
+                    </div>
+                    <form class="mc-form" data-mailcapture="subscribe" novalidate>
+                        <label class="sr-only" for="mc-email-research">Email address</label>
+                        <input type="email" id="mc-email-research" name="email" placeholder="you@company.com" autocomplete="email" required>
+                        <button class="btn btn-cyan" type="submit">Subscribe</button>
+                        <p class="form-status mc-status" role="status" aria-live="polite"></p>
+                    </form>
+                </aside>
+            </div>
+        </section>
+
+        <section aria-label="Call to action">
+            <div class="wrap">
+                <div class="cta-band" data-reveal="zoom">
+                    <p class="eyebrow center"><b>//:</b> OPEN UPLINK</p>
+                    <h2>Found something in your own AI stack?</h2>
+                    <p>If you are sitting on behaviour you cannot explain in an LLM or agent system, describe it to
+                        us. We will tell you whether it looks like a real attack path and what it would take to
+                        prove it.</p>
+                    <div class="cta-actions">
+                        <a href="/contact/" class="btn btn-red">Send us the detail</a>
+                        <a href="https://cal.com/cyberxield/" target="_blank" rel="noopener" class="btn btn-cyan">Book a call</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-foot">
+        <div class="wrap">
+            <div class="foot-grid">
+                <div>
+                    <a href="/" class="brand"><img class="brand-mark" src="/img/vantixia-mark.png" alt="" width="157" height="120"><span class="wordmark">VANTIXIA</span></a>
+                    <p class="tagline">Adversary-led testing, evidence-backed reporting. We are your shield in cyberspace.</p>
+                    <div class="foot-social">
+                        <a href="https://linkedin.com/company/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                        <a href="https://x.com/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on X (Twitter)"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://facebook.com/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/@cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        <a href="https://whatsapp.com/channel/0029Va56mGj1CYoKA9UcJI2r" target="_blank" rel="noopener" aria-label="Vantixia WhatsApp channel"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h5>Navigate</h5>
+                    <div class="foot-links">
+                        <a href="/">Home</a>
+                        <a href="/services/">Services</a>
+                        <a href="/research/">Research</a>
+                        <a href="/about/">About us</a>
+                        <a href="/blog.html">Blog</a>
+                        <a href="/contact/">Contact</a>
+                    </div>
+                </div>
+                <div>
+                    <h5>Capabilities</h5>
+                    <div class="foot-links">
+                        <a href="/services/genai-llm-pentest/">Gen-AI / LLM pentest</a>
+                        <a href="/continuous-ai-assurance/">Continuous AI Assurance</a>
+                        <a href="/eu-ai-act-testing/">EU AI Act testing</a>
+                        <a href="/iso-42001-penetration-testing/">ISO/IEC 42001 testing</a>
+                        <a href="/services/web-app-pentest/">Web app pentest</a>
+                        <a href="/services/infrastructure-pentest/">Network VAPT</a>
+                    </div>
+                </div>
+                <div>
+                    <h5>Direct line</h5>
+                    <div class="foot-contact">
+                        <a href="https://maps.app.goo.gl/Fr34EhDzWp6BSTnC6" target="_blank" rel="noopener"><i class="fas fa-location-dot" aria-hidden="true"></i> Delhi, India</a>
+                        <a href="https://wa.me/message/5FCTHDC4VX2RO1" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i> Connect on WhatsApp</a>
+                        <a href="mailto:rajnish@cyberxield.in"><i class="fas fa-envelope" aria-hidden="true"></i> rajnish@cyberxield.in</a>
+                        <a href="https://cal.com/cyberxield/" target="_blank" rel="noopener"><i class="fas fa-calendar-check" aria-hidden="true"></i> Book a meeting</a>
+                    </div>
+                </div>
+            </div>
+            <div class="foot-bottom">
+                <span>&copy; <span id="year">2026</span> VANTIXIA // ALL RIGHTS RESERVED</span>
+                <span>
+                    <a href="/privacy/">PRIVACY</a>
+                    &nbsp;&middot;&nbsp;
+                    <a href="/terms/">TERMS</a>
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-top" aria-label="Back to top"><i class="fas fa-arrow-up" aria-hidden="true"></i></a>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <!-- Scroll-motion layer: GSAP + ScrollTrigger + Lenis (progressive enhancement) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+    <script src="/js/motion.js?v=r20" defer></script>
+    <script src="/js/cyber.js?v=r20" defer></script>
+</body>
+
+</html>

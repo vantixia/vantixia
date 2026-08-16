@@ -1,0 +1,16 @@
+# Vantixia - https://vantixia.in
+# The methodology, framework mappings and pricing are deliberately open and
+# crawlable. Only the sample report sits behind an email form.
+
+User-agent: *
+Allow: /
+
+# Internal planning documents. These are gitignored so they should never be
+# deployed at all, but disallow them as a second line of defence.
+Disallow: /VANTIXIA-SITE-BRIEF.md
+Disallow: /vantixia-content-audit.html
+
+# Scroll-motion prototype, not a real page.
+Disallow: /story.html
+
+Sitemap: https://vantixia.in/sitemap.xml

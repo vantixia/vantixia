@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link href="/css/cyber.css?v=r15" rel="stylesheet">
+    <link href="/css/cyber.css?v=r20" rel="stylesheet">
 </head>
 
 <body>
@@ -34,6 +34,7 @@
             <nav class="site-nav" id="siteNav" aria-label="Main navigation">
                 <a href="/" class="nav-link">Home</a>
                 <a href="/services/" class="nav-link">Services</a>
+                <a href="/research/" class="nav-link">Research</a>
                 <a href="/about/" class="nav-link">About</a>
                 <a href="/blog.html" class="nav-link">Blog</a>
                 <a href="/contact/" class="nav-link">Contact</a>
@@ -52,8 +53,8 @@
             <span class="orb cyan" data-parallax="0.2" style="top:-80px;right:-160px;"></span>
             <div class="wrap">
                 <p class="crumbs mono" data-reveal><a href="/">~</a><span class="sep">/</span><span>services</span></p>
-                <h1 data-reveal style="--d:.08s"><span class="glitch" data-text="Capabilities">Capabilities</span></h1>
-                <p class="sub" data-reveal style="--d:.16s">From LLM red-teaming to cloud audits - one doctrine: attack like a real adversary, report with zero false positives, and stay until the fix is verified.</p>
+                <h1 data-reveal style="--d:.08s"><span class="glitch" data-text="Offensive AI security">Offensive AI security</span><br><span class="glitch accent-cyan" data-text="and everything around it.">and everything around it.</span></h1>
+                <p class="sub" data-reveal style="--d:.16s">From LLM red-teaming to cloud audits - one doctrine: attack like a real adversary, validate every finding by hand, and stay until the fix is verified.</p>
             </div>
         </section>
 
@@ -62,19 +63,43 @@
             <div class="wrap">
                 <div class="section-head" data-reveal>
                     <p class="eyebrow"><b>//: 01</b> CAPABILITIES</p>
-                    <h2>Eight ways we harden you</h2>
+                    <h2>Offensive AI security, and everything around it</h2>
                     <p>Every engagement is a <strong>manual-led, comprehensive pentest</strong>. AI-augmented
                         testing is <strong>optional</strong> - we run manual, AI, or both, to match your needs.</p>
                 </div>
-                <div class="grid-3">
-                    <article class="hud-card red" data-reveal>
-                        <span class="corner tl"></span><span class="corner br"></span>
+
+                <article class="feature-card" data-reveal>
+                    <span class="corner tl"></span><span class="corner br"></span>
+                    <div class="fc-body">
                         <span class="tag">OFFENSIVE // AI</span>
-                        <span class="icon"><i class="fas fa-robot" aria-hidden="true"></i></span>
-                        <h3>Gen-AI, Agentic AI &amp; LLM Penetration Testing</h3>
-                        <p>Red-teaming for LLM apps, chatbots and autonomous agents - prompt injection, jailbreaks, tool abuse and data leakage, mapped to the OWASP LLM Top 10.</p>
-                        <a href="/services/genai-llm-pentest/" class="card-link stretch">View service</a>
-                    </article>
+                        <h3>Gen-AI, Agentic AI &amp; LLM Red Teaming</h3>
+                        <p>Your application gets penetration tested every year. Your AI layer probably never
+                            has, and the two fail in completely different ways. We adversarially test chatbots,
+                            RAG pipelines, tool-using agents and MCP-connected architectures, mapped to the
+                            OWASP GenAI LLM Top 10 (2026), MITRE ATLAS and NIST AI RMF, with findings
+                            referenced to EU AI Act and ISO/IEC 42001 controls.</p>
+                        <p class="fc-meta">1 to 4 weeks <span class="pf-sep" aria-hidden="true">//</span> 3 free retests
+                            <span class="pf-sep" aria-hidden="true">//</span> fixed quote after a 20-minute scoping call</p>
+                        <div class="fc-actions">
+                            <a href="/services/genai-llm-pentest/" class="btn btn-red">View the service</a>
+                            <a href="/services/genai-llm-pentest/#pricing" class="btn btn-ghost">How we scope</a>
+                        </div>
+                    </div>
+                    <div class="fc-aside" aria-hidden="true">
+                        <span class="fc-icon"><i class="fas fa-robot"></i></span>
+                        <ul class="fc-list">
+                            <li>Prompt injection, direct and indirect</li>
+                            <li>Tool and function abuse</li>
+                            <li>Retrieval poisoning</li>
+                            <li>Agent privilege escalation</li>
+                            <li>Guardrail and jailbreak bypass</li>
+                            <li>Data leakage and denial-of-wallet</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <h3 class="row-head" data-reveal>Also available</h3>
+                <div class="grid-3">
                     <article class="hud-card red" data-reveal style="--d:.08s">
                         <span class="corner tl"></span><span class="corner br"></span>
                         <span class="tag">OFFENSIVE // WEB</span>
@@ -203,7 +228,7 @@
                         <span class="corner tl"></span><span class="corner br"></span>
                         <span class="tag">GUARANTEE</span>
                         <span class="icon"><i class="fas fa-crosshairs" aria-hidden="true"></i></span>
-                        <h3>Zero false positives</h3>
+                        <h3>Manually validated findings</h3>
                         <p>Every finding is validated and reproducible. If it's in the report, it's real and worth fixing - no noise to chase.</p>
                     </article>
                     <article class="hud-card red" data-reveal="zoom" style="--d:.16s">
@@ -252,7 +277,7 @@
                         <span>OWASP ASVS</span>
                         <span>OWASP WSTG</span>
                         <span>OWASP API Top 10</span>
-                        <span>OWASP LLM Top 10</span>
+                        <span>OWASP GenAI LLM Top 10 (2026)</span>
                         <span>OWASP Mobile Top 10</span>
                         <span>OWASP MASVS / MASTG</span>
                         <span>NIST</span>
@@ -260,6 +285,9 @@
                         <span>MITRE ATT&amp;CK</span>
                         <span>MITRE ATLAS</span>
                         <span>PTES</span>
+                        <span>NIST AI RMF</span>
+                        <span>EU AI Act</span>
+                        <span>ISO/IEC 42001</span>
                     </div>
                 </div>
             </div>
@@ -322,7 +350,7 @@
             <div class="foot-grid">
                 <div>
                     <a href="/" class="brand"><img class="brand-mark" src="/img/vantixia-mark.png" alt="" width="157" height="120"><span class="wordmark">VANTIXIA</span></a>
-                    <p class="tagline">Unbreakable Shield, Unmatched Security. We are your shield in cyberspace.</p>
+                    <p class="tagline">Adversary-led testing, evidence-backed reporting. We are your shield in cyberspace.</p>
                     <div class="foot-social">
                         <a href="https://linkedin.com/company/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
                         <a href="https://x.com/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on X (Twitter)"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
@@ -337,6 +365,7 @@
                     <div class="foot-links">
                         <a href="/">Home</a>
                         <a href="/services/">Services</a>
+                        <a href="/research/">Research</a>
                         <a href="/about/">About us</a>
                         <a href="/blog.html">Blog</a>
                         <a href="/contact/">Contact</a>
@@ -346,11 +375,11 @@
                     <h5>Capabilities</h5>
                     <div class="foot-links">
                         <a href="/services/genai-llm-pentest/">Gen-AI / LLM pentest</a>
+                        <a href="/continuous-ai-assurance/">Continuous AI Assurance</a>
+                        <a href="/eu-ai-act-testing/">EU AI Act testing</a>
+                        <a href="/iso-42001-penetration-testing/">ISO/IEC 42001 testing</a>
                         <a href="/services/web-app-pentest/">Web app pentest</a>
                         <a href="/services/infrastructure-pentest/">Network VAPT</a>
-                        <a href="/services/mobile-app-pentest/">Mobile pentest</a>
-                        <a href="/services/cloud-config-audit/">Cloud config audit</a>
-                        <a href="/services/secure-code-review/">Code review</a>
                     </div>
                 </div>
                 <div>
@@ -380,8 +409,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
-    <script src="/js/motion.js?v=r15" defer></script>
-    <script src="/js/cyber.js?v=r15" defer></script>
+    <script src="/js/motion.js?v=r20" defer></script>
+    <script src="/js/cyber.js?v=r20" defer></script>
 </body>
 
 </html>

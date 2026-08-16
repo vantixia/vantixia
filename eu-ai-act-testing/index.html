@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>EU AI Act Testing - Vantixia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="On 2 August 2026 the Article 50 transparency obligations and active GPAI enforcement powers came into force. Adversarial testing is how you evidence that your disclosure, marking and guardrail controls hold under attack. Security testing evidence, not legal advice.">
+    <meta property="og:title" content="EU AI Act Testing - Vantixia">
+    <meta property="og:description" content="On 2 August 2026 the Article 50 transparency obligations and active GPAI enforcement powers came into force. Adversarial testing is how you evidence that your disclosure, marking and guardrail controls hold under attack. Security testing evidence, not legal advice.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vantixia.in/eu-ai-act-testing/">
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="/css/cyber.css?v=r20" rel="stylesheet">
+</head>
+
+<body>
+    <canvas id="net-bg" aria-hidden="true"></canvas>
+    <div class="scan-progress" aria-hidden="true"><span></span></div>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-head" id="siteHead">
+        <div class="head-inner">
+            <a href="/" class="brand" aria-label="Vantixia home">
+                <img class="brand-mark" src="/img/vantixia-mark.png" alt="" width="157" height="120">
+                <span class="wordmark">VANTIXIA</span>
+            </a>
+            <nav class="site-nav" id="siteNav" aria-label="Main navigation">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/services/" class="nav-link">Services</a>
+                <a href="/research/" class="nav-link">Research</a>
+                <a href="/about/" class="nav-link">About</a>
+                <a href="/blog.html" class="nav-link">Blog</a>
+                <a href="/contact/" class="nav-link">Contact</a>
+                <a href="https://cal.com/cyberxield/" target="_blank" rel="noopener" class="btn btn-red">Book a call</a>
+            </nav>
+            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="siteNav">
+                <span class="bars"></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main">
+
+        <section class="page-head" aria-label="Page introduction" style="overflow:hidden;">
+            <span class="orb red" data-parallax="0.14" style="top:-160px;left:-140px;"></span>
+            <span class="orb cyan" data-parallax="0.2" style="top:-80px;right:-160px;"></span>
+            <div class="wrap">
+                <p class="crumbs mono" data-reveal><a href="/">~</a><span class="sep">/</span><span>eu-ai-act-testing</span></p>
+                <h1 data-reveal style="--d:.08s"><span class="glitch" data-text="EU AI Act: what changed on 2 August 2026,">EU AI Act: what changed on 2 August 2026,</span><br><span class="glitch accent-cyan" data-text="and what it means for your testing.">and what it means for your testing.</span></h1>
+                <p class="sub" data-reveal style="--d:.16s">The Article 50 transparency obligations and active GPAI enforcement powers are now in force. Adversarial testing is not a conformity assessment, and nobody should sell you one dressed up as a pentest. What it does is show whether the controls you have declared actually hold when somebody attacks them.</p>
+                <p class="price-flag mono" data-reveal style="--d:.24s">
+                    <span class="pf-amount">Scoped per engagement</span>
+                    <span class="pf-sep" aria-hidden="true">//</span>
+                    <span>Fixed quote after the scoping call</span>
+                    <span class="pf-sep" aria-hidden="true">//</span>
+                    <a href="/services/genai-llm-pentest/#pricing">How we scope</a>
+                </p>
+                <div class="stat-panel" data-reveal style="--d:.32s">
+                    <div class="stat-head">SYS://SCOPE-NOTICE // READ FIRST</div>
+                    <div style="padding: 24px 20px;">
+                        <p class="prose"><strong>Vantixia provides security testing evidence. We do not provide legal advice, and we do not perform conformity assessment.</strong> Nothing on this page is a legal opinion on your obligations under the EU AI Act. Whether the Act applies to you, and what it requires of you, is a question for your legal counsel. What we produce is technical evidence about how your AI system behaves under adversarial input, in a form your counsel, your auditors and your customers can read.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section aria-label="What took effect">
+            <span class="sec-num" data-parallax="0.08">01</span>
+            <div class="wrap dossier">
+                <div data-reveal="left">
+                    <p class="eyebrow"><b>//: 01</b> WHAT TOOK EFFECT</p>
+                    <h2>2 August 2026 moved the Act from text to enforcement</h2>
+                    <p class="lead-para">Two things changed on that date. The Article 50 transparency obligations
+                        came into force, and the enforcement powers over general-purpose AI became active. Until
+                        then, most teams treated the Act as a roadmap item. It now has teeth behind it.</p>
+                    <p class="lead-para">Penalties reach EUR 15 million or 3% of global annual turnover, whichever
+                        is higher. For most companies shipping an AI feature, the turnover figure is the one that
+                        matters, and it is the reason procurement teams have started asking for AI test evidence
+                        that did not appear in a security questionnaire eighteen months ago.</p>
+                    <p class="lead-para">The practical effect is that the transparency behaviours you designed
+                        into the system are no longer only a product decision. They are a control, and a control
+                        that has never been attacked is a control nobody has evidence for.</p>
+                </div>
+                <div class="stat-panel" data-reveal="right" style="--d:.12s">
+                    <div class="stat-head">SYS://ACT/IN-FORCE</div>
+                    <div style="padding: 24px 20px;">
+                        <ul class="check-list">
+                            <li>Article 50 transparency obligations are in force</li>
+                            <li>Enforcement powers over general-purpose AI are active</li>
+                            <li>Penalties reach EUR 15 million or 3% of global annual turnover, whichever is higher</li>
+                            <li>Reach into the EU market decides applicability, not where you are headquartered</li>
+                            <li>Adversarial testing is evidence, not a conformity assessment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="has-scanline" aria-label="Who it applies to" data-fx="scanline">
+            <span class="scanline-bar" aria-hidden="true"></span>
+            <span class="sec-num" data-parallax="0.08">02</span>
+            <div class="wrap">
+                <div class="section-head" data-reveal>
+                    <p class="eyebrow"><b>//: 02</b> WHO IT APPLIES TO</p>
+                    <h2>A short self-assessment before you scope anything</h2>
+                </div>
+                <div class="split" data-fx="split">
+                    <div>
+                        <p class="lead-para">The Act follows the market, not the mailing address. If your system
+                            reaches people in the EU, the obligations travel with it regardless of where you are
+                            headquartered. A team in Bangalore, Austin or Singapore is in the same position as a
+                            team in Dublin if EU users can reach the product.</p>
+                        <p class="lead-para">Tick any one of the statements on the right and the transparency
+                            questions are live for you. Tick none of them and this page is probably not your
+                            priority yet, though the underlying attack surface is still worth testing.</p>
+                        <p class="lead-para">Take the result to your legal counsel. We are telling you what to ask
+                            them, not answering it for you.</p>
+                    </div>
+                    <div>
+                        <h3>Does any of this describe you?</h3>
+                        <ul class="check-list">
+                            <li>You operate a chatbot or assistant that EU users can reach</li>
+                            <li>You generate synthetic content for EU audiences</li>
+                            <li>You deploy a general-purpose model into the EU market</li>
+                        </ul>
+                        <h3>And note</h3>
+                        <ul class="check-list red">
+                            <li>Where you are headquartered does not change the answer</li>
+                            <li>A free tier reachable from the EU still counts as reachable</li>
+                            <li>An AI feature buried inside a larger product is still an AI feature</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section aria-label="What adversarial testing evidences">
+            <span class="sec-num" data-parallax="0.08">03</span>
+            <div class="wrap">
+                <div class="section-head" data-reveal>
+                    <p class="eyebrow"><b>//: 03</b> WHAT TESTING EVIDENCES</p>
+                    <h2>Not a conformity assessment. Evidence that your controls hold under attack.</h2>
+                </div>
+                <p class="prose" data-reveal>This distinction matters, so it is worth being blunt about it.
+                    Adversarial testing is not itself a conformity assessment. It is how you evidence that your
+                    disclosure, marking and guardrail controls hold under attack rather than only in the happy
+                    path. Those are two different claims, and only one of them is ours to make.</p>
+                <div class="grid-3">
+                    <article class="hud-card red" data-reveal style="--d:.08s">
+                        <span class="corner tl"></span><span class="corner br"></span>
+                        <span class="tag">DISCLOSURE</span>
+                        <span class="icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span>
+                        <h3>Does the disclosure survive contact?</h3>
+                        <p>Your assistant tells users it is an AI when asked plainly. We ask it in the ways an
+                            attacker would: through injected instructions, roleplay framing, translation
+                            wrappers and hidden content in retrieved documents. Then we record what it said.</p>
+                    </article>
+                    <article class="hud-card cyan" data-reveal style="--d:.16s">
+                        <span class="corner tl"></span><span class="corner br"></span>
+                        <span class="tag">MARKING</span>
+                        <span class="icon"><i class="fas fa-stamp" aria-hidden="true"></i></span>
+                        <h3>Can the marking be stripped?</h3>
+                        <p>If your pipeline marks synthetic content, the control is only as good as its weakest
+                            path. We look for output routes that skip the marking step, inputs that suppress it,
+                            and formats where it silently does not survive the round trip.</p>
+                    </article>
+                    <article class="hud-card red" data-reveal>
+                        <span class="corner tl"></span><span class="corner br"></span>
+                        <span class="tag">GUARDRAILS</span>
+                        <span class="icon"><i class="fas fa-shield-halved" aria-hidden="true"></i></span>
+                        <h3>Do the guardrails hold, or only appear to?</h3>
+                        <p>Most guardrails pass the demo. We test the chains: injection through a retrieved
+                            document, a tool call that widens what the model can reach, a jailbreak that moves the
+                            system outside the purpose you declared for it.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section aria-label="What we test and what you receive">
+            <span class="sec-num" data-parallax="0.08">04</span>
+            <div class="wrap">
+                <div class="section-head" data-reveal>
+                    <p class="eyebrow"><b>//: 04</b> SCOPE AND DELIVERABLES</p>
+                    <h2>What we test, and what lands on your desk</h2>
+                </div>
+                <div class="split" data-fx="split">
+                    <div>
+                        <h3>What we test</h3>
+                        <ul class="check-list">
+                            <li>Direct prompt injection against disclosure and refusal behaviour</li>
+                            <li>Indirect injection through documents your retrieval pipeline ingests</li>
+                            <li>Attempts to suppress, strip or bypass synthetic-content marking</li>
+                            <li>System prompt and hidden-context extraction</li>
+                            <li>Jailbreak chains that move the system outside its declared purpose</li>
+                            <li>Tool and agent abuse, where the model can act rather than only answer</li>
+                            <li>Output handling downstream of the model, where the real damage usually lands</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>What you receive</h3>
+                        <ul class="check-list">
+                            <li>Every finding mapped to the control it affects, with reproduction steps</li>
+                            <li>Severity and business impact stated per finding, not per category</li>
+                            <li>Remediation guidance written for the engineers who own the fix</li>
+                            <li>A free retest after you remediate, to confirm the findings are closed</li>
+                            <li>An attestation letter: a signed letter of scope, dates, methodology and
+                                remediation status. It attests to what we tested, not that the system is secure</li>
+                            <li>A walkthrough call so your legal and product people hear it in plain language</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section aria-label="Scoping and timeline">
+            <span class="sec-num" data-parallax="0.08">05</span>
+            <div class="wrap">
+                <div class="section-head" data-reveal>
+                    <p class="eyebrow"><b>//: 05</b> SCOPING AND TIMELINE</p>
+                    <h2>Fixed scope, fixed price, agreed before we start</h2>
+                    <p class="lead-para">Every engagement is quoted as a single fixed price against a scope we
+                        agree in writing first. No day rates, no change orders unless you change the scope.</p>
+                </div>
+                <div class="std-table-wrap" data-reveal>
+                    <ul class="check-list">
+                        <li><strong>One AI feature, fixed scope.</strong> About a week. The usual starting point
+                            when you need Article 50 evidence for a single user-facing surface.</li>
+                        <li><strong>A chatbot or assistant.</strong> One to two weeks, covering disclosure,
+                            marking and guardrail behaviour under adversarial input.</li>
+                        <li><strong>RAG pipelines, tool-using agents, multi-agent and MCP ecosystems.</strong>
+                            Two to eight weeks depending on how much the system can reach. See
+                            <a href="/services/genai-llm-pentest/#pricing">how we scope</a> for the factors that
+                            move it.</li>
+                        <li><strong>Ongoing.</strong> If your AI layer changes more often than quarterly, a
+                            one-off report ages quickly and
+                            <a href="/continuous-ai-assurance/">Continuous AI Assurance</a> is usually the
+                            better shape.</li>
+                    </ul>
+                    <p class="tbl-note">Tell us what you have built and which obligations you are working
+                        against, and you will have a fixed quote within one business day of the scoping call.</p>
+                    <a href="https://cal.com/cyberxield/" target="_blank" rel="noopener" class="btn btn-red">Book a 20-minute scoping call</a>
+                </div>
+            </div>
+        </section>
+
+        <section aria-label="Frequently asked questions">
+            <span class="sec-num" data-parallax="0.08">06</span>
+            <div class="wrap">
+                <div class="section-head" data-reveal>
+                    <p class="eyebrow"><b>//: 06</b> QUESTIONS</p>
+                    <h2>What teams ask us about the Act</h2>
+                </div>
+                <div class="faq" data-reveal>
+                    <details class="faq-item">
+                        <summary>Does a penetration test satisfy the EU AI Act for us?<span class="fx">+</span></summary>
+                        <div class="faq-body">
+                            <p>No, and be careful with anyone who tells you otherwise. Vantixia provides security
+                                testing evidence. We do not provide legal advice and we do not perform conformity
+                                assessment. Adversarial testing is not itself a conformity assessment. It is how
+                                you evidence that your disclosure, marking and guardrail controls hold under attack
+                                rather than only in the happy path. Your legal counsel decides what the Act
+                                requires of you. We produce the technical evidence they and your auditors ask for.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>We are not based in the EU. Does any of this reach us?<span class="fx">+</span></summary>
+                        <div class="faq-body">
+                            <p>Possibly, and that is a question for your counsel rather than for us. What we can
+                                tell you is the pattern we see in scoping calls: teams that operate a chatbot
+                                reachable by EU users, generate synthetic content for EU audiences, or deploy a
+                                general-purpose model into the EU market are being asked for evidence regardless of
+                                where they are headquartered. Reach into the market is what drives the questions,
+                                not the address on the incorporation documents.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>What can testing actually evidence for Article 50 transparency?<span class="fx">+</span></summary>
+                        <div class="faq-body">
+                            <p>Three things, concretely. First, whether your disclosure behaviour survives an
+                                adversarial attempt to remove it, rather than only answering correctly when a
+                                cooperative user asks. Second, whether synthetic-content marking can be stripped,
+                                suppressed or routed around. Third, whether the guardrails behind both of those
+                                hold when the input is hostile. Each becomes a finding with reproduction steps, or
+                                a documented attempt that did not succeed.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>How does this sit alongside our legal counsel and our conformity work?<span class="fx">+</span></summary>
+                        <div class="faq-body">
+                            <p>Cleanly, because the roles do not overlap. Counsel determines which obligations
+                                apply and what your declared controls need to be. Your conformity route is decided
+                                and run separately. We come in underneath both and answer a narrower technical
+                                question: given the controls you have declared, do they hold when someone attacks
+                                them, and where exactly do they fail. Most teams hand our report straight to
+                                whoever is assembling their evidence file.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>What are the penalties if we get this wrong?<span class="fx">+</span></summary>
+                        <div class="faq-body">
+                            <p>Penalties reach EUR 15 million or 3% of global annual turnover, whichever is higher.
+                                We are quoting the figure, not interpreting how it would be applied to your
+                                situation, which is again a question for counsel. In practice the commercial
+                                pressure arrives earlier than any regulator does: enterprise procurement teams have
+                                started asking for AI test evidence as a condition of the contract.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section aria-label="Call to action">
+            <div class="wrap">
+                <div class="cta-band" data-reveal="zoom">
+                    <p class="eyebrow center"><b>//:</b> OPEN UPLINK</p>
+                    <h2>Need evidence your AI controls hold under attack?</h2>
+                    <p>Tell us what your AI does, who can reach it, and what you have declared about it. We will
+                        tell you what testing can evidence, what it cannot, and which engagement size fits. If a
+                        single scoped assessment is enough for now, we will say so.</p>
+                    <div class="cta-actions">
+                        <a href="/contact/" class="btn btn-red">Scope an assessment</a>
+                        <a href="https://cal.com/cyberxield/" target="_blank" rel="noopener" class="btn btn-cyan">Book a call</a>
+                        <a href="/services/genai-llm-pentest/" class="btn btn-ghost">Gen-AI pentest details</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-foot">
+        <div class="wrap">
+            <div class="foot-grid">
+                <div>
+                    <a href="/" class="brand"><img class="brand-mark" src="/img/vantixia-mark.png" alt="" width="157" height="120"><span class="wordmark">VANTIXIA</span></a>
+                    <p class="tagline">Adversary-led testing, evidence-backed reporting. We are your shield in cyberspace.</p>
+                    <div class="foot-social">
+                        <a href="https://linkedin.com/company/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                        <a href="https://x.com/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on X (Twitter)"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://facebook.com/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/@cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        <a href="https://whatsapp.com/channel/0029Va56mGj1CYoKA9UcJI2r" target="_blank" rel="noopener" aria-label="Vantixia WhatsApp channel"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h5>Navigate</h5>
+                    <div class="foot-links">
+                        <a href="/">Home</a>
+                        <a href="/services/">Services</a>
+                        <a href="/research/">Research</a>
+                        <a href="/about/">About us</a>
+                        <a href="/blog.html">Blog</a>
+                        <a href="/contact/">Contact</a>
+                    </div>
+                </div>
+                <div>
+                    <h5>Capabilities</h5>
+                    <div class="foot-links">
+                        <a href="/services/genai-llm-pentest/">Gen-AI / LLM pentest</a>
+                        <a href="/continuous-ai-assurance/">Continuous AI Assurance</a>
+                        <a href="/eu-ai-act-testing/">EU AI Act testing</a>
+                        <a href="/iso-42001-penetration-testing/">ISO/IEC 42001 testing</a>
+                        <a href="/services/web-app-pentest/">Web app pentest</a>
+                        <a href="/services/infrastructure-pentest/">Network VAPT</a>
+                    </div>
+                </div>
+                <div>
+                    <h5>Direct line</h5>
+                    <div class="foot-contact">
+                        <a href="https://maps.app.goo.gl/Fr34EhDzWp6BSTnC6" target="_blank" rel="noopener"><i class="fas fa-location-dot" aria-hidden="true"></i> Delhi, India</a>
+                        <a href="https://wa.me/message/5FCTHDC4VX2RO1" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i> Connect on WhatsApp</a>
+                        <a href="mailto:rajnish@cyberxield.in"><i class="fas fa-envelope" aria-hidden="true"></i> rajnish@cyberxield.in</a>
+                        <a href="https://cal.com/cyberxield/" target="_blank" rel="noopener"><i class="fas fa-calendar-check" aria-hidden="true"></i> Book a meeting</a>
+                    </div>
+                </div>
+            </div>
+            <div class="foot-bottom">
+                <span>&copy; <span id="year">2026</span> VANTIXIA // ALL RIGHTS RESERVED</span>
+                <span>
+                    <a href="/privacy/">PRIVACY</a>
+                    &nbsp;&middot;&nbsp;
+                    <a href="/terms/">TERMS</a>
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-top" aria-label="Back to top"><i class="fas fa-arrow-up" aria-hidden="true"></i></a>
+
+    <!-- Scroll-motion layer: GSAP + ScrollTrigger + Lenis (progressive enhancement) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+    <script src="/js/motion.js?v=r20" defer></script>
+    <script src="/js/cyber.js?v=r20" defer></script>
+</body>
+
+</html>

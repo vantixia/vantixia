@@ -3,12 +3,12 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Vantixia - Unbreakable Shield, Unmatched Security</title>
+    <title>Vantixia - Offensive Security for AI-Era Systems</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Vantixia is an offensive security firm from India delivering penetration testing, red team assessments and security training. Unbreakable Shield, Unmatched Security.">
-    <meta name="keywords" content="penetration testing, red team, cybersecurity, VAPT, web application security, Vantixia, India">
-    <meta property="og:title" content="Vantixia - Unbreakable Shield, Unmatched Security">
-    <meta property="og:description" content="Offensive security: penetration testing, red teaming and security training from India.">
+    <meta name="description" content="Vantixia red teams GenAI, RAG and agentic systems - prompt injection, tool abuse, retrieval poisoning, agent privilege escalation - plus web, mobile, cloud and infrastructure penetration testing. Manual-led, AI-optional, evidence-backed.">
+    <meta name="keywords" content="AI penetration testing, LLM red teaming, prompt injection testing, agentic AI security, GenAI security assessment, penetration testing, red team, VAPT, Vantixia, India">
+    <meta property="og:title" content="Vantixia - Offensive Security for AI-Era Systems">
+    <meta property="og:description" content="We find out what an attacker can talk your AI feature into - then hand you a report your auditors will accept.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://vantixia.in/">
     <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link href="/css/cyber.css?v=r15" rel="stylesheet">
+    <link href="/css/cyber.css?v=r20" rel="stylesheet">
 </head>
 
 <body class="banner-on">
@@ -42,6 +42,7 @@
             <nav class="site-nav" id="siteNav" aria-label="Main navigation">
                 <a href="/" class="nav-link">Home</a>
                 <a href="/services/" class="nav-link">Services</a>
+                <a href="/research/" class="nav-link">Research</a>
                 <a href="/about/" class="nav-link">About</a>
                 <a href="/blog.html" class="nav-link">Blog</a>
                 <a href="/contact/" class="nav-link">Contact</a>
@@ -61,23 +62,26 @@
             <span class="orb cyan" data-parallax="0.18" style="bottom:-140px;right:-160px;"></span>
             <div class="wrap hero-grid">
                 <div>
-                    <p class="eyebrow" data-reveal><b>//:</b> VANTIXIA ▸ OFFENSIVE SECURITY · INDIA</p>
+                    <p class="eyebrow" data-reveal><b>//:</b> VANTIXIA ▸ OFFENSIVE AI SECURITY</p>
                     <h1 data-reveal style="--d:.08s">
-                        <span class="glitch" data-text="Unbreakable Shield.">Unbreakable Shield.</span><br>
-                        <span class="glitch accent-cyan" data-text="Unmatched Security.">Unmatched Security.</span>
+                        You shipped an AI feature.<br>
+                        <span class="glitch accent-cyan" data-text="We find out what an attacker can talk it into.">We find out what an attacker can talk it into.</span>
                     </h1>
-                    <p class="sub" data-reveal style="--d:.16s">We break into systems so criminals can't. Vantixia delivers
-                        manual-led penetration testing, red-team assessments and security training - with
-                        zero false positives and a free retest - hardening your web apps, networks, cloud
-                        and people against real-world attacks.</p>
+                    <p class="sub" data-reveal style="--d:.16s">Vantixia red teams GenAI, RAG and agentic systems -
+                        prompt injection, tool abuse, retrieval poisoning and agent privilege escalation - and
+                        delivers a report your auditors, your enterprise customers and your regulators will
+                        accept. We test the rest of your stack too: web, mobile, cloud, infrastructure and people.</p>
                     <div class="hero-cta" data-reveal style="--d:.24s">
-                        <a href="/contact/" class="btn btn-red">Request an assessment</a>
-                        <a href="/services/" class="btn btn-cyan">Explore capabilities</a>
+                        <a href="https://cal.com/cyberxield/" target="_blank" rel="noopener" class="btn btn-red">Book a scoping call</a>
+                        <!-- TODO: point this at the real redacted sample-report PDF once it exists.
+                             Until then it routes to the contact form, which is honest rather than a dead link. -->
+                        <a href="/contact/?request=sample-report" class="btn btn-cyan">Sample report</a>
                     </div>
                     <div class="hero-badges" data-reveal style="--d:.32s">
+                        <span>OWASP GENAI LLM TOP 10 (2026)</span>
+                        <span>MITRE ATLAS</span>
+                        <span>NIST AI RMF</span>
                         <span>OWASP TOP 10</span>
-                        <span>NIST</span>
-                        <span>MASVS / MASTG</span>
                         <span>MITRE ATT&amp;CK</span>
                     </div>
                 </div>
@@ -92,6 +96,32 @@
                 </div>
             </div>
             <span class="scroll-cue" aria-hidden="true">▼ scroll</span>
+        </section>
+
+        <!-- ======== CREDIBILITY STRIP ========
+             Every number here belongs to Rajnish Kumar personally, not to Vantixia
+             as a company. The wording has to keep saying so. -->
+        <section class="cred-strip" aria-label="Founder credentials">
+            <div class="wrap">
+                <ul class="cred-row">
+                    <li data-reveal>
+                        <span class="cred-num">200+</span>
+                        <span class="cred-lbl">Enterprise engagements led by our founder</span>
+                    </li>
+                    <li data-reveal style="--d:.06s">
+                        <span class="cred-num">4+</span>
+                        <span class="cred-lbl">Years in offensive security</span>
+                    </li>
+                    <li data-reveal style="--d:.12s">
+                        <span class="cred-num">3</span>
+                        <span class="cred-lbl">Halls of fame <b>Microsoft &middot; Adobe &middot; JP Morgan Chase</b></span>
+                    </li>
+                    <li data-reveal style="--d:.18s">
+                        <span class="cred-num">6</span>
+                        <span class="cred-lbl">Offensive certifications <b>CEH &middot; CPENT | LPT &middot; eWPTX &middot; eCPPT &middot; eMAPT &middot; CRTP</b></span>
+                    </li>
+                </ul>
+            </div>
         </section>
 
         <!-- ======== SHIELD PROTOCOL (scroll-driven, pinned) ======== -->
@@ -124,7 +154,7 @@
                         <div class="story-lines">
                             <p class="story-line"><b>01</b> We map your entire attack surface - nothing off-limits.</p>
                             <p class="story-line"><b>02</b> We break what automated scanners quietly miss.</p>
-                            <p class="story-line"><b>03</b> We prove every finding - zero false positives.</p>
+                            <p class="story-line"><b>03</b> We prove every finding with a working PoC.</p>
                             <p class="story-line"><b>04</b> We stay until every gap is closed and retested.</p>
                         </div>
                     </div>
@@ -135,35 +165,67 @@
         <!-- ======== STANDARDS TICKER ======== -->
         <div class="ticker" aria-hidden="true">
             <div class="ticker-track">
-                <span>OWASP Top 10</span><span>NIST Framework</span><span>MASVS / MASTG</span><span>CEH</span><span>CPENT | LPT</span><span>eWPTX</span><span>eCPPT</span><span>eMAPT</span><span>CRTP</span><span>Zero False Positives</span><span>Red Team</span><span>VAPT</span><span>Free Retest</span><span>Made in India</span>
-                <span>OWASP Top 10</span><span>NIST Framework</span><span>MASVS / MASTG</span><span>CEH</span><span>CPENT | LPT</span><span>eWPTX</span><span>eCPPT</span><span>eMAPT</span><span>CRTP</span><span>Zero False Positives</span><span>Red Team</span><span>VAPT</span><span>Free Retest</span><span>Made in India</span>
+                <span>OWASP Top 10</span><span>NIST Framework</span><span>MASVS / MASTG</span><span>CEH</span><span>CPENT | LPT</span><span>eWPTX</span><span>eCPPT</span><span>eMAPT</span><span>CRTP</span><span>Manually Validated Findings</span><span>Red Team</span><span>VAPT</span><span>Free Retest</span><span>Made in India</span>
+                <span>OWASP Top 10</span><span>NIST Framework</span><span>MASVS / MASTG</span><span>CEH</span><span>CPENT | LPT</span><span>eWPTX</span><span>eCPPT</span><span>eMAPT</span><span>CRTP</span><span>Manually Validated Findings</span><span>Red Team</span><span>VAPT</span><span>Free Retest</span><span>Made in India</span>
             </div>
         </div>
 
         <!-- ======== SERVICES ======== -->
-        <section id="services" aria-label="Capabilities">
+        <!-- ======== FEATURED SERVICE ========
+             Gen-AI is pulled out of the rail and promoted. The rail below is
+             pinned by GSAP, so this has to be its own section outside it. -->
+        <section id="services" aria-label="Featured capability">
             <span class="sec-num" data-parallax="0.08">01</span>
+            <div class="wrap">
+                <div class="section-head" data-reveal>
+                    <p class="eyebrow"><b>//: 01</b> CAPABILITIES</p>
+                    <h2>Offense-driven security, built for your business</h2>
+                    <p>Every engagement blends automated coverage with deep manual testing, and ships with a
+                        report your engineers can act on immediately, where every finding has already been
+                        reproduced by hand.</p>
+                </div>
+                <article class="feature-card" data-reveal>
+                    <span class="corner tl"></span><span class="corner br"></span>
+                    <div class="fc-body">
+                        <span class="tag">OFFENSIVE // AI</span>
+                        <h3>Gen-AI, Agentic AI &amp; LLM Red Teaming</h3>
+                        <p>Your application gets penetration tested every year. Your AI layer probably never
+                            has, and the two fail in completely different ways. We adversarially test chatbots,
+                            RAG pipelines, tool-using agents and MCP-connected architectures, mapped to the
+                            OWASP GenAI LLM Top 10 (2026), MITRE ATLAS and NIST AI RMF, with findings
+                            referenced to EU AI Act and ISO/IEC 42001 controls.</p>
+                        <p class="fc-meta">1 to 4 weeks <span class="pf-sep" aria-hidden="true">//</span> 3 free retests
+                            <span class="pf-sep" aria-hidden="true">//</span> fixed quote after a 20-minute scoping call</p>
+                        <div class="fc-actions">
+                            <a href="/services/genai-llm-pentest/" class="btn btn-red">View the service</a>
+                            <a href="/services/genai-llm-pentest/#pricing" class="btn btn-ghost">How we scope</a>
+                        </div>
+                    </div>
+                    <div class="fc-aside" aria-hidden="true">
+                        <span class="fc-icon"><i class="fas fa-robot"></i></span>
+                        <ul class="fc-list">
+                            <li>Prompt injection, direct and indirect</li>
+                            <li>Tool and function abuse</li>
+                            <li>Retrieval poisoning</li>
+                            <li>Agent privilege escalation</li>
+                            <li>Guardrail and jailbreak bypass</li>
+                            <li>Data leakage and denial-of-wallet</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section aria-label="Capabilities">
             <div class="rail rail-stage" data-fx="rail">
                 <div class="wrap rail-head">
                     <div class="section-head" data-reveal>
-                        <p class="eyebrow"><b>//: 01</b> CAPABILITIES</p>
-                        <h2>Offense-driven security, built for your business</h2>
-                        <p>Every engagement blends automated coverage with deep manual testing - and ships with a
-                            zero-false-positive report your engineers can act on immediately.</p>
+                        <h2 class="row-head">Also available</h2>
                         <p class="rail-hint">scroll to travel the rail</p>
                     </div>
                 </div>
                 <div class="rail-viewport rail-fade">
                 <div class="rail-track">
-                    <article class="hud-card red">
-                        <span class="corner tl"></span><span class="corner br"></span>
-                        <span class="tag">OFFENSIVE // AI</span>
-                        <span class="icon"><i class="fas fa-robot" aria-hidden="true"></i></span>
-                        <h3>Gen-AI, Agentic AI &amp; LLM Pentest</h3>
-                        <p>Red-teaming for LLM apps, chatbots and autonomous agents - prompt injection,
-                            jailbreaks, tool abuse and data leakage, mapped to the OWASP LLM Top 10.</p>
-                        <a href="/services/genai-llm-pentest/" class="card-link stretch">View service</a>
-                    </article>
                     <article class="hud-card red" style="--d:.08s">
                         <span class="corner tl"></span><span class="corner br"></span>
                         <span class="tag">OFFENSIVE // WEB</span>
@@ -259,26 +321,35 @@
                         empowering organizations to navigate the evolving cyber landscape. Partner with us and
                         get an <strong>ultimate view of your information security</strong> - from technology
                         optimization to training that levels up your teams.</p>
+                    <aside class="founder" aria-label="Founder">
+                        <img class="founder-photo" src="/img/founder-rajnish.png"
+                             alt="Rajnish Kumar, founder of Vantixia"
+                             width="320" height="320" loading="lazy" decoding="async">
+                        <p><b>Led by Rajnish Kumar.</b> An offensive security specialist who has personally
+                            led more than 200 enterprise engagements across four years, holding CEH,
+                            CPENT | LPT, eWPTX, eCPPT, eMAPT and CRTP. Microsoft, Adobe and JP Morgan
+                            Chase have each credited him in their halls of fame.</p>
+                    </aside>
                     <a href="/about/" class="btn btn-cyan" style="margin-top:10px;">Who are we?</a>
                 </div>
                 <div class="stat-panel" data-reveal="right" style="--d:.12s">
                     <div class="stat-head">SYS://VANTIXIA/VITALS</div>
                     <div class="stat-grid">
                         <div class="stat-cell">
-                            <div class="num"><span data-count="10">0</span><em>+</em></div>
+                            <div class="num"><span data-count="200">200</span><em>+</em></div>
+                            <div class="lbl">Enterprise engagements led by our founder</div>
+                        </div>
+                        <div class="stat-cell">
+                            <div class="num"><span data-count="8">8</span></div>
                             <div class="lbl">Security service lines</div>
                         </div>
                         <div class="stat-cell">
-                            <div class="num"><span data-count="3">0</span><em>×</em></div>
+                            <div class="num"><span data-count="3">3</span><em>×</em></div>
                             <div class="lbl">Testing modes - black · grey · white box</div>
                         </div>
                         <div class="stat-cell">
-                            <div class="num"><em>0</em></div>
-                            <div class="lbl">False positives in delivered reports</div>
-                        </div>
-                        <div class="stat-cell">
-                            <div class="num"><span data-count="3">0</span><em>×</em></div>
-                            <div class="lbl">Free retest after remediation</div>
+                            <div class="num"><span data-count="3">3</span><em>×</em></div>
+                            <div class="lbl">Free retests with every engagement</div>
                         </div>
                     </div>
                 </div>
@@ -312,12 +383,12 @@
                     </div>
                     <div class="step">
                         <h4>Actionable Report</h4>
-                        <p>Zero false positives. Clear impact, prioritised fixes, executive summary - a
+                        <p>Every finding is manually validated with a reproducible proof-of-concept before it reaches your report. Clear impact, prioritised fixes, executive summary - a
                             narrative your board and devs both understand.</p>
                     </div>
                     <div class="step">
                         <h4>Retest &amp; Certify</h4>
-                        <p>After your fixes, we retest for free and issue a security certificate that proves
+                        <p>After your fixes, we retest for free and issue an attestation letter that records
                             your commitment to stakeholders.</p>
                     </div>
                 </div>
@@ -345,7 +416,7 @@
                         <span class="corner tl"></span><span class="corner br"></span>
                         <span class="tag">GUARANTEE</span>
                         <span class="icon"><i class="fas fa-crosshairs" aria-hidden="true"></i></span>
-                        <h3>Zero false positives</h3>
+                        <h3>Manually validated findings</h3>
                         <p>Every finding is validated and reproducible. If it's in the report, it's real and worth fixing - no noise to chase.</p>
                     </article>
                     <article class="hud-card red" data-reveal="zoom" style="--d:.16s">
@@ -395,7 +466,7 @@
                         <span>OWASP ASVS</span>
                         <span>OWASP WSTG</span>
                         <span>OWASP API Top 10</span>
-                        <span>OWASP LLM Top 10</span>
+                        <span>OWASP GenAI LLM Top 10 (2026)</span>
                         <span>OWASP Mobile Top 10</span>
                         <span>OWASP MASVS / MASTG</span>
                         <span>NIST</span>
@@ -455,7 +526,7 @@
             <div class="foot-grid">
                 <div>
                     <a href="/" class="brand"><img class="brand-mark" src="/img/vantixia-mark.png" alt="" width="157" height="120"><span class="wordmark">VANTIXIA</span></a>
-                    <p class="tagline">Unbreakable Shield, Unmatched Security. We are your shield in cyberspace.</p>
+                    <p class="tagline">Adversary-led testing, evidence-backed reporting. We are your shield in cyberspace.</p>
                     <div class="foot-social">
                         <a href="https://linkedin.com/company/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
                         <a href="https://x.com/cyberxield/" target="_blank" rel="noopener" aria-label="Vantixia on X (Twitter)"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
@@ -470,6 +541,7 @@
                     <div class="foot-links">
                         <a href="/">Home</a>
                         <a href="/services/">Services</a>
+                        <a href="/research/">Research</a>
                         <a href="/about/">About us</a>
                         <a href="/blog.html">Blog</a>
                         <a href="/contact/">Contact</a>
@@ -479,11 +551,11 @@
                     <h5>Capabilities</h5>
                     <div class="foot-links">
                         <a href="/services/genai-llm-pentest/">Gen-AI / LLM pentest</a>
+                        <a href="/continuous-ai-assurance/">Continuous AI Assurance</a>
+                        <a href="/eu-ai-act-testing/">EU AI Act testing</a>
+                        <a href="/iso-42001-penetration-testing/">ISO/IEC 42001 testing</a>
                         <a href="/services/web-app-pentest/">Web app pentest</a>
                         <a href="/services/infrastructure-pentest/">Network VAPT</a>
-                        <a href="/services/mobile-app-pentest/">Mobile pentest</a>
-                        <a href="/services/cloud-config-audit/">Cloud config audit</a>
-                        <a href="/services/secure-code-review/">Code review</a>
                     </div>
                 </div>
                 <div>
@@ -655,8 +727,8 @@
         })();
     </script>
 
-    <script src="/js/motion.js?v=r15" defer></script>
-    <script src="/js/cyber.js?v=r15" defer></script>
+    <script src="/js/motion.js?v=r20" defer></script>
+    <script src="/js/cyber.js?v=r20" defer></script>
 </body>
 
 </html>
