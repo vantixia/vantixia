@@ -451,7 +451,7 @@
             },
             function (err) {
               console.error(err);
-              say("> failed. email us directly: rajnish@cyberxield.in", true);
+              say("> failed. email us directly: info@vantixia.in", true);
               if (btn) btn.disabled = false;
             }
           );
@@ -532,7 +532,7 @@
             console.error(err);
             if (statusEl) {
               statusEl.classList.add("err");
-              statusEl.textContent = "> transmission failed. email us directly: rajnish@cyberxield.in";
+              statusEl.textContent = "> transmission failed. email us directly: info@vantixia.in";
             }
             if (submitBtn) submitBtn.disabled = false;
           }
