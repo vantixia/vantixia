@@ -58,9 +58,9 @@
                 <p class="sub" data-reveal style="--d:.16s">Original findings from our own work: novel attack paths in GenAI and agentic systems, responsible disclosures, and the tooling we build along the way.</p>
                 <p class="sub" data-reveal style="--d:.24s">Everything here is work we did, not commentary on work other people did. Where a finding affects third-party software, it is disclosed to the vendor first and published only after the disclosure window closes.</p>
                 <p class="price-flag mono" data-reveal style="--d:.32s">
-                    <span class="pf-amount">0 pieces published</span>
+                    <span class="pf-amount">1 piece published</span>
                     <span class="pf-sep" aria-hidden="true">//</span>
-                    <span>New section, first pieces pending</span>
+                    <span>Latest: CVE-2026-100682 in Budibase</span>
                     <span class="pf-sep" aria-hidden="true">//</span>
                     <a href="#updates">Get them on release</a>
                 </p>
@@ -74,8 +74,7 @@
                     <p class="eyebrow"><b>//: 01</b> STANDARDS</p>
                     <h2>What gets published here</h2>
                     <p class="lead-para">These are the standards this section holds itself to. They describe how we
-                        intend to publish. They are not a claim about work already on this page, because there is
-                        none on it yet.</p>
+                        intend to publish. Every piece on this page is held to them.</p>
                     <p class="lead-para">A research piece earns its place here by being ours: something we found,
                         reproduced and can show the steps for. If a finding lands in software we do not own, the
                         vendor hears about it first and the write-up waits.</p>
@@ -104,7 +103,7 @@
                         <p class="eyebrow"><b>//: 02</b> SUBJECT AREAS</p>
                         <h2>The ground this section covers</h2>
                         <p>The areas our own testing work sits in. A topic listed here means we work in it and that
-                            a piece on it would belong here. It does not mean a piece on it exists yet.</p>
+                            a piece on it belongs here.</p>
                     </div>
                     <div class="std-grid">
                         <span>Direct prompt injection</span>
@@ -126,21 +125,18 @@
             <div class="wrap">
                 <div class="section-head" data-reveal>
                     <p class="eyebrow"><b>//: 03</b> THE INDEX</p>
-                    <h2>Nothing is published here yet</h2>
+                    <h2>Published research</h2>
                 </div>
 
-                <div class="stat-panel" data-reveal style="--d:.08s">
-                    <div class="stat-head">SYS://RESEARCH/INDEX &middot; 0 PIECES PUBLISHED</div>
-                    <div style="padding: 26px 24px;">
-                        <p class="lead-para">This section is new, and it is honest about it: we have not published
-                            anything here yet. When we do, each piece will appear as a card with its byline, its
-                            date and, where third-party software is affected, the disclosure line described in
-                            section 01.</p>
-                        <p class="lead-para">Where a finding does affect someone else's software, the vendor gets it
-                            first and we hold the write-up until the disclosure window closes. That means this page
-                            will always run behind the work. We would rather leave it empty than pad it out with
-                            commentary on other people's research.</p>
-                    </div>
+                <div class="grid-3">
+                    <article class="hud-card red" data-reveal style="--d:.08s">
+                        <span class="corner tl"></span><span class="corner br"></span>
+                        <span class="tag">DISCLOSURE</span>
+                        <h3>CVE-2026-100682: How a PWA Icon ZIP Turns a Budibase Builder into Root</h3>
+                        <p>A symlink-following ZIP extraction bug in Budibase's PWA icon upload let a BUILDER-role user write arbitrary files as root and reach remote code execution. Responsibly disclosed 21 Aug 2026, fixed in 3.45.0.</p>
+                        <p class="meta mono">Rajnish Kumar <span class="pf-sep" aria-hidden="true">//</span> 08 Oct 2026</p>
+                        <a href="/research/cve-2026-100682-budibase-arbitrary-file-write-rce/" class="card-link stretch">Read the finding</a>
+                    </article>
                 </div>
 
                 <!--

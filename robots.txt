@@ -10,7 +10,4 @@ Allow: /
 Disallow: /VANTIXIA-SITE-BRIEF.md
 Disallow: /vantixia-content-audit.html
 
-# Scroll-motion prototype, not a real page.
-Disallow: /story.html
-
 Sitemap: https://vantixia.in/sitemap.xml

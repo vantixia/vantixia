@@ -2,10 +2,6 @@
 <!--
     Vantixia research feed.
 
-    This channel is intentionally empty: no research piece has been published
-    yet. An empty channel is valid RSS 2.0, so subscribers can add the feed now
-    and receive the first piece the moment it lands.
-
     To publish a piece, add an <item> below in reverse-chronological order
     (newest first) and update <lastBuildDate>. Template:
 
@@ -28,9 +24,17 @@
     <description>Original findings from our own work: novel attack paths in GenAI and agentic systems, responsible disclosures, and the tooling we build along the way.</description>
     <language>en</language>
     <copyright>Vantixia</copyright>
-    <managingEditor>rajnish@cyberxield.in (Rajnish Kumar)</managingEditor>
-    <webMaster>rajnish@cyberxield.in (Rajnish Kumar)</webMaster>
-    <lastBuildDate>Sun, 16 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <managingEditor>info@vantixia.in (Rajnish Kumar)</managingEditor>
+    <webMaster>info@vantixia.in (Rajnish Kumar)</webMaster>
+    <lastBuildDate>Thu, 08 Oct 2026 00:00:00 +0000</lastBuildDate>
     <ttl>1440</ttl>
+    <item>
+      <title>CVE-2026-100682: How a PWA Icon ZIP Turns a Budibase Builder into Root</title>
+      <link>https://vantixia.in/research/cve-2026-100682-budibase-arbitrary-file-write-rce/</link>
+      <guid isPermaLink="true">https://vantixia.in/research/cve-2026-100682-budibase-arbitrary-file-write-rce/</guid>
+      <pubDate>Thu, 08 Oct 2026 00:00:00 +0000</pubDate>
+      <dc:creator>Rajnish Kumar</dc:creator>
+      <description>A symlink-following ZIP extraction bug in the Budibase PWA icon upload let BUILDER users write files as root and reach RCE. Responsibly disclosed 21 Aug 2026, fixed in 3.45.0.</description>
+    </item>
   </channel>
 </rss>

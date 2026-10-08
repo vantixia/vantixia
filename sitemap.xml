@@ -380,4 +380,9 @@
     <lastmod>2026-08-16</lastmod>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://vantixia.in/research/cve-2026-100682-budibase-arbitrary-file-write-rce/</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.6</priority>
+  </url>
 </urlset>

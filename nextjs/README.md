@@ -7,7 +7,7 @@ built with Framer Motion's `useScroll` and `useTransform`.
 > step). This component is a **separate deliverable** for a Next.js codebase —
 > it is not wired into the static site. The equivalent effect already lives on
 > the static homepage via GSAP ScrollTrigger (`/js/motion.js`, the Shield
-> Protocol section) and in the standalone `/story.html` prototype.
+> Protocol section).
 
 ## What it does
 
