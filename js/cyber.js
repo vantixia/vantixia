@@ -332,6 +332,10 @@
       ["ln-ok", "[+] retest       : all findings remediated"],
       ["ln-cyan", "[✓] STATUS - PERIMETER HARDENED. SHIELD UP."]
     ];
+    // phones: drop the column padding so each line fits on one row
+    if (termBody.clientWidth < 420) {
+      LINES = LINES.map(function (l) { return [l[0], l[1].replace(/ {2,}: /, ": ")]; });
+    }
     var renderAll = function () {
       termBody.innerHTML = LINES.map(function (l) {
         return '<span class="' + l[0] + '">' + l[1] + "</span>";
@@ -411,7 +415,7 @@
   var yr = document.getElementById("year");
   if (yr) yr.textContent = new Date().getFullYear();
 
-  /* ---------- email capture / sample-report request (EmailJS) ----------
+  /* ---------- email capture (EmailJS) ----------
      There is only one EmailJS template, so these reuse it and identify
      themselves in the message body. Each signup lands as an email. */
   var captures = document.querySelectorAll("[data-mailcapture]");
@@ -443,9 +447,7 @@
           })
           .then(
             function () {
-              say(kind === "sample-report"
-                ? "> received. the report is on its way to your inbox."
-                : "> subscribed. new research lands in your inbox.");
+              say("> subscribed. new research lands in your inbox.");
               cap.reset();
               if (btn) btn.disabled = false;
             },
@@ -466,7 +468,7 @@
     var statusEl = document.getElementById("form-status");
     var submitBtn = form.querySelector("button[type=submit]");
 
-    /* The homepage links here as /contact/?request=sample-report. Say so in the
+    /* The sample-report page links here as /contact/?request=sample-report. Say so in the
        free-text box rather than silently dropping the intent. */
     if (/[?&]request=sample-report(&|$)/.test(location.search)) {
       var msgBox = document.getElementById("message");
@@ -538,5 +540,43 @@
           }
         );
     });
+  }
+
+  /* ---------- shared copy: retest policy ----------
+     Every [data-retest] slot carries this wording in its HTML (so crawlers and
+     no-JS visitors see it) and this constant re-applies it at runtime. To change
+     the policy, update the constant, the slot text in the HTML and the FAQ
+     JSON-LD on the GenAI page together. */
+  var RETEST_POLICY = "three free retests";
+  if (RETEST_POLICY) {
+    document.querySelectorAll("[data-retest]").forEach(function (el) { el.textContent = RETEST_POLICY; });
+  }
+
+  /* ---------- hall of fame ----------
+     data/hall-of-fame.json is the only copy of the list. Entries render only
+     when confirmed is true; a url renders as a link once it is a real address. */
+  var hof = document.querySelector("[data-hof]");
+  if (hof && window.fetch) {
+    fetch("/data/hall-of-fame.json?v=r39")
+      .then(function (res) { if (!res.ok) throw new Error(res.status); return res.json(); })
+      .then(function (data) {
+        var list = document.createElement("ul");
+        list.className = "hof-list";
+        (data.entries || []).filter(function (e) { return e.confirmed === true; }).forEach(function (e) {
+          var li = document.createElement("li");
+          var label = e.url && /^https:\/\//.test(e.url) ? document.createElement("a") : document.createElement("span");
+          if (label.tagName === "A") { label.href = e.url; label.target = "_blank"; label.rel = "noopener"; }
+          label.textContent = e.name;
+          li.appendChild(label);
+          if (e.note) {
+            var note = document.createElement("small");
+            note.textContent = e.note;
+            li.appendChild(note);
+          }
+          list.appendChild(li);
+        });
+        if (list.children.length) hof.replaceChildren(list);
+      })
+      .catch(function (err) { console.warn("hall of fame list did not load", err); });
   }
 })();

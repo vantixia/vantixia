@@ -28,8 +28,6 @@
   function showFinishedState() {
     shieldPaths.forEach(function (p) { p.style.strokeDashoffset = "0"; });
     storyLines.forEach(function (l) { l.classList.add("show"); });
-    var integ = story && story.querySelector("[data-integrity]");
-    if (integ) integ.textContent = "100%";
     // scanlines finish full; rails/prose already visible via CSS
     document.querySelectorAll(".scanline-bar").forEach(function (b) { b.style.transform = "scaleX(1)"; });
   }
@@ -79,21 +77,18 @@
 
   function dashPrep(p) { var len = p.getTotalLength ? p.getTotalLength() : 0; p.style.strokeDasharray = len; return len; }
 
-  /* Shield draw curves, shared by the desktop (scroll-scrubbed) and mobile
-     (fixed-duration) branches so both read identically.
+  /* Tick draw curve, shared by the desktop (scroll-scrubbed) and mobile
+     (fixed-duration) branches so both read identically. The outline is
+     linear; the tick trails it early and catches up, and both land together.
 
-          progress │ outline │ tick │ readout
-          ─────────┼─────────┼──────┼────────
-                0% │      0% │   0% │      0%
-               40% │     40% │  20% │     45%
-               70% │     70% │  60% │     78%
-               85% │     85% │  80% │     89%
-              100% │    100% │ 100% │    100%
-
-     The outline is linear, so it needs no map. The tick trails it early and
-     catches up; the readout runs a little ahead of both. All land together. */
+          progress │ outline │ tick
+          ─────────┼─────────┼──────
+                0% │      0% │   0%
+               40% │     40% │  20%
+               70% │     70% │  60%
+               85% │     85% │  80%
+              100% │    100% │ 100%   */
   var TICK_CURVE = [[0, 0], [0.40, 0.20], [0.70, 0.60], [0.85, 0.80], [1, 1]];
-  var READOUT    = [[0, 0], [0.40, 0.45], [0.70, 0.78], [0.85, 0.89], [1, 1]];
 
   // straight-line interpolation between the points above
   function curve(map, x) {
@@ -116,7 +111,6 @@
       var outline = story.querySelector(".shield-path");
       var check = story.querySelector(".shield-check");
       var svg = story.querySelector(".shield-svg");
-      var integ = story.querySelector("[data-integrity]");
       var lines = gsap.utils.toArray(storyLines);
 
       var outLen = dashPrep(outline);
@@ -125,18 +119,7 @@
       if (check) gsap.set(check, { strokeDashoffset: chkLen });
       gsap.set(lines, { autoAlpha: 0, y: 26 });
 
-      /* Outline, tick and readout all run across the full timeline so nothing
-         sits still while the rest moves. The outline tracks progress linearly;
-         the tick trails it early on and catches up; the readout runs slightly
-         ahead of both. All three land on 100% together.
-
-              progress │ outline │ tick │ readout
-              ─────────┼─────────┼──────┼────────
-                    0% │      0% │   0% │      0%
-                   40% │     40% │  20% │     45%
-                   70% │     70% │  60% │     78%
-                   85% │     85% │  80% │     89%
-                  100% │    100% │ 100% │    100%                                */
+      /* Outline and tick both run across the full timeline (curve above). */
       var TOTAL = 8;   // timeline length the scrub maps onto
 
       var tl = gsap.timeline({
@@ -155,12 +138,6 @@
       }
       lines.forEach(function (ln, i) { tl.to(ln, { autoAlpha: 1, y: 0, duration: 1, ease: "power2.out" }, 0.8 + i * 1.2); });
 
-      /* Read the timeline, not the scroll position. Under scrub:1 the drawing
-         lags the scroll by design, so driving the number off scroll progress
-         would put it ahead of the graphic it is supposed to describe. */
-      tl.eventCallback("onUpdate", function () {
-        if (integ) integ.textContent = Math.round(curve(READOUT, tl.progress()) * 100) + "%";
-      });
 
       ScrollTrigger.create({
         trigger: story, start: "top top", end: "+=2600",
@@ -173,14 +150,13 @@
       return function () {
         gsap.set([outline, check].filter(Boolean), { strokeDashoffset: 0 });
         gsap.set(lines, { autoAlpha: 1, y: 0 });
-        svg.style.filter = ""; if (integ) integ.textContent = "100%";
+        svg.style.filter = "";
       };
     });
 
     mm.add("(max-width: 767px)", function () {
       var outline = story.querySelector(".shield-path");
       var check = story.querySelector(".shield-check");
-      var integ = story.querySelector("[data-integrity]");
       var lines = gsap.utils.toArray(storyLines);
       var outLen = dashPrep(outline);
       var chkLen = check ? dashPrep(check) : 0;
@@ -192,7 +168,7 @@
         trigger: story.querySelector(".shield-svg"), start: "top 82%", once: true,
         onEnter: function () {
           // Same shape as desktop, played out over a fixed duration instead of
-          // scroll: outline, tick and counter all run together and finish together.
+          // scroll: outline and tick run together and finish together.
           var DUR = 1.8;
           gsap.to(outline, { strokeDashoffset: 0, duration: DUR, ease: "none" });
           if (check) {
@@ -201,19 +177,10 @@
               ease: function (p) { return curve(TICK_CURVE, p); }
             });
           }
-          if (integ) {
-            var o = { v: 0 };
-            gsap.to(o, {
-              v: 1, duration: DUR, ease: "none",
-              onUpdate: function () {
-                integ.textContent = Math.round(curve(READOUT, o.v) * 100) + "%";
-              }
-            });
-          }
         }
       });
       ScrollTrigger.batch(lines, { start: "top 90%", once: true, onEnter: function (b) { gsap.to(b, { autoAlpha: 1, y: 0, stagger: 0.14, duration: 0.6, ease: "power2.out" }); } });
-      return function () { gsap.set([outline, check].filter(Boolean), { strokeDashoffset: 0 }); gsap.set(lines, { autoAlpha: 1, y: 0 }); if (integ) integ.textContent = "100%"; };
+      return function () { gsap.set([outline, check].filter(Boolean), { strokeDashoffset: 0 }); gsap.set(lines, { autoAlpha: 1, y: 0 }); };
     });
   }
 
@@ -233,20 +200,27 @@
       // the strip the track slides inside (falls back to the rail itself)
       var box = rail.querySelector(".rail-viewport") || rail;
 
-      // Pad the track by half the strip minus half a card, so the FIRST card
-      // starts centred on screen and the LAST card finishes centred - rather
-      // than both sitting flush against the edges.
-      function centrePad() {
-        var cardW = cards[0].getBoundingClientRect().width;
-        var p = (box.clientWidth - cardW) / 2;
+      // Pad the track so the FIRST card starts on the same left edge as the
+      // section heading and the LAST card finishes the same distance from
+      // the right edge, instead of either end floating mid-screen.
+      var head = rail.querySelector(".rail-head .section-head") || rail.querySelector(".rail-head");
+      function edgePad() {
+        if (!head) return 0;
+        var p = head.getBoundingClientRect().left - box.getBoundingClientRect().left;
         return p > 0 ? p : 0;
       }
       function applyPad() {
-        var p = centrePad() + "px";
+        var p = edgePad() + "px";
         track.style.paddingLeft = p;
         track.style.paddingRight = p;
       }
-      // travel = exactly the distance from first-card-centred to last-card-centred
+      // hide the edge fade on whichever side has nothing more to reveal,
+      // otherwise it dims the first card at rest and the last card at the end
+      function setEnds(progress) {
+        box.classList.toggle("at-start", progress < 0.01);
+        box.classList.toggle("at-end", progress > 0.99);
+      }
+      // travel = exactly the distance from first card at the left edge to last card at the right edge
       function dist() {
         applyPad();
         var d = track.scrollWidth - box.clientWidth;
@@ -262,22 +236,28 @@
         scrollTrigger: {
           trigger: rail, start: "top top",
           end: function () { return "+=" + dist(); },
-          scrub: 1, pin: true, anticipatePin: 1, invalidateOnRefresh: true
+          scrub: 1, pin: true, anticipatePin: 1, invalidateOnRefresh: true,
+          onUpdate: function (self) { setEnds(self.progress); },
+          onRefresh: function (self) { setEnds(self.progress); }
         }
       });
+      setEnds(0);
 
-      // each card eases up + brightens as it crosses the viewport centre
+      // each card eases up + brightens as it slides in, finishing once it is
+      // fully on screen (the last card never reaches centre, so a centre-based
+      // end would leave it dimmed when the rail stops)
       cards.forEach(function (card) {
         gsap.fromTo(card,
           { y: 40, autoAlpha: 0.35 },
           { y: 0, autoAlpha: 1, ease: "none",
-            scrollTrigger: { trigger: card, containerAnimation: horiz, start: "left 90%", end: "left 50%", scrub: true } });
+            scrollTrigger: { trigger: card, containerAnimation: horiz, start: "left 100%", end: "right 100%", scrub: true } });
       });
 
       return function () {
         gsap.set(track, { x: 0 });
         track.style.paddingLeft = "";
         track.style.paddingRight = "";
+        box.classList.remove("at-start", "at-end");
         gsap.set(cards, { y: 0, autoAlpha: 1 });
       };
     });

@@ -96,88 +96,6 @@ p { margin: 0 0 1em; }
 }
 .skip-link:focus { left: 12px; top: 12px; }
 
-/* ---------- rebrand announcement banner (auto-dismisses) ---------- */
-
-.rebrand-banner {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 130;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 11px 48px 11px 20px;
-  background:
-    linear-gradient(90deg, rgba(255, 59, 87, 0.14), rgba(57, 208, 255, 0.14)),
-    rgba(6, 10, 20, 0.97);
-  border-bottom: 1px solid var(--line);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.rebrand-banner p {
-  margin: 0;
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
-  letter-spacing: 0.04em;
-  line-height: 1.5;
-  color: var(--muted);
-  text-align: center;
-}
-.rebrand-banner p i { color: var(--cyan); margin-right: 9px; }
-.rebrand-banner strong { color: #fff; font-weight: 500; }
-.rebrand-banner .nm { color: var(--red); font-weight: 500; }
-.rebrand-banner.is-hiding { opacity: 0; transform: translateY(-100%); }
-
-/* --- dissolve sequence: glitch, then shatter into drifting points --- */
-@keyframes rb-jitter {
-  0%   { transform: translate(0, 0) skewX(0deg); }
-  25%  { transform: translate(-2px, 1px) skewX(-5deg); }
-  50%  { transform: translate(2px, -1px) skewX(4deg); }
-  75%  { transform: translate(-1px, 0) skewX(-2deg); }
-  100% { transform: translate(0, 0) skewX(0deg); }
-}
-.rebrand-banner.is-glitching .rb-text {
-  animation: rb-jitter 0.28s steps(3) 1;
-  text-shadow: 1.5px 0 var(--red), -1.5px 0 var(--cyan);
-}
-/* the glyphs hand off to the particle canvas; the icon fades with the bar */
-.rb-text.is-out .rb-seg { opacity: 0; }
-
-.rb-dissolve-canvas {
-  position: fixed;
-  left: 0; top: 0;
-  z-index: 131;
-  pointer-events: none;
-}
-
-.rebrand-close {
-  position: absolute;
-  right: 12px; top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: 1px solid transparent;
-  color: var(--muted);
-  font-size: 1.25rem;
-  line-height: 1;
-  padding: 2px 9px 5px;
-  cursor: pointer;
-  transition: color 0.2s ease, border-color 0.2s ease;
-}
-.rebrand-close:hover { color: var(--red); border-color: var(--line); }
-
-/* while the banner is up, push the fixed chrome down by its height */
-body.banner-on .site-head { top: var(--banner-h, 46px); }
-body.banner-on .scan-progress { top: var(--banner-h, 46px); }
-
-@media (max-width: 640px) {
-  .rebrand-banner { padding: 9px 42px 9px 14px; }
-  .rebrand-banner p { font-size: 0.66rem; letter-spacing: 0.02em; }
-  .rebrand-banner .tail { display: none; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .rebrand-banner { transition: none; }
-}
-
 /* ---------- ambient canvas + scroll progress ---------- */
 
 #net-bg {
@@ -230,15 +148,27 @@ section { position: relative; padding: clamp(44px, 5vw, 76px) 0; }
 .eyebrow::after {
   content: "";
   height: 1px;
-  flex: 0 1 220px;
+  /* the rule grows into spare room (up to 220px) instead of starting at 220px:
+     a fixed basis forces the label to shrink too, and any shrink wraps it */
+  flex: 1 1 0;
+  max-width: 220px;
   background: linear-gradient(90deg, var(--line), transparent);
 }
 .eyebrow.center { justify-content: center; }
 .eyebrow.center::before {
   content: "";
   height: 1px;
-  flex: 0 1 220px;
+  flex: 1 1 0;
+  max-width: 220px;
   background: linear-gradient(270deg, var(--line), transparent);
+}
+/* phones: as a flex row, a long label wraps as its own block and leaves the
+   "//:" marker stranded beside it - flow it as one line of text instead */
+@media (max-width: 640px) {
+  .eyebrow { display: block; letter-spacing: 0.16em; line-height: 1.7; }
+  .eyebrow::before, .eyebrow::after, .eyebrow.center::before { display: none; }
+  .eyebrow b { white-space: nowrap; margin-right: 10px; }
+  .eyebrow.center { text-align: center; }
 }
 
 .section-head { max-width: 720px; margin-bottom: clamp(36px, 5vw, 56px); }
@@ -577,6 +507,12 @@ section { position: relative; padding: clamp(44px, 5vw, 76px) 0; }
   white-space: pre-wrap;
   word-break: break-word;
 }
+/* phones: smaller type so each line fits without wrapping (cyber.js also
+   drops the column padding at this width) */
+@media (max-width: 640px) {
+  .term { font-size: 0.7rem; }
+  .term-body { padding: 14px 14px 20px; min-height: 0; }
+}
 .term-body .ln-ok { color: #2ee6a8; }
 .term-body .ln-warn { color: #ffb02e; }
 .term-body .ln-red { color: var(--red); }
@@ -615,6 +551,15 @@ section { position: relative; padding: clamp(44px, 5vw, 76px) 0; }
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 .hud-card:hover { transform: translateY(-5px); }
+/* column layout so the closing link (and its "optional" note) sits on the
+   card's bottom edge - cards in a row stretch to equal height, so their
+   links line up */
+.hud-card { display: flex; flex-direction: column; }
+.hud-card .icon { align-self: flex-start; }
+.hud-card > .card-link,
+.hud-card > .card-links { margin-top: auto; }
+.hud-card > .card-note + .card-link { margin-top: 0; }
+.hud-card > .card-link { align-self: flex-start; }
 
 .hud-card .corner {
   position: absolute;
@@ -661,11 +606,11 @@ section { position: relative; padding: clamp(44px, 5vw, 76px) 0; }
 
 .hud-card p { color: var(--muted); font-size: 0.94rem; }
 
+/* block, not flex: a flex row wraps the text as its own two-line block
+   beside the "optional" label; inline flow wraps it under the label */
 .hud-card .card-note {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 6px 0 10px;
+  display: block;
+  margin: auto 0 10px;                   /* auto: sits with the link at the card's foot */
   padding: 8px 12px;
   font-family: var(--font-mono);
   font-size: 0.66rem;
@@ -676,8 +621,7 @@ section { position: relative; padding: clamp(44px, 5vw, 76px) 0; }
   border: 1px dashed var(--line);        /* dashed = optional / available on request */
   background: transparent;
 }
-.hud-card .card-note i { font-size: 0.8rem; flex-shrink: 0; color: var(--cyan); }
-.hud-card.red .card-note i { color: var(--red); }
+.hud-card .card-note i { font-size: 0.8rem; flex-shrink: 0; color: var(--cyan); }.hud-card.red .card-note i { color: var(--red); }
 .hud-card .card-note .opt { color: var(--cyan); font-weight: 500; }
 .hud-card.red .card-note .opt { color: var(--red); }
 
@@ -688,6 +632,9 @@ section { position: relative; padding: clamp(44px, 5vw, 76px) 0; }
   text-transform: uppercase;
 }
 .hud-card .card-link::after { content: " ›"; }
+/* cards that carry more than one link (no stretched link) */
+.hud-card .card-links { display: flex; flex-direction: column; gap: 10px; margin-bottom: 0; }
+.hud-card .cve-line b { display: block; font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.06em; font-weight: 500; color: var(--text); }
 
 /* stretched-link pattern so whole card is clickable */
 .hud-card .stretch::before { content: ""; position: absolute; inset: 0; z-index: 1; }
@@ -695,6 +642,20 @@ section { position: relative; padding: clamp(44px, 5vw, 76px) 0; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+
+/* A lone card on the last row spans the row instead of sitting by itself.
+   Post cards are left out: the blog grid filters (hidden cards still count
+   for nth-child) and a full-width post card would blow its image up. */
+@media (min-width: 1025px) {
+  .grid-3 > :last-child:nth-child(3n+1):not(.post-card) { grid-column: 1 / -1; }
+}
+@media (min-width: 641px) and (max-width: 1024px) {
+  .grid-3 > :last-child:nth-child(odd):not(.post-card),
+  .grid-4 > :last-child:nth-child(odd):not(.post-card),
+  .protocol > :last-child:nth-child(odd) { grid-column: 1 / -1; }
+  /* related-posts strips: show two, not two plus a stray third */
+  .grid-3 > .post-card:nth-child(3):last-child { display: none; }
+}
 
 /* grid/flex children must be allowed to shrink below content width */
 .hero-grid > *, .dossier > *, .split > *,
@@ -750,8 +711,9 @@ section { position: relative; padding: clamp(44px, 5vw, 76px) 0; }
   color: #eef3ff;
   line-height: 1;
 }
-.stat-cell .num em { font-style: normal; color: var(--red); }
-.stat-cell:nth-child(2n) .num em { color: var(--cyan); }
+/* units (+, ×, min) are plain spans, not <em>: text extractors render <em> as "*+*" */
+.stat-cell .num .unit { color: var(--red); }
+.stat-cell:nth-child(2n) .num .unit { color: var(--cyan); }
 .stat-cell .lbl {
   font-family: var(--font-mono);
   font-size: 0.68rem;
@@ -782,7 +744,7 @@ section { position: relative; padding: clamp(44px, 5vw, 76px) 0; }
   margin-bottom: 16px;
 }
 .protocol .step:nth-child(even)::before { color: var(--cyan); }
-.protocol .step h4 { font-size: 1rem; margin-bottom: 10px; }
+.protocol .step h3 { font-size: 1rem; margin-bottom: 10px; }
 .protocol .step p { color: var(--muted); font-size: 0.86rem; margin: 0; }
 .protocol .step:hover { background: rgba(19, 30, 56, 0.4); }
 
@@ -915,6 +877,7 @@ section { position: relative; padding: clamp(44px, 5vw, 76px) 0; }
   display: block;
   margin-bottom: 8px;
 }
+.req { color: var(--red); }
 .form-hud input, .form-hud textarea, .form-hud select {
   width: 100%;
   background: rgba(6, 11, 22, 0.8);
@@ -1007,7 +970,7 @@ main > section:last-of-type { padding-bottom: clamp(28px, 3.5vw, 44px); }
   gap: 36px;
   padding-bottom: 44px;
 }
-.foot-grid h5 {
+.foot-grid h2 {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.24em;
@@ -1145,6 +1108,8 @@ main > section:last-of-type { padding-bottom: clamp(28px, 3.5vw, 44px); }
   color: transparent;
   filter: drop-shadow(0 0 26px rgba(57, 208, 255, 0.25));
 }
+/* the page's h1, kept at the size the old h2 had beneath the big code */
+.err-title { font-size: clamp(1.7rem, 3.4vw, 2.6rem); font-weight: 600; }
 
 /* ---------- responsive ---------- */
 
@@ -1218,13 +1183,15 @@ main > section:last-of-type { padding-bottom: clamp(28px, 3.5vw, 44px); }
   z-index: -1;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(110px, 18vw, 230px);
+  font-size: clamp(80px, 9vw, 130px);
   line-height: 1;
-  color: rgba(126, 158, 255, 0.085);
+  color: rgba(126, 158, 255, 0.05);
   pointer-events: none;
   user-select: none;
   will-change: transform;
 }
+/* phones: no room beside the content, so the numeral only ever sits behind it */
+@media (max-width: 640px) { .sec-num { display: none; } }
 
 /* ---------- card spotlight (mouse-follow glow) ---------- */
 
@@ -1826,6 +1793,7 @@ main > section:last-of-type { padding-bottom: clamp(28px, 3.5vw, 44px); }
   clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
   transition: color 0.2s, border-color 0.2s, background-color 0.2s;
 }
+@media (max-width: 640px) { .chip { padding: 14px 16px; } }   /* 44px tap target */
 .chip:hover { color: var(--text); border-color: var(--cyan); }
 .chip[aria-pressed="true"] { color: #04070e; background: var(--cyan); border-color: var(--cyan); font-weight: 500; }
 .chip[data-cat="ai-security"][aria-pressed="true"],
@@ -2013,24 +1981,6 @@ html.lenis, html.lenis body { height: auto; }
   stroke: var(--line);
   stroke-width: 1;
 }
-.shield-readout { text-align: center; font-family: var(--font-mono); }
-.shield-readout .integrity {
-  display: block;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1;
-  background: var(--grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.shield-readout .label {
-  font-size: 0.68rem;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
 .story-copy .story-head {
   font-size: clamp(2rem, 4.4vw, 3.4rem);
   text-transform: uppercase;
@@ -2108,6 +2058,8 @@ html.lenis, html.lenis body { height: auto; }
   }
   .rail-fade::before { left: 0; background: linear-gradient(90deg, var(--void), transparent); }
   .rail-fade::after { right: 0; background: linear-gradient(270deg, var(--void), transparent); }
+  .rail-fade::before, .rail-fade::after { transition: opacity .3s ease; }
+  .rail-fade.at-start::before, .rail-fade.at-end::after { opacity: 0; }
 }
 .rail-hint {
   display: none;
@@ -2173,4 +2125,60 @@ html.lenis, html.lenis body { height: auto; }
   .glitch::before, .glitch::after { display: none; }
   .ticker-track { animation: none; }
   .orb, .sec-num, [data-parallax] { transform: none !important; }
+  .rail-hint { display: none !important; }
 }
+/* No pinned scrub under reduced motion, so the rail is laid out as an
+   ordinary card grid inside the page column (not full-bleed). */
+@media (prefers-reduced-motion: reduce) and (min-width: 768px) {
+  .rail-track {
+    width: min(1180px, 92vw);
+    margin-inline: auto;
+    padding: 0;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .rail-track > :last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+@media (prefers-reduced-motion: reduce) and (min-width: 1025px) {
+  .rail-track { grid-template-columns: repeat(3, 1fr); }
+  .rail-track > :last-child:nth-child(odd) { grid-column: auto; }
+  .rail-track > :last-child:nth-child(3n+1) { grid-column: 1 / -1; }
+}
+
+.more-link { margin: 22px 0 0; font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.08em; }
+.more-link a { color: var(--cyan); }
+
+/* ---------- hall of fame list (rendered from data/hall-of-fame.json) ---------- */
+
+.hof-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.hof-list li {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.05em;
+  color: var(--text);
+  border: 1px solid var(--line);
+  padding: 8px 13px;
+  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+}
+.hof-list li small { margin-left: 8px; color: var(--muted); font-size: 0.68rem; }
+.hof-list a { color: inherit; }
+.hof-list a:hover { color: var(--cyan); }
+
+/* ---------- Gen-AI packages ---------- */
+
+.pkg { display: flex; flex-direction: column; gap: 12px; }
+.pkg .pkg-for { color: var(--text); margin: 0; }
+.pkg .check-list { gap: 8px; }
+.pkg .check-list li { font-size: 0.9rem; }
+.pkg .pkg-meta {
+  margin: auto 0 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--line-soft);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.06em;
+  color: var(--cyan);
+}
+.pkg-foot { margin-top: 28px; display: grid; gap: 14px; justify-items: start; }
+.pkg-foot .pkg-line { margin: 0; color: var(--text); }
+.follow-cta { margin: 18px 0 0; font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.04em; color: var(--muted); }
+.follow-cta a { color: var(--cyan); }
