@@ -3,14 +3,26 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Vantixia - Offensive Security for AI-Era Systems</title>
+    <title>AI Penetration Testing &amp; LLM Red Teaming | Vantixia</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Vantixia red teams GenAI, RAG and agentic systems - prompt injection, tool abuse, retrieval poisoning, agent privilege escalation - plus web, mobile, cloud and infrastructure penetration testing. Manual-led, AI-optional, evidence-backed.">
-    <meta name="keywords" content="AI penetration testing, LLM red teaming, prompt injection testing, agentic AI security, GenAI security assessment, penetration testing, red team, VAPT, Vantixia, India">
-    <meta property="og:title" content="Vantixia - Offensive Security for AI-Era Systems">
-    <meta property="og:description" content="We find out what an attacker can talk your AI feature into - then hand you a report your auditors will accept.">
+    <meta name="description" content="AI and LLM penetration testing and red teaming for chatbots, RAG pipelines and AI agents, plus web, API and mobile pentesting. Founder-led, hands-on.">
+    <meta property="og:site_name" content="Vantixia">
+    <meta property="og:title" content="AI Penetration Testing &amp; LLM Red Teaming | Vantixia">
+    <meta property="og:description" content="AI and LLM penetration testing and red teaming for chatbots, RAG pipelines and AI agents, plus web, API and mobile pentesting. Founder-led, hands-on.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://vantixia.in/">
+    <!-- TODO(og-image): no 1200x630 brand image exists in img/ yet. Add one (e.g. /img/og-vantixia.jpg:
+         1200x630 JPG under ~300 KB, logo + one-line positioning on the dark background, text inside the
+         central 1000x500 safe area), then uncomment:
+    <meta property="og:image" content="https://vantixia.in/img/og-vantixia.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Vantixia: AI penetration testing and LLM red teaming">
+    <meta name="twitter:image" content="https://vantixia.in/img/og-vantixia.jpg">
+    -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Penetration Testing &amp; LLM Red Teaming | Vantixia">
+    <meta name="twitter:description" content="AI and LLM penetration testing and red teaming for chatbots, RAG pipelines and AI agents, plus web, API and mobile pentesting. Founder-led, hands-on.">
     <link rel="canonical" href="https://vantixia.in/">
     <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
@@ -18,10 +30,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Orbitron:wght@700&display=swap" rel="stylesheet">
-    <link href="/css/cyber.css?v=r30" rel="stylesheet">
+    <link href="/css/cyber.css?v=r39" rel="stylesheet">
 </head>
 
-<body class="banner-on">
+<body>
     <!-- ======== Piwik.pro ======== -->
     <script type="text/javascript">
 (function(window, document, dataLayerName, id) {
@@ -31,12 +43,6 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
 !function(a,n,i){a[n]=a[n]||{};for(var c=0;c<i.length;c++)!function(i){a[n][i]=a[n][i]||{},a[n][i].api=a[n][i].api||function(){var a=[].slice.call(arguments,0);"string"==typeof a[0]&&window[dataLayerName].push({event:n+"."+i+":"+a[0],parameters:[].slice.call(arguments,1)})}}(i[c])}(window,"ppms",["tm","cm"]);
 })(window, document, 'dataLayer', 'c88d2c91-cc64-4cc3-b29f-d0a0ddfd1d2b');
 </script>
-    <!-- ======== REBRAND ANNOUNCEMENT (fades out after 10s) ======== -->
-    <div class="rebrand-banner" id="rebrandBanner" role="status" aria-live="polite">
-        <p class="rb-text" id="rebrandText"><svg class="icn rb-icon" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M256 0c4.6 0 9.2 1 13.4 2.9L457.7 82.8c22 9.3 38.4 31 38.3 57.2c-.5 99.2-41.3 280.7-213.6 363.2c-16.7 8-36.1 8-52.8 0C57.3 420.7 16.5 239.2 16 140c-.1-26.2 16.3-47.9 38.3-57.2L242.7 2.9C246.8 1 251.4 0 256 0zm0 66.8V444.8C394 378 431.1 230.1 432 141.4L256 66.8l0 0z"/></svg><span class="rb-seg">CyberXield is now </span><span class="rb-seg nm">VANTIXIA CYBERSECURITY</span><span class="rb-seg">.</span><span class="rb-seg tail"> Same team, same shield, new name.</span></p>
-        <button type="button" class="rebrand-close" id="rebrandClose" aria-label="Dismiss announcement">&times;</button>
-    </div>
-
     <canvas id="net-bg" aria-hidden="true"></canvas>
     <div class="scan-progress" aria-hidden="true"><span></span></div>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -76,18 +82,15 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
                         You shipped an AI feature.<br>
                         <span class="glitch accent-cyan" data-text="We find out what an attacker can talk it into.">We find out what an attacker can talk it into.</span>
                     </h1>
-                    <p class="sub" data-reveal style="--d:.16s">Vantixia red teams GenAI, RAG and agentic systems -
-                        prompt injection, tool abuse, retrieval poisoning and agent privilege escalation - and
+                    <p class="sub" data-reveal style="--d:.16s">Vantixia red teams GenAI, RAG and agentic systems&nbsp;–
+                        prompt injection, tool abuse, retrieval poisoning and agent privilege escalation&nbsp;– and
                         delivers a report your auditors, your enterprise customers and your regulators will
-                        accept. We test the rest of your stack too: web, mobile, cloud, infrastructure and people.</p>
+                        accept. We also test the web apps, APIs and mobile apps around it.</p>
                     <div class="hero-cta" data-reveal style="--d:.24s">
                         <a href="https://cal.com/vantixia/scoping-call-vantixia" target="_blank" rel="noopener" class="btn btn-red">Book a scoping call</a>
-                        <!-- TODO: point this at the real redacted sample-report PDF once it exists.
-                             Until then it routes to the contact form, which is honest rather than a dead link. -->
-                        <a href="/contact/?request=sample-report" class="btn btn-cyan">Sample report</a>
                     </div>
                     <div class="hero-badges" data-reveal style="--d:.32s">
-                        <span>OWASP GENAI LLM TOP 10 (2026)</span>
+                        <span>OWASP TOP 10 FOR LLM APPLICATIONS (2026)</span>
                         <span>MITRE ATLAS</span>
                         <span>NIST AI RMF</span>
                         <span>OWASP TOP 10</span>
@@ -107,9 +110,7 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
             <span class="scroll-cue" aria-hidden="true">▼ scroll</span>
         </section>
 
-        <!-- ======== CREDIBILITY STRIP ========
-             Every number here belongs to Rajnish Kumar personally, not to Vantixia
-             as a company. The wording has to keep saying so. -->
+        <!-- ======== CREDIBILITY STRIP ======== -->
         <section class="cred-strip" aria-label="Founder credentials">
             <div class="wrap">
                 <ul class="cred-row">
@@ -119,15 +120,15 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
                     </li>
                     <li data-reveal style="--d:.06s">
                         <span class="cred-num">4+</span>
-                        <span class="cred-lbl">Years in offensive security</span>
+                        <span class="cred-lbl">Years our founder has spent in offensive security</span>
                     </li>
                     <li data-reveal style="--d:.12s">
                         <span class="cred-num">10+</span>
-                        <span class="cred-lbl">Hall-of-fame recognitions <b>Microsoft &middot; Nvidia &middot; Adobe &amp; more</b></span>
+                        <span class="cred-lbl">Hall-of-fame recognitions earned by our founder</span>
                     </li>
                     <li data-reveal style="--d:.18s">
-                        <span class="cred-num">6</span>
-                        <span class="cred-lbl">Offensive certifications <b>Held by our founder</b></span>
+                        <span class="cred-num">7</span>
+                        <span class="cred-lbl">Offensive security certifications held by our founder</span>
                     </li>
                 </ul>
             </div>
@@ -139,7 +140,7 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
                 <div class="story-grid">
                     <div class="story-shield">
                         <svg class="shield-svg" viewBox="0 0 200 240" role="img"
-                            aria-label="A shield drawing itself as you scroll, reaching 100% integrity">
+                            aria-label="A shield drawing itself as you scroll">
                             <defs>
                                 <linearGradient id="shieldGrad" x1="0" y1="0" x2="1" y2="1">
                                     <stop offset="0" stop-color="#ff3b57"></stop>
@@ -152,16 +153,12 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
                                 d="M100 14 L182 48 L182 122 C182 182 144 216 100 232 C56 216 18 182 18 122 L18 48 Z"></path>
                             <path class="shield-check" d="M64 122 L90 150 L140 90"></path>
                         </svg>
-                        <div class="shield-readout">
-                            <span class="integrity" data-integrity>0%</span>
-                            <span class="label">Shield integrity</span>
-                        </div>
                     </div>
                     <div class="story-copy">
                         <p class="eyebrow"><b>//: PROTOCOL</b> ASSUME BREACH · VERIFY EVERYTHING</p>
                         <h2 class="story-head">One doctrine.<br>Total coverage.</h2>
                         <div class="story-lines">
-                            <p class="story-line"><b>01</b> We map your entire attack surface - nothing off-limits.</p>
+                            <p class="story-line"><b>01</b> We map your entire attack surface&nbsp;– nothing off-limits.</p>
                             <p class="story-line"><b>02</b> We break what automated scanners quietly miss.</p>
                             <p class="story-line"><b>03</b> We prove every finding with a working PoC.</p>
                             <p class="story-line"><b>04</b> We stay until every gap is closed and retested.</p>
@@ -174,21 +171,19 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
         <!-- ======== STANDARDS TICKER ======== -->
         <div class="ticker" aria-hidden="true">
             <div class="ticker-track">
-                <span>OWASP GenAI LLM Top 10 (2026)</span><span>MITRE ATLAS</span><span>NIST AI RMF</span><span>OWASP Top 10</span><span>MITRE ATT&amp;CK</span><span>NIST Framework</span><span>MASVS / MASTG</span><span>Manually Validated Findings</span><span>Red Team</span><span>VAPT</span><span>Free Retest</span>
-                <span>OWASP GenAI LLM Top 10 (2026)</span><span>MITRE ATLAS</span><span>NIST AI RMF</span><span>OWASP Top 10</span><span>MITRE ATT&amp;CK</span><span>NIST Framework</span><span>MASVS / MASTG</span><span>Manually Validated Findings</span><span>Red Team</span><span>VAPT</span><span>Free Retest</span>
+                <span>OWASP Top 10 for LLM Applications (2026)</span><span>MITRE ATLAS</span><span>NIST AI RMF</span><span>OWASP Top 10</span><span>MITRE ATT&amp;CK</span><span>NIST Framework</span><span>MASVS / MASTG</span><span>Manually Validated Findings</span><span>Red Team</span><span>VAPT</span><span>Founder-Led Testing</span>
+                <span>OWASP Top 10 for LLM Applications (2026)</span><span>MITRE ATLAS</span><span>NIST AI RMF</span><span>OWASP Top 10</span><span>MITRE ATT&amp;CK</span><span>NIST Framework</span><span>MASVS / MASTG</span><span>Manually Validated Findings</span><span>Red Team</span><span>VAPT</span><span>Founder-Led Testing</span>
             </div>
         </div>
 
         <!-- ======== SERVICES ======== -->
-        <!-- ======== FEATURED SERVICE ========
-             Gen-AI is pulled out of the rail and promoted. The rail below is
-             pinned by GSAP, so this has to be its own section outside it. -->
+        <!-- ======== FEATURED SERVICE ======== -->
         <section id="services" aria-label="Featured capability">
             <span class="sec-num" data-parallax="0.08">01</span>
             <div class="wrap">
                 <div class="section-head" data-reveal>
                     <p class="eyebrow"><b>//: 01</b> CAPABILITIES</p>
-                    <h2>Offense-driven security, built for your business</h2>
+                    <h2>Offence-driven security, built for your business</h2>
                     <p>Every engagement blends automated coverage with deep manual testing, and ships with a
                         report your engineers can act on immediately, where every finding has already been
                         reproduced by hand.</p>
@@ -197,13 +192,13 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
                     <span class="corner tl"></span><span class="corner br"></span>
                     <div class="fc-body">
                         <span class="tag">OFFENSIVE // AI</span>
-                        <h3>Gen-AI, Agentic AI &amp; LLM Red Teaming</h3>
+                        <h3>GenAI, Agentic AI &amp; LLM Red Teaming</h3>
                         <p>Your application gets penetration tested every year. Your AI layer probably never
                             has, and the two fail in completely different ways. We adversarially test chatbots,
                             RAG pipelines, tool-using agents and MCP-connected architectures, mapped to the
-                            OWASP GenAI LLM Top 10 (2026), MITRE ATLAS and NIST AI RMF, with findings
+                            OWASP Top 10 for LLM Applications (2026), MITRE ATLAS and NIST AI RMF, with findings
                             referenced to EU AI Act and ISO/IEC 42001 controls.</p>
-                        <p class="fc-meta">1 to 4 weeks <span class="pf-sep" aria-hidden="true">//</span> 3 free retests
+                        <p class="fc-meta">1 to 4 weeks <span class="pf-sep" aria-hidden="true">//</span> <span data-retest>three free retests</span>
                             <span class="pf-sep" aria-hidden="true">//</span> fixed quote after a 20-minute scoping call</p>
                         <div class="fc-actions">
                             <a href="/services/genai-llm-pentest/" class="btn btn-red">View the service</a>
@@ -237,11 +232,11 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
                 <div class="rail-track">
                     <article class="hud-card red" style="--d:.08s">
                         <span class="corner tl"></span><span class="corner br"></span>
-                        <span class="tag">OFFENSIVE // WEB</span>
+                        <span class="tag">OFFENSIVE // WEB &amp; API</span>
                         <span class="icon"><svg class="icn" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M256 0c4.6 0 9.2 1 13.4 2.9L457.7 82.8c22 9.3 38.4 31 38.3 57.2c-.5 99.2-41.3 280.7-213.6 363.2c-16.7 8-36.1 8-52.8 0C57.3 420.7 16.5 239.2 16 140c-.1-26.2 16.3-47.9 38.3-57.2L242.7 2.9C246.8 1 251.4 0 256 0zm0 66.8V444.8C394 378 431.1 230.1 432 141.4L256 66.8l0 0z"/></svg></span>
-                        <h3>Web Application Penetration Testing</h3>
-                        <p>Beyond OWASP Top 10 - we study your architecture and hunt the elusive flaws
-                            automated scanners never find.</p>
+                        <h3>Web Application &amp; API Penetration Testing</h3>
+                        <p>Web apps and the APIs behind them, tested beyond the OWASP Top 10 for the business-logic
+                            and authorisation flaws that scanners never find.</p>
                         <p class="card-note"><svg class="icn" viewBox="0 0 640 512" aria-hidden="true" focusable="false"><path d="M320 0c17.7 0 32 14.3 32 32V96H472c39.8 0 72 32.2 72 72V440c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72H288V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H208zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H304zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H400zM264 256a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224H64V416H48c-26.5 0-48-21.5-48-48V272c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H576V224h16z"/></svg> <span class="opt">Optional</span> AI-augmented web app testing</p>
                         <a href="/services/web-app-pentest/" class="card-link stretch">View service</a>
                     </article>
@@ -251,7 +246,7 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
                         <span class="icon"><svg class="icn" viewBox="0 0 640 512" aria-hidden="true" focusable="false"><path d="M256 64H384v64H256V64zM240 0c-26.5 0-48 21.5-48 48v96c0 26.5 21.5 48 48 48h48v32H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h96v32H80c-26.5 0-48 21.5-48 48v96c0 26.5 21.5 48 48 48H240c26.5 0 48-21.5 48-48V368c0-26.5-21.5-48-48-48H192V288H448v32H400c-26.5 0-48 21.5-48 48v96c0 26.5 21.5 48 48 48H560c26.5 0 48-21.5 48-48V368c0-26.5-21.5-48-48-48H512V288h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H352V192h48c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48H240zM96 448V384H224v64H96zm320-64H544v64H416V384z"/></svg></span>
                         <h3>Network &amp; IT Infrastructure VAPT</h3>
                         <p>External, internal and wireless testing that exposes weak links across your entire
-                            infrastructure - mapped to NIST.</p>
+                            infrastructure&nbsp;– mapped to NIST.</p>
                         <p class="card-note"><svg class="icn" viewBox="0 0 640 512" aria-hidden="true" focusable="false"><path d="M320 0c17.7 0 32 14.3 32 32V96H472c39.8 0 72 32.2 72 72V440c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72H288V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H208zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H304zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H400zM264 256a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224H64V416H48c-26.5 0-48-21.5-48-48V272c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H576V224h16z"/></svg> <span class="opt">Optional</span> AI-augmented network testing</p>
                         <a href="/services/infrastructure-pentest/" class="card-link stretch">View service</a>
                     </article>
@@ -260,9 +255,9 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
                         <span class="tag">OFFENSIVE // MOBILE</span>
                         <span class="icon"><svg class="icn" viewBox="0 0 384 512" aria-hidden="true" focusable="false"><path d="M16 64C16 28.7 44.7 0 80 0H304c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H80c-35.3 0-64-28.7-64-64V64zM224 448a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM304 64H80V384H304V64z"/></svg></span>
                         <h3>Mobile App Penetration Testing</h3>
-                        <p>Android &amp; iOS assessments against OWASP MASVS - static and dynamic analysis, from
+                        <p>Android &amp; iOS assessments against OWASP MASVS&nbsp;– static and dynamic analysis, from
                             insecure storage to auth bypass.</p>
-                        <p class="card-note"><svg class="icn" viewBox="0 0 640 512" aria-hidden="true" focusable="false"><path d="M320 0c17.7 0 32 14.3 32 32V96H472c39.8 0 72 32.2 72 72V440c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72H288V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H208zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H304zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H400zM264 256a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224H64V416H48c-26.5 0-48-21.5-48-48V272c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H576V224h16z"/></svg> <span class="opt">Optional</span> AI-augmented mobile app testing</p>
+                        <p class="card-note"><svg class="icn" viewBox="0 0 640 512" aria-hidden="true" focusable="false"><path d="M320 0c17.7 0 32 14.3 32 32V96H472c39.8 0 72 32.2 72 72V440c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72H288V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H208zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H304zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H400zM264 256a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224H64V416H48c-26.5 0-48-21.5-48-48V272c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H576V224h16z"/></svg> <span class="opt">Optional</span> AI-augmented mobile testing</p>
                         <a href="/services/mobile-app-pentest/" class="card-link stretch">View service</a>
                     </article>
                     <article class="hud-card cyan" style="--d:.08s">
@@ -270,8 +265,8 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
                         <span class="tag">HUMAN LAYER</span>
                         <span class="icon"><svg class="icn" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path d="M224 16c-6.7 0-10.8-2.8-15.5-6.1C201.9 5.4 194 0 176 0c-30.5 0-52 43.7-66 89.4C62.7 98.1 32 112.2 32 128c0 14.3 25 27.1 64.6 35.9c-.4 4-.6 8-.6 12.1c0 17 3.3 33.2 9.3 48H45.4C38 224 32 230 32 237.4c0 1.7 .3 3.4 1 5l38.8 96.9C28.2 371.8 0 423.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7c0-58.5-28.2-110.4-71.7-143L415 242.4c.6-1.6 1-3.3 1-5c0-7.4-6-13.4-13.4-13.4H342.7c6-14.8 9.3-31 9.3-48c0-4.1-.2-8.1-.6-12.1C391 155.1 416 142.3 416 128c0-15.8-30.7-29.9-78-38.6C324 43.7 302.5 0 272 0c-18 0-25.9 5.4-32.5 9.9c-4.8 3.3-8.8 6.1-15.5 6.1zm56 208H267.6c-16.5 0-31.1-10.6-36.3-26.2c-2.3-7-12.2-7-14.5 0c-5.2 15.6-19.9 26.2-36.3 26.2H168c-22.1 0-40-17.9-40-40V169.6c28.2 4.1 61 6.4 96 6.4s67.8-2.3 96-6.4V184c0 22.1-17.9 40-40 40zm-88 96l16 32L176 480 128 288l64 32zm128-32L272 480 240 352l16-32 64-32z"/></svg></span>
                         <h3>Social Engineering Assessments</h3>
-                        <p>Phishing, vishing, pretexting and physical intrusion simulations that measure - and
-                            train - your human firewall.</p>
+                        <p>Phishing, vishing, pretexting and USB-drop simulations that measure&nbsp;– and
+                            train&nbsp;– your human firewall.</p>
                         <p class="card-note"><svg class="icn" viewBox="0 0 640 512" aria-hidden="true" focusable="false"><path d="M320 0c17.7 0 32 14.3 32 32V96H472c39.8 0 72 32.2 72 72V440c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72H288V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H208zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H304zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H400zM264 256a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224H64V416H48c-26.5 0-48-21.5-48-48V272c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H576V224h16z"/></svg> <span class="opt">Optional</span> AI phishing &amp; deepfake testing</p>
                         <a href="/services/social-engineering-pentest/" class="card-link stretch">View service</a>
                     </article>
@@ -280,7 +275,7 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
                         <span class="tag">DEFENSIVE // CODE</span>
                         <span class="icon"><svg class="icn" viewBox="0 0 640 512" aria-hidden="true" focusable="false"><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"/></svg></span>
                         <h3>Secure Source Code Review</h3>
-                        <p>Line-by-line manual review backed by static analysis - catching injection flaws,
+                        <p>Line-by-line manual review backed by static analysis&nbsp;– catching injection flaws,
                             logic bugs and insecure patterns at the source.</p>
                         <p class="card-note"><svg class="icn" viewBox="0 0 640 512" aria-hidden="true" focusable="false"><path d="M320 0c17.7 0 32 14.3 32 32V96H472c39.8 0 72 32.2 72 72V440c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72H288V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H208zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H304zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H400zM264 256a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224H64V416H48c-26.5 0-48-21.5-48-48V272c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H576V224h16z"/></svg> <span class="opt">Optional</span> AI-assisted secure code review</p>
                         <a href="/services/secure-code-review/" class="card-link stretch">View service</a>
@@ -290,9 +285,9 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
                         <span class="tag">CLOUD // AUDIT</span>
                         <span class="icon"><svg class="icn" viewBox="0 0 640 512" aria-hidden="true" focusable="false"><path d="M0 336c0 79.5 64.5 144 144 144H512c70.7 0 128-57.3 128-128c0-61.9-44-113.6-102.4-125.4c4.1-10.7 6.4-22.4 6.4-34.6c0-53-43-96-96-96c-19.7 0-38.1 6-53.3 16.2C367 64.2 315.3 32 256 32C167.6 32 96 103.6 96 192c0 2.7 .1 5.4 .2 8.1C40.2 219.8 0 273.2 0 336z"/></svg></span>
                         <h3>Cloud Configuration Audits</h3>
-                        <p>Benchmark-driven review of your AWS, Azure and GCP configuration - identities,
+                        <p>Benchmark-driven review of your AWS, Azure and GCP configuration&nbsp;– identities,
                             storage, logging and exposure against CIS standards.</p>
-                        <p class="card-note"><svg class="icn" viewBox="0 0 640 512" aria-hidden="true" focusable="false"><path d="M320 0c17.7 0 32 14.3 32 32V96H472c39.8 0 72 32.2 72 72V440c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72H288V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H208zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H304zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H400zM264 256a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224H64V416H48c-26.5 0-48-21.5-48-48V272c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H576V224h16z"/></svg> <span class="opt">Optional</span> AI-driven cloud misconfig testing</p>
+                        <p class="card-note"><svg class="icn" viewBox="0 0 640 512" aria-hidden="true" focusable="false"><path d="M320 0c17.7 0 32 14.3 32 32V96H472c39.8 0 72 32.2 72 72V440c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72H288V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H208zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H304zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H400zM264 256a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224H64V416H48c-26.5 0-48-21.5-48-48V272c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H576V224h16z"/></svg> <span class="opt">Optional</span> AI-driven misconfig testing</p>
                         <a href="/services/cloud-config-audit/" class="card-link stretch">View service</a>
                     </article>
                     <article class="hud-card cyan">
@@ -300,7 +295,7 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
                         <span class="tag">DEFENSIVE // PEOPLE</span>
                         <span class="icon"><svg class="icn" viewBox="0 0 640 512" aria-hidden="true" focusable="false"><path d="M320 32c-8.1 0-16.1 1.4-23.7 4.1L15.8 137.4C6.3 140.9 0 149.9 0 160s6.3 19.1 15.8 22.6l57.9 20.9C57.3 229.3 48 259.8 48 291.9v28.1c0 28.4-10.8 57.7-22.3 80.8c-6.5 13-13.9 25.8-22.5 37.6C0 442.7-.9 448.3 .9 453.4s6 8.9 11.2 10.2l64 16c4.2 1.1 8.7 .3 12.4-2s6.3-6.1 7.1-10.4c8.6-42.8 4.3-81.2-2.1-108.7C90.3 344.3 86 329.8 80 316.5V291.9c0-30.2 10.2-58.7 27.9-81.5c12.9-15.5 29.6-28 49.2-35.7l157-61.7c8.2-3.2 17.5 .8 20.7 9s-.8 17.5-9 20.7l-157 61.7c-12.4 4.9-23.3 12.4-32.2 21.6l159.6 57.6c7.6 2.7 15.6 4.1 23.7 4.1s16.1-1.4 23.7-4.1L624.2 182.6c9.5-3.4 15.8-12.5 15.8-22.6s-6.3-19.1-15.8-22.6L343.7 36.1C336.1 33.4 328.1 32 320 32zM128 408c0 35.3 86 72 192 72s192-36.7 192-72L496.7 262.6 354.5 314c-11.1 4-22.8 6-34.5 6s-23.5-2-34.5-6L143.3 262.6 128 408z"/></svg></span>
                         <h3>Corporate Security Training</h3>
-                        <p>Hands-on, organizational-level security training for employees and teams -
+                        <p>Hands-on, organisational-level security training for employees and teams&nbsp;–
                             remote or in-office.</p>
                         <p class="card-note"><svg class="icn" viewBox="0 0 640 512" aria-hidden="true" focusable="false"><path d="M320 0c17.7 0 32 14.3 32 32V96H472c39.8 0 72 32.2 72 72V440c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72H288V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H208zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H304zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H400zM264 256a40 40 0 1 0 -80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224H64V416H48c-26.5 0-48-21.5-48-48V272c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H576V224h16z"/></svg> <span class="opt">Optional</span> AI &amp; LLM security training</p>
                         <a href="/services/corporate-security-training/" class="card-link stretch">View service</a>
@@ -310,8 +305,67 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
             </div>
             <div class="wrap">
                 <div style="text-align:center; margin-top:44px;" data-reveal>
-                    <a href="/services/" class="btn btn-ghost">All capabilities - Gen-AI, cloud audits, training ›</a>
+                    <a href="/services/" class="btn btn-ghost">All capabilities&nbsp;– GenAI, cloud audits, training ›</a>
                 </div>
+            </div>
+        </section>
+
+        <!-- ======== PROOF ======== -->
+        <section id="proof" aria-label="Proof">
+            <div class="wrap">
+                <div class="section-head" data-reveal>
+                    <p class="eyebrow"><b>//:</b> PROOF</p>
+                    <h2>Proof, not promises</h2>
+                    <p>Things you can open and check for yourself before you talk to us.</p>
+                </div>
+                <div class="grid-3 proof-grid">
+                    <article class="hud-card red" data-reveal>
+                        <span class="corner tl"></span><span class="corner br"></span>
+                        <span class="tag">CVE</span>
+                        <h3>Two published CVEs</h3>
+                        <p class="cve-line"><b>CVE-2026-100682</b> Budibase: arbitrary file write to remote code execution. Fixed in 3.45.0.</p>
+                        <p class="cve-line"><b>CVE-2026-109962</b> Froxlor: missing authorisation in the API. Fixed in 2.3.14.</p>
+                        <p class="card-links">
+                            <a href="/research/cve-2026-100682-budibase-arbitrary-file-write-rce/" class="card-link">Budibase write-up</a>
+                            <a href="/research/cve-2026-109962-froxlor-reseller-missing-authorization/" class="card-link">Froxlor write-up</a>
+                            <a href="https://db.gcve.eu/credits/dreamer1eh" target="_blank" rel="noopener" class="card-link">Verify on GCVE</a>
+                        </p>
+                    </article>
+                    <article class="hud-card cyan" data-reveal style="--d:.06s">
+                        <span class="corner tl"></span><span class="corner br"></span>
+                        <span class="tag">RESEARCH</span>
+                        <h3>Latest AI security research</h3>
+                        <p>Original findings and write-ups from our own testing work on GenAI and agentic systems.</p>
+                        <a href="/research/" class="card-link stretch">Browse research</a>
+                    </article>
+                    <article class="hud-card red" data-reveal style="--d:.12s">
+                        <span class="corner tl"></span><span class="corner br"></span>
+                        <span class="tag">VIDEO</span>
+                        <h3>Proof‑of‑concept videos</h3>
+                        <p>Recorded PoCs that show how a finding is reproduced, step by step.</p>
+                        <a href="https://www.youtube.com/@VANTIXIASEC" target="_blank" rel="noopener" class="card-link stretch">Watch on YouTube</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======== CASE STUDIES (hidden until a client approves publication) ======== -->
+        <section id="case-studies" aria-label="Case studies" hidden>
+            <div class="wrap">
+                <div class="section-head">
+                    <p class="eyebrow"><b>//:</b> CASE STUDIES</p>
+                    <h2>Case studies</h2>
+                </div>
+                <div class="grid-3" data-case-studies></div>
+                <template id="case-study-card">
+                    <article class="hud-card cyan">
+                        <span class="corner tl"></span><span class="corner br"></span>
+                        <span class="tag" data-field="sector"></span>
+                        <h3 data-field="title"></h3>
+                        <p data-field="summary"></p>
+                        <a class="card-link stretch" data-field="link">Read the case study</a>
+                    </article>
+                </template>
             </div>
         </section>
 
@@ -321,48 +375,45 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
             <div class="wrap dossier">
                 <div data-reveal="left">
                     <p class="eyebrow"><b>//: 02</b> DOSSIER</p>
-                    <h2>An emerging cyber force from India 🇮🇳</h2>
-                    <p class="lead-para">Vantixia is a collective of seasoned security experts with deep
-                        expertise in <strong>information security and red teaming</strong>. Our reputation is
-                        built on an unyielding resolve to take on new challenges without limits - driven by
-                        accomplished professionals and the vibrant talent of our youth.</p>
-                    <p class="lead-para">Our vision transcends boundaries: safeguarding digital landscapes and
-                        empowering organizations to navigate the evolving cyber landscape. Partner with us and
-                        get an <strong>ultimate view of your information security</strong> - from technology
-                        optimization to training that levels up your teams.</p>
+                    <h2>Founder‑led. Hands‑on. Accountable.</h2>
+                    <p class="lead-para"><strong>Founder-led offensive security.</strong> Vantixia is led by Rajnish Kumar,
+                        an offensive security specialist focused on AI and LLM systems. Every engagement is scoped,
+                        tested and reviewed personally by Rajnish, so you work directly with the person breaking your
+                        system, not an account manager.</p>
+                    <p class="lead-para">We test what modern products actually ship: AI assistants, RAG pipelines,
+                        tool-using agents and the APIs behind them, and we deliver findings your engineers can
+                        reproduce and your auditors can accept.</p>
                     <aside class="founder" aria-label="Founder">
                         <img class="founder-photo" src="/img/founder-rajnish.webp"
                              alt="Rajnish Kumar, founder of Vantixia"
                              width="160" height="160" loading="lazy" decoding="async">
-                        <p><b>Led by Rajnish Kumar.</b> An offensive security specialist who has personally
-                            led more than 200 enterprise engagements across four years and holds six offensive
-                            security certifications, with 10+ hall-of-fame recognitions from organisations such as
-                            Microsoft, Nvidia, Adobe, Adidas, Visma, Hitachi Vantara, JPMorgan Chase &amp; Co., the US Department of Health and Human Services, EMBL-EBI, the Governments of Poland, India and the Philippines, and the University of Cologne.</p>
+                        <p><b>Rajnish Kumar, Founder and Lead Security Consultant.</b> Seven offensive security
+                            certifications and 10+ hall-of-fame recognitions.</p>
                         <div class="founder-links">
                             <a class="founder-link" href="https://www.linkedin.com/in/rajnish-kumar-eh/" target="_blank" rel="noopener" aria-label="View Rajnish Kumar's profile on LinkedIn"><svg class="icn" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg><span>View profile</span></a>
                             <a class="founder-link" href="https://iehdreamer.in/" target="_blank" rel="noopener" aria-label="Visit Rajnish Kumar's website"><svg class="icn icn-line" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><span>Website</span></a>
                         </div>
                     </aside>
-                    <a href="/about/" class="btn btn-cyan" style="margin-top:10px;">Who are we?</a>
+                    <a href="/about/" class="btn btn-cyan" style="margin-top:10px;">Who tests your system</a>
                 </div>
                 <div class="stat-panel" data-reveal="right" style="--d:.12s">
                     <div class="stat-head">SYS://VANTIXIA/VITALS</div>
                     <div class="stat-grid">
                         <div class="stat-cell">
-                            <div class="num"><span data-count="200">200</span><em>+</em></div>
-                            <div class="lbl">Enterprise engagements led by our founder</div>
+                            <div class="num"><span data-count="3">3</span><span class="unit">×</span></div>
+                            <div class="lbl">Testing modes&nbsp;– black · grey · white box</div>
                         </div>
                         <div class="stat-cell">
-                            <div class="num"><span data-count="8">8</span></div>
-                            <div class="lbl">Security service lines</div>
+                            <div class="num"><span data-count="2">2</span></div>
+                            <div class="lbl">Published CVEs</div>
                         </div>
                         <div class="stat-cell">
-                            <div class="num"><span data-count="3">3</span><em>×</em></div>
-                            <div class="lbl">Testing modes - black · grey · white box</div>
+                            <div class="num"><span data-count="16">16</span></div>
+                            <div class="lbl">Frameworks and standards findings map to</div>
                         </div>
                         <div class="stat-cell">
-                            <div class="num"><span data-count="3">3</span><em>×</em></div>
-                            <div class="lbl">Free retests with every engagement</div>
+                            <div class="num"><span data-count="20">20</span><span class="unit">min</span></div>
+                            <div class="lbl">Scoping call before a fixed quote</div>
                         </div>
                     </div>
                 </div>
@@ -380,29 +431,29 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
                 </div>
                 <div class="protocol" data-reveal>
                     <div class="step">
-                        <h4>Recon &amp; Scoping</h4>
+                        <h3>Recon &amp; Scoping</h3>
                         <p>We map your digital landscape, architecture and tech stack to pinpoint where
                             attackers would strike first.</p>
                     </div>
                     <div class="step">
-                        <h4>Scenario Building</h4>
-                        <p>Tailored attack scenarios become the testing blueprint - informed by real threat
+                        <h3>Scenario Building</h3>
+                        <p>Tailored attack scenarios become the testing blueprint&nbsp;– informed by real threat
                             behaviour, not generic checklists.</p>
                     </div>
                     <div class="step">
-                        <h4>Unified Assessment</h4>
+                        <h3>Unified Assessment</h3>
                         <p>Automated scanning for breadth, manual exploitation for depth. Every finding is
                             validated by a human expert.</p>
                     </div>
                     <div class="step">
-                        <h4>Actionable Report</h4>
-                        <p>Every finding is manually validated with a reproducible proof-of-concept before it reaches your report. Clear impact, prioritised fixes, executive summary - a
+                        <h3>Actionable Report</h3>
+                        <p>Every finding is manually validated with a reproducible proof-of-concept before it reaches your report. Clear impact, prioritised fixes, executive summary&nbsp;– a
                             narrative your board and devs both understand.</p>
                     </div>
                     <div class="step">
-                        <h4>Retest &amp; Certify</h4>
-                        <p>After your fixes, we retest for free and issue an attestation letter that records
-                            your commitment to stakeholders.</p>
+                        <h3>Retest &amp; Certify</h3>
+                        <p>After your fixes, we retest (<span data-retest>three free retests</span>) and issue an attestation letter you can
+                            share with your stakeholders.</p>
                     </div>
                 </div>
             </div>
@@ -415,7 +466,7 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
                 <div class="section-head center" data-reveal>
                     <p class="eyebrow center"><b>//: 04</b> OUR PROMISE</p>
                     <h2>What every engagement includes</h2>
-                    <p>Commitments we keep on every project - not fine print, but how we work.</p>
+                    <p>Commitments we keep on every project&nbsp;– not fine print, but how we work.</p>
                 </div>
                 <div class="grid-3">
                     <article class="hud-card red" data-reveal="zoom">
@@ -423,14 +474,14 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
                         <span class="tag">GUARANTEE</span>
                         <span class="icon"><svg class="icn" viewBox="0 0 640 512" aria-hidden="true" focusable="false"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c1.8 0 3.5-.2 5.3-.5c-76.3-55.1-99.8-141-103.1-200.2c-16.1-4.8-33.1-7.3-50.7-7.3H178.3zm308.8-78.3l-120 48C358 277.4 352 286.2 352 296c0 63.3 25.9 168.8 134.8 214.2c5.9 2.5 12.6 2.5 18.5 0C614.1 464.8 640 359.3 640 296c0-9.8-6-18.6-15.1-22.3l-120-48c-5.7-2.3-12.1-2.3-17.8 0zM591.4 312c-3.9 50.7-27.2 116.7-95.4 149.7V273.8L591.4 312z"/></svg></span>
                         <h3>Manual-led, AI-optional</h3>
-                        <p>Real experts test your systems by hand; AI-augmented testing is available on request. You choose manual, AI, or both.</p>
+                        <p>Every test is run by hand by a certified specialist; AI-augmented testing is available on request. You choose manual, AI, or both.</p>
                     </article>
                     <article class="hud-card cyan" data-reveal="zoom" style="--d:.08s">
                         <span class="corner tl"></span><span class="corner br"></span>
                         <span class="tag">GUARANTEE</span>
                         <span class="icon"><svg class="icn" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M256 0c17.7 0 32 14.3 32 32V42.4c93.7 13.9 167.7 88 181.6 181.6H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H469.6c-13.9 93.7-88 167.7-181.6 181.6V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V469.6C130.3 455.7 56.3 381.7 42.4 288H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H42.4C56.3 130.3 130.3 56.3 224 42.4V32c0-17.7 14.3-32 32-32zM107.4 288c12.5 58.3 58.4 104.1 116.6 116.6V384c0-17.7 14.3-32 32-32s32 14.3 32 32v20.6c58.3-12.5 104.1-58.4 116.6-116.6H384c-17.7 0-32-14.3-32-32s14.3-32 32-32h20.6C392.1 165.7 346.3 119.9 288 107.4V128c0 17.7-14.3 32-32 32s-32-14.3-32-32V107.4C165.7 119.9 119.9 165.7 107.4 224H128c17.7 0 32 14.3 32 32s-14.3 32-32 32H107.4zM256 224a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg></span>
                         <h3>Manually validated findings</h3>
-                        <p>Every finding is validated and reproducible. If it's in the report, it's real and worth fixing - no noise to chase.</p>
+                        <p>Every finding is validated and reproducible. If it's in the report, it's real and worth fixing&nbsp;– no noise to chase.</p>
                     </article>
                     <article class="hud-card red" data-reveal="zoom" style="--d:.16s">
                         <span class="corner tl"></span><span class="corner br"></span>
@@ -443,15 +494,15 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
                         <span class="corner tl"></span><span class="corner br"></span>
                         <span class="tag">GUARANTEE</span>
                         <span class="icon"><svg class="icn" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M142.9 142.9c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5c0 0 0 0 0 0H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1C73.2 122 55.6 150.7 44.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5c7.7-21.8 20.2-42.3 37.8-59.8zM16 312v7.6 .7V440c0 9.7 5.8 18.5 14.8 22.2s19.3 1.7 26.2-5.2l41.6-41.6c87.6 86.5 228.7 86.2 315.8-1c24.4-24.4 42.1-53.1 52.9-83.7c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.2 62.2-162.7 62.5-225.3 1L185 329c6.9-6.9 8.9-17.2 5.2-26.2s-12.5-14.8-22.2-14.8H48.4h-.7H40c-13.3 0-24 10.7-24 24z"/></svg></span>
-                        <h3>Free retest</h3>
-                        <p>After you remediate, we retest at no extra cost to confirm every issue is properly closed.</p>
+                        <h3>Retest after remediation</h3>
+                        <p>After you remediate, we retest to confirm every issue is properly closed: <span data-retest>three free retests</span>.</p>
                     </article>
                     <article class="hud-card red" data-reveal="zoom" style="--d:.08s">
                         <span class="corner tl"></span><span class="corner br"></span>
                         <span class="tag">GUARANTEE</span>
                         <span class="icon"><svg class="icn" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path d="M224 16c-6.7 0-10.8-2.8-15.5-6.1C201.9 5.4 194 0 176 0c-30.5 0-52 43.7-66 89.4C62.7 98.1 32 112.2 32 128c0 14.3 25 27.1 64.6 35.9c-.4 4-.6 8-.6 12.1c0 17 3.3 33.2 9.3 48H45.4C38 224 32 230 32 237.4c0 1.7 .3 3.4 1 5l38.8 96.9C28.2 371.8 0 423.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7c0-58.5-28.2-110.4-71.7-143L415 242.4c.6-1.6 1-3.3 1-5c0-7.4-6-13.4-13.4-13.4H342.7c6-14.8 9.3-31 9.3-48c0-4.1-.2-8.1-.6-12.1C391 155.1 416 142.3 416 128c0-15.8-30.7-29.9-78-38.6C324 43.7 302.5 0 272 0c-18 0-25.9 5.4-32.5 9.9c-4.8 3.3-8.8 6.1-15.5 6.1zm56 208H267.6c-16.5 0-31.1-10.6-36.3-26.2c-2.3-7-12.2-7-14.5 0c-5.2 15.6-19.9 26.2-36.3 26.2H168c-22.1 0-40-17.9-40-40V169.6c28.2 4.1 61 6.4 96 6.4s67.8-2.3 96-6.4V184c0 22.1-17.9 40-40 40zm-88 96l16 32L176 480 128 288l64 32zm128-32L272 480 240 352l16-32 64-32z"/></svg></span>
                         <h3>Strict confidentiality</h3>
-                        <p>We work under NDA. Your scope, data and findings stay private - always.</p>
+                        <p>We work under NDA. Your scope, data and findings stay private&nbsp;– always.</p>
                     </article>
                     <article class="hud-card cyan" data-reveal="zoom" style="--d:.16s">
                         <span class="corner tl"></span><span class="corner br"></span>
@@ -472,14 +523,15 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
                     <div class="std-head">
                         <p class="eyebrow"><b>//: 05</b> FRAMEWORKS &amp; STANDARDS</p>
                         <h2>Measured against what the industry trusts</h2>
-                        <p>We test and report against recognised frameworks, and <strong>align to whichever standards your organisation requires</strong> - so your results map cleanly to compliance, audits and your own security programme.</p>
+                        <p>We test and report against recognised frameworks, and <strong>align to whichever standards your organisation requires</strong>&nbsp;– so your results map cleanly to compliance, audits and your own security programme.</p>
                     </div>
                     <div class="std-grid">
                         <span>OWASP Top 10</span>
                         <span>OWASP ASVS</span>
                         <span>OWASP WSTG</span>
                         <span>OWASP API Top 10</span>
-                        <span>OWASP GenAI LLM Top 10 (2026)</span>
+                        <span>OWASP Top 10 for LLM Applications (2026)</span>
+                        <span>OWASP Top 10 for Agentic Applications</span>
                         <span>OWASP Mobile Top 10</span>
                         <span>OWASP MASVS / MASTG</span>
                         <span>NIST</span>
@@ -498,35 +550,12 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
             <div class="wrap">
                 <div class="cta-band" data-reveal="zoom">
                     <p class="eyebrow center"><b>//: 06</b> OPEN UPLINK</p>
-                    <h2>Ready to test your defenses?</h2>
-                    <p>Tell us what keeps you up at night. We'll show you what an attacker would see -
+                    <h2>Ready to test your defences?</h2>
+                    <p>Tell us what keeps you up at night. We'll show you what an attacker would see&nbsp;–
                         and how to shut them out.</p>
                     <div class="cta-actions">
                         <a href="/contact/" class="btn btn-red">Contact us</a>
                         <a href="https://cal.com/vantixia/scoping-call-vantixia" target="_blank" rel="noopener" class="btn btn-cyan">Reserve a meeting</a>
-                    </div>
-                    <div class="channel-row">
-                        <div class="channel hud-card cyan">
-                            <span class="icon"><svg class="icn" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg></span>
-                            <div>
-                                <h4>WhatsApp</h4>
-                                <a class="ch-link" href="https://wa.me/message/5FCTHDC4VX2RO1" target="_blank" rel="noopener">Chat with us</a>
-                            </div>
-                        </div>
-                        <div class="channel hud-card red">
-                            <span class="icon"><svg class="icn" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg></span>
-                            <div>
-                                <h4>Email</h4>
-                                <a class="ch-link" href="mailto:info@vantixia.in">info@vantixia.in</a>
-                            </div>
-                        </div>
-                        <div class="channel hud-card cyan">
-                            <span class="icon"><svg class="icn" viewBox="0 0 384 512" aria-hidden="true" focusable="false"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg></span>
-                            <div>
-                                <h4>Base of operations</h4>
-                                <a class="ch-link" href="https://maps.app.goo.gl/Fr34EhDzWp6BSTnC6" target="_blank" rel="noopener">Delhi, India</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -539,18 +568,15 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
             <div class="foot-grid">
                 <div>
                     <a href="/" class="brand"><img class="brand-mark" src="/img/vantixia-mark.webp" alt="" width="157" height="120"><span class="wordmark">VANTIXIA</span></a>
-                    <p class="tagline">Adversary-led testing, evidence-backed reporting. We are your shield in cyberspace.</p>
+                    <p class="tagline">Adversarial testing for GenAI, agentic pipelines and the infrastructure powering them. We prove what scanners miss.</p>
                     <div class="foot-social">
                         <a href="https://linkedin.com/company/vantixiasec" target="_blank" rel="noopener" aria-label="Vantixia on LinkedIn"><svg class="icn" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg></a>
                         <a href="https://x.com/vantixiasec" target="_blank" rel="noopener" aria-label="Vantixia on X (Twitter)"><svg class="icn" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
-                        <a href="https://www.instagram.com/vantixiasec/" target="_blank" rel="noopener" aria-label="Vantixia on Instagram"><svg class="icn" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
-                        <a href="https://www.facebook.com/vantixiasec" target="_blank" rel="noopener" aria-label="Vantixia on Facebook"><svg class="icn" viewBox="0 0 320 512" aria-hidden="true" focusable="false"><path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/></svg></a>
                         <a href="https://www.youtube.com/@VANTIXIASEC" target="_blank" rel="noopener" aria-label="Vantixia on YouTube"><svg class="icn" viewBox="0 0 576 512" aria-hidden="true" focusable="false"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg></a>
-                        <a href="https://whatsapp.com/channel/0029Va56mGj1CYoKA9UcJI2r" target="_blank" rel="noopener" aria-label="Vantixia WhatsApp channel"><svg class="icn" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg></a>
                     </div>
                 </div>
                 <div>
-                    <h5>Navigate</h5>
+                    <h2>Navigate</h2>
                     <div class="foot-links">
                         <a href="/">Home</a>
                         <a href="/services/">Services</a>
@@ -561,21 +587,20 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
                     </div>
                 </div>
                 <div>
-                    <h5>Capabilities</h5>
+                    <h2>Capabilities</h2>
                     <div class="foot-links">
-                        <a href="/services/genai-llm-pentest/">Gen-AI / LLM pentest</a>
+                        <a href="/services/genai-llm-pentest/">GenAI / LLM pentest</a>
                         <a href="/continuous-ai-assurance/">Continuous AI Assurance</a>
                         <a href="/eu-ai-act-testing/">EU AI Act testing</a>
                         <a href="/iso-42001-penetration-testing/">ISO/IEC 42001 testing</a>
                         <a href="/services/web-app-pentest/">Web app pentest</a>
-                        <a href="/services/infrastructure-pentest/">Network VAPT</a>
+                        <a href="/services/mobile-app-pentest/">Mobile app pentest</a>
                     </div>
                 </div>
                 <div>
-                    <h5>Direct line</h5>
+                    <h2>Direct line</h2>
                     <div class="foot-contact">
                         <a href="https://maps.app.goo.gl/Fr34EhDzWp6BSTnC6" target="_blank" rel="noopener"><svg class="icn" viewBox="0 0 384 512" aria-hidden="true" focusable="false"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg> Delhi, India</a>
-                        <a href="https://wa.me/message/5FCTHDC4VX2RO1" target="_blank" rel="noopener"><svg class="icn" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> Connect on WhatsApp</a>
                         <a href="mailto:info@vantixia.in"><svg class="icn" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg> info@vantixia.in</a>
                         <a href="https://cal.com/vantixia" target="_blank" rel="noopener"><svg class="icn" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zM329 305c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-95 95-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L329 305z"/></svg> Book a meeting</a>
                     </div>
@@ -583,11 +608,13 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
             </div>
             <div class="foot-bottom">
                 <span>© <span id="year">2026</span> VANTIXIA // ALL RIGHTS RESERVED</span>
-                <span class="foot-msme">Recognized as an MSME by the Government of India</span>
+                <span class="foot-msme">Recognised as an MSME by the Government of India</span>
                 <span>
                     <a href="/privacy/">PRIVACY</a>
                     &nbsp;·&nbsp;
                     <a href="/terms/">TERMS</a>
+                    &nbsp;&middot;&nbsp;
+                    <a href="/security-policy/">SECURITY</a>
                 </span>
             </div>
         </div>
@@ -599,164 +626,9 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
-    <!-- Rebrand banner: after 10s the text glitches, then shatters into
-         drifting points carried by the same flow field as the background. -->
-    <script>
-        (function () {
-            var banner = document.getElementById('rebrandBanner');
-            if (!banner) return;
-            var textEl = document.getElementById('rebrandText');
-            var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-            // keep the fixed header offset exact, even if the text wraps
-            var syncHeight = function () {
-                document.documentElement.style.setProperty('--banner-h', banner.offsetHeight + 'px');
-            };
-            syncHeight();
-            window.addEventListener('resize', syncHeight);
-
-            /* Dropping the banner shortens the document by its height, which
-               invalidates every start/end ScrollTrigger has already measured.
-               motion.js only refreshes on window load, and that fired ten
-               seconds before this runs, so without re-measuring here the
-               pinned shield section engages a banner-height early and the
-               credibility strip scrolls straight over it. */
-            function relayout() {
-                if (!window.ScrollTrigger) return;
-                requestAnimationFrame(function () { ScrollTrigger.refresh(); });
-            }
-
-            function teardown(canvas) {
-                if (banner.parentNode) banner.parentNode.removeChild(banner);
-                if (canvas && canvas.parentNode) canvas.parentNode.removeChild(canvas);
-                document.body.classList.remove('banner-on');
-                relayout();
-            }
-
-            // fallback: plain slide-away (used if the canvas path can't run)
-            function slideAway(canvas) {
-                banner.classList.add('is-hiding');
-                document.body.classList.remove('banner-on');
-                relayout();
-                setTimeout(function () { teardown(canvas); }, 750);
-            }
-
-            // same layered-sine field the background particles ride
-            function flowAngle(x, y, t) {
-                return (Math.sin(x * 0.0016 + t * 0.0003) +
-                        Math.cos(y * 0.0019 - t * 0.00025) +
-                        Math.sin((x + y) * 0.0011 + t * 0.0004)) * 1.5;
-            }
-
-            function dissolve() {
-                var segs = textEl.querySelectorAll('.rb-seg');
-                if (!segs.length) { slideAway(null); return; }
-                // if any segment wrapped to a second line, positions get messy - just slide away
-                for (var s = 0; s < segs.length; s++) {
-                    if (segs[s].getClientRects().length > 1) { slideAway(null); return; }
-                }
-
-                var bh = banner.offsetHeight;
-                var W = window.innerWidth;
-                var H = bh + 200;                       // headroom so points can drift out
-                var dpr = Math.min(window.devicePixelRatio || 1, 2);
-
-                var canvas = document.createElement('canvas');
-                canvas.className = 'rb-dissolve-canvas';
-                canvas.width = Math.floor(W * dpr);
-                canvas.height = Math.floor(H * dpr);
-                canvas.style.width = W + 'px';
-                canvas.style.height = H + 'px';
-                document.body.appendChild(canvas);
-
-                var ctx = canvas.getContext('2d');
-                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-                // repaint the banner glyphs onto the canvas so we can sample them
-                for (var i = 0; i < segs.length; i++) {
-                    var el = segs[i];
-                    var r = el.getBoundingClientRect();
-                    var cs = getComputedStyle(el);
-                    ctx.fillStyle = cs.color;
-                    ctx.font = cs.fontStyle + ' ' + cs.fontWeight + ' ' + cs.fontSize + ' ' + cs.fontFamily;
-                    try { ctx.letterSpacing = cs.letterSpacing; } catch (e) { /* older browsers */ }
-                    ctx.textBaseline = 'middle';
-                    ctx.fillText(el.textContent, r.left, r.top + r.height / 2);
-                }
-
-                // sample the painted glyphs into points
-                var img;
-                try {
-                    img = ctx.getImageData(0, 0, canvas.width, Math.ceil(bh * dpr));
-                } catch (e) {
-                    slideAway(canvas);
-                    return;
-                }
-                var data = img.data, stride = canvas.width, pts = [], STEP = 3;
-                for (var y = 0; y < bh; y += STEP) {
-                    for (var x = 0; x < W; x += STEP) {
-                        var idx = (((y * dpr) | 0) * stride + ((x * dpr) | 0)) * 4;
-                        if (data[idx + 3] > 120) {
-                            pts.push({
-                                x: x, y: y,
-                                vx: (Math.random() - 0.5) * 0.7,
-                                vy: -Math.random() * 0.5 - 0.1,
-                                r: data[idx], g: data[idx + 1], b: data[idx + 2]
-                            });
-                        }
-                    }
-                }
-                if (!pts.length) { slideAway(canvas); return; }
-
-                ctx.clearRect(0, 0, W, H);
-                textEl.classList.add('is-out');        // hand the glyphs over to the points
-                banner.classList.add('is-hiding');
-                document.body.classList.remove('banner-on');
-                relayout();   // header glides back now; re-measure before the 1250ms dissolve
-
-                var t0 = performance.now(), DUR = 1250;
-                (function frame(now) {
-                    var elapsed = now - t0;
-                    var k = elapsed / DUR;
-                    if (k >= 1) { teardown(canvas); return; }
-
-                    ctx.clearRect(0, 0, W, H);
-                    var alpha = (1 - k) * (1 - k);
-                    for (var j = 0; j < pts.length; j++) {
-                        var p = pts[j];
-                        var a = flowAngle(p.x, p.y, elapsed);
-                        p.vx += Math.cos(a) * 0.06;
-                        p.vy += Math.sin(a) * 0.06 - 0.012;   // gentle lift
-                        p.x += p.vx;
-                        p.y += p.vy;
-                        ctx.fillStyle = 'rgba(' + p.r + ',' + p.g + ',' + p.b + ',' + alpha + ')';
-                        ctx.fillRect(p.x, p.y, 1.6, 1.6);
-                    }
-                    requestAnimationFrame(frame);
-                })(t0);
-            }
-
-            var gone = false;
-            function dismiss() {
-                if (gone) return;
-                gone = true;
-                window.removeEventListener('resize', syncHeight);
-                if (reduce) { teardown(null); return; }
-                banner.classList.add('is-glitching');
-                setTimeout(function () {
-                    banner.classList.remove('is-glitching');
-                    dissolve();
-                }, 280);
-            }
-
-            setTimeout(dismiss, 10000);
-            var close = document.getElementById('rebrandClose');
-            if (close) close.addEventListener('click', dismiss);
-        })();
-    </script>
-
-    <script src="/js/motion.js?v=r30" defer></script>
-    <script src="/js/cyber.js?v=r30" defer></script>
+    <script src="/js/motion.js?v=r39" defer></script>
+    <script src="/js/cyber.js?v=r39" defer></script>
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -765,6 +637,7 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
             "@type": "Organization",
             "@id": "https://vantixia.in/#organization",
             "name": "Vantixia",
+            "legalName": "Vantixia Cybersecurity",
             "alternateName": "CyberXield",
             "url": "https://vantixia.in/",
             "logo": {
@@ -773,10 +646,16 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
                 "width": 157,
                 "height": 120
             },
-            "description": "Offensive security for AI-era systems. Vantixia red teams GenAI, RAG and agentic systems, and penetration tests web, mobile, cloud and infrastructure.",
+            "description": "Founder-led AI security testing. Vantixia red teams LLM chatbots, RAG pipelines and AI agents, and tests the web apps, APIs and mobile apps around them.",
             "founder": {
                 "@type": "Person",
-                "name": "Rajnish Kumar"
+                "@id": "https://vantixia.in/about/#rajnish-kumar",
+                "name": "Rajnish Kumar",
+                "url": "https://vantixia.in/about/",
+                "sameAs": [
+                    "https://www.linkedin.com/in/rajnish-kumar-eh/",
+                    "https://iehdreamer.in/"
+                ]
             },
             "address": {
                 "@type": "PostalAddress",
@@ -785,10 +664,8 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
             },
             "sameAs": [
                 "https://linkedin.com/company/vantixiasec",
-                "https://x.com/vantixiasec",
-                "https://www.instagram.com/vantixiasec/",
-                "https://www.facebook.com/vantixiasec",
-                "https://www.youtube.com/@VANTIXIASEC"
+                "https://www.youtube.com/@VANTIXIASEC",
+                "https://x.com/vantixiasec"
             ],
             "knowsAbout": [
                 "AI penetration testing",
@@ -797,7 +674,7 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
                 "Agentic AI security",
                 "Web application penetration testing",
                 "Cloud configuration audit",
-                "OWASP GenAI LLM Top 10",
+                "OWASP Top 10 for LLM Applications",
                 "MITRE ATLAS"
             ]
         },
@@ -828,7 +705,7 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
                 "IN"
             ],
             "serviceType": [
-                "Gen-AI, Agentic AI and LLM Red Teaming",
+                "GenAI, Agentic AI and LLM Red Teaming",
                 "Web Application Penetration Testing",
                 "Network and IT Infrastructure VAPT",
                 "Mobile Application Penetration Testing",

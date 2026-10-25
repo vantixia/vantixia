@@ -1,0 +1,20 @@
+{
+  "_readme": "Canonical hall-of-fame list for Rajnish Kumar (founder). The site renders only entries with confirmed: true, from this file only. Outreach emails should copy from here too. Fill url with the public acknowledgement page where one exists.",
+  "entries": [
+    { "name": "Microsoft", "url": "", "confirmed": true },
+    { "name": "Nvidia", "url": "", "confirmed": true },
+    { "name": "Adobe", "url": "", "confirmed": true },
+    { "name": "Adidas", "url": "", "confirmed": true },
+    { "name": "Visma", "url": "", "confirmed": true },
+    { "name": "Hitachi Vantara", "url": "", "confirmed": true },
+    { "name": "JPMorgan Chase & Co.", "url": "", "confirmed": true },
+    { "name": "US Department of Health and Human Services", "url": "", "confirmed": true },
+    { "name": "EMBL-EBI", "url": "", "confirmed": true },
+    { "name": "Government of Poland", "note": "Letter of Appreciation", "url": "", "confirmed": true },
+    { "name": "Government of India", "url": "", "confirmed": true },
+    { "name": "Government of the Philippines", "url": "", "confirmed": true },
+    { "name": "University of Cologne", "url": "", "confirmed": true },
+    { "name": "VMware", "url": "", "confirmed": false },
+    { "name": "JetBrains", "url": "", "confirmed": false }
+  ]
+}

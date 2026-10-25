@@ -26,8 +26,16 @@
     <copyright>Vantixia</copyright>
     <managingEditor>info@vantixia.in (Rajnish Kumar)</managingEditor>
     <webMaster>info@vantixia.in (Rajnish Kumar)</webMaster>
-    <lastBuildDate>Thu, 08 Oct 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 25 Oct 2026 00:00:00 +0000</lastBuildDate>
     <ttl>1440</ttl>
+    <item>
+      <title>CVE-2026-109962: When a Froxlor Reseller Can Read the Admin&apos;s Server Config</title>
+      <link>https://vantixia.in/research/cve-2026-109962-froxlor-reseller-missing-authorization/</link>
+      <guid isPermaLink="true">https://vantixia.in/research/cve-2026-109962-froxlor-reseller-missing-authorization/</guid>
+      <pubDate>Sun, 25 Oct 2026 00:00:00 +0000</pubDate>
+      <dc:creator>Rajnish Kumar</dc:creator>
+      <description>Froxlor API read commands for MySQL servers and cronjobs skipped the change_serversettings check, letting resellers read admin-only configuration. Fixed in 2.3.14.</description>
+    </item>
     <item>
       <title>CVE-2026-100682: How a PWA Icon ZIP Turns a Budibase Builder into Root</title>
       <link>https://vantixia.in/research/cve-2026-100682-budibase-arbitrary-file-write-rce/</link>
