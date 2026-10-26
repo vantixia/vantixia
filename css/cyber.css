@@ -878,6 +878,8 @@ section { position: relative; padding: clamp(44px, 5vw, 76px) 0; }
   margin-bottom: 8px;
 }
 .req { color: var(--red); }
+/* spam trap: off-screen rather than display:none, which some bots skip */
+.hp-field { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
 .form-hud input, .form-hud textarea, .form-hud select {
   width: 100%;
   background: rgba(6, 11, 22, 0.8);
@@ -934,6 +936,25 @@ section { position: relative; padding: clamp(44px, 5vw, 76px) 0; }
   color: var(--cyan);
 }
 .form-status.err { color: var(--red); }
+
+/* .form-hud sets display:grid, which beats the [hidden] attribute's default */
+.form-hud[hidden], .form-done[hidden] { display: none; }
+
+/* thank-you panel that replaces the contact form after a successful send */
+.form-done {
+  max-width: 640px;
+  margin-inline: auto;
+  padding: clamp(32px, 5vw, 52px) clamp(22px, 5vw, 48px);
+  text-align: center;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(19, 30, 56, 0.55), rgba(9, 15, 30, 0.75));
+  clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, var(--cut) 100%, 0 calc(100% - var(--cut)));
+}
+.form-done:focus { outline: none; }
+.form-done-icon { display: inline-block; font-size: 2.6rem; color: var(--cyan); margin-bottom: 14px; }
+.form-done h3 { font-size: clamp(1.3rem, 2.4vw, 1.6rem); margin-bottom: 10px; }
+.form-done p { color: var(--muted); }
+.form-done .btn { margin-top: 12px; }
 
 /* ---------- map ---------- */
 

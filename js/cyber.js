@@ -415,12 +415,32 @@
   var yr = document.getElementById("year");
   if (yr) yr.textContent = new Date().getFullYear();
 
+  /* ---------- EmailJS (shared) ----------
+     The public key is meant to be public. blockHeadless drops headless-browser
+     bots and limitRate allows one send every 10 s per browser. Domain locking
+     is a paid EmailJS feature, so the hidden "website" field below is the
+     other line of defence: people never see it, bots that fill it in get a
+     fake success and nothing is sent. */
+  var EMAILJS_SERVICE = "service_l9i8ffz";
+  var EMAILJS_TEMPLATE_CONTACT = "template_plsjo1t";
+  var EMAILJS_TEMPLATE_SUBSCRIBE = "template_8pgkbkc";
+  if (window.emailjs) {
+    emailjs.init({
+      publicKey: "Abmv_rFKaV1wgG-zJ",
+      blockHeadless: true,
+      limitRate: { throttle: 10000 }
+    });
+  }
+  var filledTrap = function (f) {
+    var trap = f.querySelector("input[name=website]");
+    return !!(trap && trap.value);
+  };
+
   /* ---------- email capture (EmailJS) ----------
-     There is only one EmailJS template, so these reuse it and identify
-     themselves in the message body. Each signup lands as an email. */
+     Signups use their own template and identify the page they came from in
+     the message body. Each signup lands as an email. */
   var captures = document.querySelectorAll("[data-mailcapture]");
   if (captures.length && window.emailjs) {
-    emailjs.init("Abmv_rFKaV1wgG-zJ");
     Array.prototype.forEach.call(captures, function (cap) {
       var input = cap.querySelector("input[type=email]");
       var btn = cap.querySelector("button[type=submit]");
@@ -434,15 +454,23 @@
       cap.addEventListener("submit", function (e) {
         e.preventDefault();
         if (!cap.checkValidity()) { cap.reportValidity(); return; }
+        if (filledTrap(cap)) {
+          say("> subscribed. new research lands in your inbox.");
+          cap.reset();
+          return;
+        }
         say("> transmitting ...");
         if (btn) btn.disabled = true;
+        // The subscribe template has no name row; a name, when the form asks
+        // for one, travels in the details block instead.
         var nameEl = cap.querySelector("input[name=name]");
+        var nameVal = nameEl && nameEl.value ? nameEl.value.trim() : "";
         emailjs
-          .send("service_webiste", "template_o8eqp0f", {
-            name: nameEl && nameEl.value ? nameEl.value : "(not given)",
+          .send(EMAILJS_SERVICE, EMAILJS_TEMPLATE_SUBSCRIBE, {
             email: input.value,
             message:
               "--- " + kind.toUpperCase() + " ---\n" +
+              (nameVal ? "Name: " + nameVal + "\n" : "") +
               "Source page: " + location.pathname
           })
           .then(
@@ -464,7 +492,6 @@
   /* ---------- contact form (EmailJS) ---------- */
   var form = document.getElementById("contact-form");
   if (form && window.emailjs) {
-    emailjs.init("Abmv_rFKaV1wgG-zJ");
     var statusEl = document.getElementById("form-status");
     var submitBtn = form.querySelector("button[type=submit]");
 
@@ -504,6 +531,57 @@
       return parts.join("\n\n") || "(no details supplied)";
     };
 
+    /* A successful send swaps the form for a thank-you panel with a quick card
+       flip; "Submit another query" flips back to a fresh form. Reduced motion
+       gets a plain swap. */
+    var doneEl = document.getElementById("form-done");
+    var againBtn = document.getElementById("form-again");
+    var bringIntoView = function (el) {
+      if (window.__lenis) window.__lenis.scrollTo(el, { offset: -140 });
+      else el.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+    };
+    var swap = function (from, to, onShown) {
+      var show = function () {
+        from.hidden = true;
+        to.hidden = false;
+        if (onShown) onShown();
+        if (!reduceMotion && to.animate) {
+          to.animate(
+            [{ transform: "perspective(1400px) rotateY(-90deg)", opacity: 0 },
+             { transform: "none", opacity: 1 }],
+            { duration: 320, easing: "ease-out" }
+          );
+        }
+      };
+      if (reduceMotion || !from.animate) { show(); return; }
+      from.animate(
+        [{ transform: "none", opacity: 1 },
+         { transform: "perspective(1400px) rotateY(90deg)", opacity: 0 }],
+        { duration: 260, easing: "ease-in" }
+      ).onfinish = show;
+    };
+    var showDone = function () {
+      form.reset();
+      if (statusEl) statusEl.textContent = "";
+      if (!doneEl) {
+        if (statusEl) statusEl.textContent = "> message delivered. we reply within one business day.";
+        return;
+      }
+      swap(form, doneEl, function () {
+        bringIntoView(doneEl);
+        doneEl.focus({ preventScroll: true });
+      });
+    };
+    if (doneEl && againBtn) {
+      againBtn.addEventListener("click", function () {
+        swap(doneEl, form, function () {
+          bringIntoView(form);
+          var first = document.getElementById("name");
+          if (first) first.focus({ preventScroll: true });
+        });
+      });
+    }
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var name = document.getElementById("name");
@@ -513,22 +591,25 @@
         form.reportValidity();
         return;
       }
+      if (filledTrap(form)) {
+        showDone();
+        return;
+      }
       if (statusEl) {
         statusEl.classList.remove("err");
         statusEl.textContent = "> transmitting encrypted payload ...";
       }
       if (submitBtn) submitBtn.disabled = true;
       emailjs
-        .send("service_webiste", "template_o8eqp0f", {
+        .send(EMAILJS_SERVICE, EMAILJS_TEMPLATE_CONTACT, {
           name: name.value,
           email: email.value,
           message: buildMessage(message ? message.value.trim() : "")
         })
         .then(
           function () {
-            if (statusEl) statusEl.textContent = "> message delivered. we respond within 24 hours.";
-            form.reset();
             if (submitBtn) submitBtn.disabled = false;
+            showDone();
           },
           function (err) {
             console.error(err);
