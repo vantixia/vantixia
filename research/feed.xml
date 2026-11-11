@@ -26,8 +26,16 @@
     <copyright>Vantixia</copyright>
     <managingEditor>info@vantixia.in (Rajnish Kumar)</managingEditor>
     <webMaster>info@vantixia.in (Rajnish Kumar)</webMaster>
-    <lastBuildDate>Sun, 25 Oct 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2026 00:00:00 +0000</lastBuildDate>
     <ttl>1440</ttl>
+    <item>
+      <title>CVE-2026-124428: How a Craft CMS Icon Endpoint Reads Files Off the Server</title>
+      <link>https://vantixia.in/research/cve-2026-124428-craft-cms-icon-svg-arbitrary-file-read/</link>
+      <guid isPermaLink="true">https://vantixia.in/research/cve-2026-124428-craft-cms-icon-svg-arbitrary-file-read/</guid>
+      <pubDate>Tue, 10 Nov 2026 00:00:00 +0000</pubDate>
+      <dc:creator>Rajnish Kumar</dc:creator>
+      <description>Craft CMS app/icon-svg resolved user-supplied aliases and absolute paths, letting any control panel user read SVG-content files outside the install. Fixed in 5.11.2.</description>
+    </item>
     <item>
       <title>CVE-2026-109962: When a Froxlor Reseller Can Read the Admin&apos;s Server Config</title>
       <link>https://vantixia.in/research/cve-2026-109962-froxlor-reseller-missing-authorization/</link>

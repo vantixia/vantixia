@@ -58,9 +58,9 @@
                 <p class="sub" data-reveal style="--d:.16s">Original findings from our own work: novel attack paths in GenAI and agentic systems, responsible disclosures, and the tooling we build along the way.</p>
                 <p class="sub" data-reveal style="--d:.24s">Everything here is work we did, not commentary on work other people did. Where a finding affects third-party software, it is disclosed to the vendor first and published only after the disclosure window closes.</p>
                 <p class="price-flag mono" data-reveal style="--d:.32s">
-                    <span class="pf-amount">1 piece published</span>
+                    <span class="pf-amount">3 pieces published</span>
                     <span class="pf-sep" aria-hidden="true">//</span>
-                    <span>Latest: CVE-2026-100682 in Budibase</span>
+                    <span>Latest: CVE-2026-124428 in Craft CMS</span>
                     <span class="pf-sep" aria-hidden="true">//</span>
                     <a href="#updates">Get them on release</a>
                 </p>
@@ -129,7 +129,15 @@
                 </div>
 
                 <div class="grid-3">
-                    <article class="hud-card cyan" data-reveal>
+                    <article class="hud-card red" data-reveal>
+                        <span class="corner tl"></span><span class="corner br"></span>
+                        <span class="tag">DISCLOSURE</span>
+                        <h3>CVE-2026-124428: How a Craft CMS Icon Endpoint Reads Files Off the Server</h3>
+                        <p>Craft CMS's app/icon-svg action passed its icon parameter to a helper that resolved aliases and absolute paths, so any control panel user could read SVG-content files from anywhere on the server. Coordinated disclosure, fixed in 5.11.2.</p>
+                        <p class="meta mono">Rajnish Kumar <span class="pf-sep" aria-hidden="true">//</span> 10 Nov 2026</p>
+                        <a href="/research/cve-2026-124428-craft-cms-icon-svg-arbitrary-file-read/" class="card-link stretch">Read the finding</a>
+                    </article>
+                    <article class="hud-card cyan" data-reveal style="--d:.08s">
                         <span class="corner tl"></span><span class="corner br"></span>
                         <span class="tag">DISCLOSURE</span>
                         <h3>CVE-2026-109962: When a Froxlor Reseller Can Read the Admin's Server Config</h3>
@@ -137,7 +145,7 @@
                         <p class="meta mono">Rajnish Kumar <span class="pf-sep" aria-hidden="true">//</span> 25 Oct 2026</p>
                         <a href="/research/cve-2026-109962-froxlor-reseller-missing-authorization/" class="card-link stretch">Read the finding</a>
                     </article>
-                    <article class="hud-card red" data-reveal style="--d:.08s">
+                    <article class="hud-card red" data-reveal style="--d:.16s">
                         <span class="corner tl"></span><span class="corner br"></span>
                         <span class="tag">DISCLOSURE</span>
                         <h3>CVE-2026-100682: How a PWA Icon ZIP Turns a Budibase Builder into Root</h3>

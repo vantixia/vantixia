@@ -381,6 +381,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://vantixia.in/research/cve-2026-124428-craft-cms-icon-svg-arbitrary-file-read/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://vantixia.in/research/cve-2026-109962-froxlor-reseller-missing-authorization/</loc>
     <lastmod>2026-10-26</lastmod>
     <priority>0.6</priority>
