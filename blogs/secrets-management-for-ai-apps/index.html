@@ -3,13 +3,26 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Secrets Management for AI Applications – Vantixia Blog</title>
+    <title>Secrets Management for AI and LLM Applications | Vantixia</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AI apps sprinkle API keys, vector DB creds and model tokens everywhere. Prompts and logs then quietly exfiltrate them.">
-    <meta property="og:title" content="Secrets Management for AI Applications – Vantixia Blog">
-    <meta property="og:description" content="AI apps sprinkle API keys, vector DB creds and model tokens everywhere. Prompts and logs then quietly exfiltrate them.">
-    <meta property="og:type" content="website">
+    <meta name="description" content="AI apps scatter API keys, vector database credentials and model tokens everywhere, and prompts and logs quietly leak them. Managing secrets in LLM apps.">
+    <meta property="og:site_name" content="Vantixia">
+    <meta property="og:locale" content="en_IN">
+    <meta property="og:title" content="Secrets Management for AI and LLM Applications | Vantixia">
+    <meta property="og:description" content="AI apps scatter API keys, vector database credentials and model tokens everywhere, and prompts and logs quietly leak them. Managing secrets in LLM apps.">
+    <meta property="og:type" content="article">
     <meta property="og:url" content="https://vantixia.in/blogs/secrets-management-for-ai-apps/">
+    <meta property="og:image" content="https://vantixia.in/img/blog/tips.png">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="576">
+    <meta property="og:image:alt" content="Graphic listing five cyber security tips, starting with two-factor authentication">
+    <meta property="article:published_time" content="2026-07-03">
+    <meta property="article:author" content="https://vantixia.in/about/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Secrets Management for AI and LLM Applications | Vantixia">
+    <meta name="twitter:description" content="AI apps scatter API keys, vector database credentials and model tokens everywhere, and prompts and logs quietly leak them. Managing secrets in LLM apps.">
+    <meta name="twitter:image" content="https://vantixia.in/img/blog/tips.png">
+    <meta name="twitter:image:alt" content="Graphic listing five cyber security tips, starting with two-factor authentication">
     <link rel="canonical" href="https://vantixia.in/blogs/secrets-management-for-ai-apps/">
     <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
@@ -18,6 +31,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link href="/css/cyber.css?v=r42" rel="stylesheet">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://vantixia.in/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Blog",
+                    "item": "https://vantixia.in/blog.html"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Secrets Management for AI Applications – Vantixia Blog",
+                    "item": "https://vantixia.in/blogs/secrets-management-for-ai-apps/"
+                }
+            ]
+        }
+    ]
+}
+    </script>
 </head>
 
 <body>
@@ -69,7 +112,7 @@
                     <span>6 min read</span>
                 </div>
                 <div class="article-hero" data-reveal="zoom">
-                    <img class="par" data-fx="parallax" src="/img/blog/tips.png" alt="">
+                    <img fetchpriority="high" width="1024" height="576" class="par" data-fx="parallax" src="/img/blog/tips.webp" alt="Graphic listing five cyber security tips, starting with two-factor authentication">
                 </div>
                 <div class="article-prose" data-fx="prose">
 <p>Every AI feature adds new places for credentials to live and new paths for them to escape. A typical LLM application holds a provider API key, database credentials for retrieval, tokens for every tool it can call, and&nbsp;– worse&nbsp;– a context window that users and documents fill with whatever they happen to contain, including secrets nobody intended to share. Traditional secrets hygiene covers the first category. Most teams have not mapped the rest.</p>
@@ -99,6 +142,7 @@
 <h2>The short version</h2>
 <p>Secrets management for AI is ordinary secrets management plus three new rules: nothing sensitive goes into model context, every provider key is scoped and capped like a budget line, and prompt logs are treated as the sensitive data store they inevitably become. Get those three right and the rest is the vaulting discipline your team already knows how to run.</p>
                 </div>
+                <p class="follow-cta">Related service: <a href="/services/secure-code-review/">Secure source code review</a></p>
                 <aside class="mail-capture" aria-label="Research updates">
                     <div>
                         <p class="mc-kicker">AI security research, monthly. No spam.</p>
@@ -125,7 +169,7 @@
                 <div class="grid-3">
                     <article class="hud-card red post-card" data-reveal="zoom">
                         <span class="corner tl"></span><span class="corner br"></span>
-                        <div class="post-img"><span class="cat-badge">AI Security</span><img src="/img/blog/risecybercrime.jpeg" alt="" loading="lazy"></div>
+                        <div class="post-img"><span class="cat-badge">AI Security</span><img width="1200" height="1035" src="/img/blog/risecybercrime.webp" alt="" loading="lazy"></div>
                         <div class="post-body">
                             <span class="meta"><b>RAJNISH KUMAR</b> &middot; 29 Jun 2026</span>
                             <h3>Jailbreaks Explained: Why 'Ignore Previous Instructions' Still Works</h3>
@@ -134,7 +178,7 @@
                     </article>
                     <article class="hud-card red post-card" data-reveal="zoom" style="--d:.08s">
                         <span class="corner tl"></span><span class="corner br"></span>
-                        <div class="post-img"><span class="cat-badge">AI Security</span><img src="/img/blog/scammers.jpg" alt="" loading="lazy"></div>
+                        <div class="post-img"><span class="cat-badge">AI Security</span><img width="610" height="423" src="/img/blog/scammers.webp" alt="" loading="lazy"></div>
                         <div class="post-body">
                             <span class="meta"><b>RAJNISH KUMAR</b> &middot; 25 Jun 2026</span>
                             <h3>Protecting Vector Databases From Embedding Inversion</h3>
@@ -143,7 +187,7 @@
                     </article>
                     <article class="hud-card red post-card" data-reveal="zoom" style="--d:.16s">
                         <span class="corner tl"></span><span class="corner br"></span>
-                        <div class="post-img"><span class="cat-badge">AI Security</span><img src="/img/blog/dangers.jpeg" alt="" loading="lazy"></div>
+                        <div class="post-img"><span class="cat-badge">AI Security</span><img width="634" height="423" src="/img/blog/dangers.webp" alt="" loading="lazy"></div>
                         <div class="post-body">
                             <span class="meta"><b>RAJNISH KUMAR</b> &middot; 21 Jun 2026</span>
                             <h3>Threat Modelling Machine Learning Systems</h3>
@@ -246,14 +290,20 @@
     "headline": "Secrets Management for AI Applications – Vantixia Blog",
     "author": {
         "@type": "Person",
-        "name": "Rajnish Kumar"
+        "name": "Rajnish Kumar",
+        "@id": "https://vantixia.in/about/#rajnish-kumar",
+        "url": "https://vantixia.in/about/"
     },
     "publisher": {
         "@type": "Organization",
+        "@id": "https://vantixia.in/#organization",
         "name": "Vantixia",
+        "url": "https://vantixia.in/",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://vantixia.in/img/vantixia-mark.png"
+            "url": "https://vantixia.in/img/vantixia-mark.png",
+            "width": 157,
+            "height": 120
         }
     },
     "mainEntityOfPage": {
@@ -261,8 +311,10 @@
         "@id": "https://vantixia.in/blogs/secrets-management-for-ai-apps/"
     },
     "url": "https://vantixia.in/blogs/secrets-management-for-ai-apps/",
-    "description": "AI apps sprinkle API keys, vector DB creds and model tokens everywhere. Prompts and logs then quietly exfiltrate them.",
-    "datePublished": "2026-07-03"
+    "description": "AI apps scatter API keys, vector database credentials and model tokens everywhere, and prompts and logs quietly leak them. Managing secrets in LLM apps.",
+    "datePublished": "2026-07-03",
+    "image": "https://vantixia.in/img/blog/tips.png",
+    "inLanguage": "en"
 }
     </script>
 </body>

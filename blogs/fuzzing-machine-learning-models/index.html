@@ -3,13 +3,26 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Fuzzing Machine Learning Models: Inputs You Never Expected</title>
+    <title>Fuzzing ML Models: Inputs You Never Expected | Vantixia</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Fuzzing broke C programs for decades. Pointed at models, it surfaces the weird inputs that make them crash, leak or misbehave.">
-    <meta property="og:title" content="Fuzzing Machine Learning Models: Inputs You Never Expected – Vantixia Blog">
-    <meta property="og:description" content="Fuzzing broke C programs for decades. Pointed at models, it surfaces the weird inputs that make them crash, leak or misbehave.">
-    <meta property="og:type" content="website">
+    <meta name="description" content="Fuzzing broke C programs for decades. Pointed at machine learning models, it surfaces the weird inputs that make them crash, leak or misbehave.">
+    <meta property="og:site_name" content="Vantixia">
+    <meta property="og:locale" content="en_IN">
+    <meta property="og:title" content="Fuzzing ML Models: Inputs You Never Expected | Vantixia">
+    <meta property="og:description" content="Fuzzing broke C programs for decades. Pointed at machine learning models, it surfaces the weird inputs that make them crash, leak or misbehave.">
+    <meta property="og:type" content="article">
     <meta property="og:url" content="https://vantixia.in/blogs/fuzzing-machine-learning-models/">
+    <meta property="og:image" content="https://vantixia.in/img/blog/blog3.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    <meta property="og:image:alt" content="Padlock surrounded by hexagonal icons under the words Why cybersecurity matters">
+    <meta property="article:published_time" content="2026-06-05">
+    <meta property="article:author" content="https://vantixia.in/about/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Fuzzing ML Models: Inputs You Never Expected | Vantixia">
+    <meta name="twitter:description" content="Fuzzing broke C programs for decades. Pointed at machine learning models, it surfaces the weird inputs that make them crash, leak or misbehave.">
+    <meta name="twitter:image" content="https://vantixia.in/img/blog/blog3.png">
+    <meta name="twitter:image:alt" content="Padlock surrounded by hexagonal icons under the words Why cybersecurity matters">
     <link rel="canonical" href="https://vantixia.in/blogs/fuzzing-machine-learning-models/">
     <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
@@ -18,6 +31,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link href="/css/cyber.css?v=r42" rel="stylesheet">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://vantixia.in/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Blog",
+                    "item": "https://vantixia.in/blog.html"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Fuzzing Machine Learning Models: Inputs You Never Expected",
+                    "item": "https://vantixia.in/blogs/fuzzing-machine-learning-models/"
+                }
+            ]
+        }
+    ]
+}
+    </script>
 </head>
 
 <body>
@@ -69,7 +112,7 @@
                     <span>7 min read</span>
                 </div>
                 <div class="article-hero" data-reveal="zoom">
-                    <img class="par" data-fx="parallax" src="/img/blog/blog3.png" alt="">
+                    <img fetchpriority="high" width="1200" height="675" class="par" data-fx="parallax" src="/img/blog/blog3.webp" alt="Padlock surrounded by hexagonal icons under the words Why cybersecurity matters">
                 </div>
                 <div class="article-prose" data-fx="prose">
 <p>Fuzzing earned its reputation by finding crashes nobody thought to look for: throw enough malformed input at a parser and something eventually falls over. Machine learning systems invite the same treatment, but the definition of "falls over" has to change before the technique produces anything useful.</p>
@@ -100,6 +143,7 @@
 <h2>What to take away</h2>
 <p>Fuzzing an ML system is the classic technique with two twists: you mutate both language and the API around it, and your oracle has to judge meaning rather than just watch for a crash. Build the harness so the oracle is automated and reproduction is measured, and fuzzing becomes one of the cheapest ways to find the inputs your threat model never imagined.</p>
                 </div>
+                <p class="follow-cta">Related service: <a href="/services/genai-llm-pentest/">LLM penetration testing and AI red teaming</a></p>
                 <aside class="mail-capture" aria-label="Research updates">
                     <div>
                         <p class="mc-kicker">AI security research, monthly. No spam.</p>
@@ -126,7 +170,7 @@
                 <div class="grid-3">
                     <article class="hud-card red post-card" data-reveal="zoom">
                         <span class="corner tl"></span><span class="corner br"></span>
-                        <div class="post-img"><span class="cat-badge">Testing AI</span><img src="/img/blog-3.png" alt="" loading="lazy"></div>
+                        <div class="post-img"><span class="cat-badge">Testing AI</span><img width="600" height="450" src="/img/blog-3.webp" alt="" loading="lazy"></div>
                         <div class="post-body">
                             <span class="meta"><b>RAJNISH KUMAR</b> &middot; 01 Jun 2026</span>
                             <h3>Testing for Prompt Leakage: Extracting the System Prompt</h3>
@@ -135,7 +179,7 @@
                     </article>
                     <article class="hud-card red post-card" data-reveal="zoom" style="--d:.08s">
                         <span class="corner tl"></span><span class="corner br"></span>
-                        <div class="post-img"><span class="cat-badge">Testing AI</span><img src="/img/blog-2.jpg" alt="" loading="lazy"></div>
+                        <div class="post-img"><span class="cat-badge">Testing AI</span><img width="600" height="450" src="/img/blog-2.jpg" alt="" loading="lazy"></div>
                         <div class="post-body">
                             <span class="meta"><b>RAJNISH KUMAR</b> &middot; 28 May 2026</span>
                             <h3>Evaluating Chatbot Guardrails With Automated Attack Suites</h3>
@@ -144,7 +188,7 @@
                     </article>
                     <article class="hud-card red post-card" data-reveal="zoom" style="--d:.16s">
                         <span class="corner tl"></span><span class="corner br"></span>
-                        <div class="post-img"><span class="cat-badge">Testing AI</span><img src="/img/cybersecurity.png" alt="" loading="lazy"></div>
+                        <div class="post-img"><span class="cat-badge">Testing AI</span><img width="600" height="450" src="/img/cybersecurity.webp" alt="" loading="lazy"></div>
                         <div class="post-body">
                             <span class="meta"><b>RAJNISH KUMAR</b> &middot; 24 May 2026</span>
                             <h3>Testing AI Agents for Tool Abuse and Privilege Escalation</h3>
@@ -247,14 +291,20 @@
     "headline": "Fuzzing Machine Learning Models: Inputs You Never Expected",
     "author": {
         "@type": "Person",
-        "name": "Rajnish Kumar"
+        "name": "Rajnish Kumar",
+        "@id": "https://vantixia.in/about/#rajnish-kumar",
+        "url": "https://vantixia.in/about/"
     },
     "publisher": {
         "@type": "Organization",
+        "@id": "https://vantixia.in/#organization",
         "name": "Vantixia",
+        "url": "https://vantixia.in/",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://vantixia.in/img/vantixia-mark.png"
+            "url": "https://vantixia.in/img/vantixia-mark.png",
+            "width": 157,
+            "height": 120
         }
     },
     "mainEntityOfPage": {
@@ -262,8 +312,10 @@
         "@id": "https://vantixia.in/blogs/fuzzing-machine-learning-models/"
     },
     "url": "https://vantixia.in/blogs/fuzzing-machine-learning-models/",
-    "description": "Fuzzing broke C programs for decades. Pointed at models, it surfaces the weird inputs that make them crash, leak or misbehave.",
-    "datePublished": "2026-06-05"
+    "description": "Fuzzing broke C programs for decades. Pointed at machine learning models, it surfaces the weird inputs that make them crash, leak or misbehave.",
+    "datePublished": "2026-06-05",
+    "image": "https://vantixia.in/img/blog/blog3.png",
+    "inLanguage": "en"
 }
     </script>
 </body>

@@ -3,13 +3,26 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Benchmarking LLM Security With Open Frameworks – Vantixia Blog</title>
+    <title>Benchmarking LLM Security With garak and PyRIT | Vantixia</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="You don't have to build every probe from scratch. Open tooling like garak and PyRIT industrialise LLM security testing.">
-    <meta property="og:title" content="Benchmarking LLM Security With Open Frameworks – Vantixia Blog">
-    <meta property="og:description" content="You don't have to build every probe from scratch. Open tooling like garak and PyRIT industrialise LLM security testing.">
-    <meta property="og:type" content="website">
+    <meta name="description" content="Open frameworks like garak and PyRIT industrialise LLM security testing, so you don't have to build every probe from scratch. How to put them to work.">
+    <meta property="og:site_name" content="Vantixia">
+    <meta property="og:locale" content="en_IN">
+    <meta property="og:title" content="Benchmarking LLM Security With garak and PyRIT | Vantixia">
+    <meta property="og:description" content="Open frameworks like garak and PyRIT industrialise LLM security testing, so you don't have to build every probe from scratch. How to put them to work.">
+    <meta property="og:type" content="article">
     <meta property="og:url" content="https://vantixia.in/blogs/benchmarking-llm-security-garak-pyrit/">
+    <meta property="og:image" content="https://vantixia.in/img/blog/deepfake.jpg">
+    <meta property="og:image:width" content="1599">
+    <meta property="og:image:height" content="960">
+    <meta property="og:image:alt" content="Face recognition scan of a woman's face, partly pixelated">
+    <meta property="article:published_time" content="2026-05-04">
+    <meta property="article:author" content="https://vantixia.in/about/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Benchmarking LLM Security With garak and PyRIT | Vantixia">
+    <meta name="twitter:description" content="Open frameworks like garak and PyRIT industrialise LLM security testing, so you don't have to build every probe from scratch. How to put them to work.">
+    <meta name="twitter:image" content="https://vantixia.in/img/blog/deepfake.jpg">
+    <meta name="twitter:image:alt" content="Face recognition scan of a woman's face, partly pixelated">
     <link rel="canonical" href="https://vantixia.in/blogs/benchmarking-llm-security-garak-pyrit/">
     <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
@@ -18,6 +31,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link href="/css/cyber.css?v=r42" rel="stylesheet">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://vantixia.in/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Blog",
+                    "item": "https://vantixia.in/blog.html"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Benchmarking LLM Security With Open Frameworks – Vantixia Blog",
+                    "item": "https://vantixia.in/blogs/benchmarking-llm-security-garak-pyrit/"
+                }
+            ]
+        }
+    ]
+}
+    </script>
 </head>
 
 <body>
@@ -69,7 +112,7 @@
                     <span>7 min read</span>
                 </div>
                 <div class="article-hero" data-reveal="zoom">
-                    <img class="par" data-fx="parallax" src="/img/blog/deepfake.jpg" alt="">
+                    <img fetchpriority="high" width="1200" height="720" class="par" data-fx="parallax" src="/img/blog/deepfake.webp" alt="Face recognition scan of a woman's face, partly pixelated">
                 </div>
                 <div class="article-prose" data-fx="prose">
 <p>You cannot improve what you do not measure repeatably, and ad-hoc prompt fiddling does not measure anything. A security benchmark for an LLM application is a fixed set of adversarial probes, run the same way every time, producing a score you can compare across model versions and prompt changes. Open tooling has matured enough that building one no longer means writing everything from scratch.</p>
@@ -100,6 +143,7 @@
 <h2>Where this leaves you</h2>
 <p>Open frameworks make repeatable LLM security measurement genuinely achievable: garak and PyRIT for probing, promptfoo and Giskard for structured evaluation, all wired into CI with versioned probe sets and per-category thresholds. Just remember what a benchmark is&nbsp;– a scored floor against known and past failures&nbsp;– and keep a human red team hunting above it.</p>
                 </div>
+                <p class="follow-cta">Related service: <a href="/services/genai-llm-pentest/">LLM penetration testing and AI red teaming</a></p>
                 <aside class="mail-capture" aria-label="Research updates">
                     <div>
                         <p class="mc-kicker">AI security research, monthly. No spam.</p>
@@ -126,7 +170,7 @@
                 <div class="grid-3">
                     <article class="hud-card red post-card" data-reveal="zoom">
                         <span class="corner tl"></span><span class="corner br"></span>
-                        <div class="post-img"><span class="cat-badge">Testing AI</span><img src="/img/blog/ripple.png" alt="" loading="lazy"></div>
+                        <div class="post-img"><span class="cat-badge">Testing AI</span><img width="800" height="450" src="/img/blog/ripple.webp" alt="" loading="lazy"></div>
                         <div class="post-body">
                             <span class="meta"><b>RAJNISH KUMAR</b> &middot; 30 Apr 2026</span>
                             <h3>Regression-Testing Your Guardrails After Every Model Update</h3>
@@ -135,7 +179,7 @@
                     </article>
                     <article class="hud-card red post-card" data-reveal="zoom" style="--d:.08s">
                         <span class="corner tl"></span><span class="corner br"></span>
-                        <div class="post-img"><span class="cat-badge">Testing AI</span><img src="/img/blog/cybersecfuture.png" alt="" loading="lazy"></div>
+                        <div class="post-img"><span class="cat-badge">Testing AI</span><img width="446" height="462" src="/img/blog/cybersecfuture.webp" alt="" loading="lazy"></div>
                         <div class="post-body">
                             <span class="meta"><b>RAJNISH KUMAR</b> &middot; 26 Apr 2026</span>
                             <h3>Threat-Led AI Penetration Testing: From Scope to Report</h3>
@@ -144,7 +188,7 @@
                     </article>
                     <article class="hud-card red post-card" data-reveal="zoom" style="--d:.16s">
                         <span class="corner tl"></span><span class="corner br"></span>
-                        <div class="post-img"><span class="cat-badge">Testing AI</span><img src="/img/blog/safeguards.png" alt="" loading="lazy"></div>
+                        <div class="post-img"><span class="cat-badge">Testing AI</span><img width="1200" height="569" src="/img/blog/safeguards.webp" alt="" loading="lazy"></div>
                         <div class="post-body">
                             <span class="meta"><b>RAJNISH KUMAR</b> &middot; 22 Apr 2026</span>
                             <h3>Testing for Denial-of-Wallet: Resource Exhaustion in LLM Apps</h3>
@@ -247,14 +291,20 @@
     "headline": "Benchmarking LLM Security With Open Frameworks – Vantixia Blog",
     "author": {
         "@type": "Person",
-        "name": "Rajnish Kumar"
+        "name": "Rajnish Kumar",
+        "@id": "https://vantixia.in/about/#rajnish-kumar",
+        "url": "https://vantixia.in/about/"
     },
     "publisher": {
         "@type": "Organization",
+        "@id": "https://vantixia.in/#organization",
         "name": "Vantixia",
+        "url": "https://vantixia.in/",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://vantixia.in/img/vantixia-mark.png"
+            "url": "https://vantixia.in/img/vantixia-mark.png",
+            "width": 157,
+            "height": 120
         }
     },
     "mainEntityOfPage": {
@@ -262,8 +312,10 @@
         "@id": "https://vantixia.in/blogs/benchmarking-llm-security-garak-pyrit/"
     },
     "url": "https://vantixia.in/blogs/benchmarking-llm-security-garak-pyrit/",
-    "description": "You don't have to build every probe from scratch. Open tooling like garak and PyRIT industrialise LLM security testing.",
-    "datePublished": "2026-05-04"
+    "description": "Open frameworks like garak and PyRIT industrialise LLM security testing, so you don't have to build every probe from scratch. How to put them to work.",
+    "datePublished": "2026-05-04",
+    "image": "https://vantixia.in/img/blog/deepfake.jpg",
+    "inLanguage": "en"
 }
     </script>
 </body>
