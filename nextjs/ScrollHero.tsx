@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * ScrollHero — a scroll-driven hero for Next.js (App Router) built with
+ * ScrollHero: a scroll-driven hero for Next.js (App Router) built with
  * Framer Motion's `useScroll` + `useTransform`.
  *
  * Behaviour (all bound to a single scroll progress value):
@@ -32,7 +32,7 @@ import {
   type MotionValue,
 } from 'framer-motion';
 
-/* ---- palette (CyberXield dark theme) ---- */
+/* ---- palette (Vantixia dark theme) ---- */
 const RED = '#ff3b57';
 const CYAN = '#39d0ff';
 const VOID = '#04070e';
@@ -90,7 +90,7 @@ export default function ScrollHero() {
   }
 
   return (
-    // Outer wrapper is tall (320vh) — this length IS the scroll distance the
+    // Outer wrapper is tall (320vh): this length IS the scroll distance the
     // pinned content stays on screen for.
     <section ref={sectionRef} style={{ position: 'relative', height: '320vh', background: VOID }}>
       {/* Inner shell is pinned: sticky, one viewport tall, holds everything. */}
@@ -242,7 +242,7 @@ function MockUI() {
         <i style={dot(RED)} />
         <i style={dot('#ffb02e')} />
         <i style={dot('#2ee6a8')} />
-        <span style={{ marginLeft: 10 }}>xield@cyberxield: ~/engagement</span>
+        <span style={{ marginLeft: 10 }}>ops@vantixia: ~/engagement</span>
       </div>
 
       {/* body: a couple of readouts + progress bars to look like a live scan */}

@@ -801,6 +801,21 @@ section { position: relative; padding: clamp(44px, 5vw, 76px) 0; }
 .cta-band p { color: var(--muted); max-width: 56ch; margin: 0 auto 30px; }
 .cta-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
 
+/* timezone line under booking CTAs: inherits the alignment of its container */
+.tz-note,
+.cta-band .tz-note {
+  margin: 16px 0 0;
+  max-width: 60ch;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  overflow-wrap: break-word;
+}
+.cta-band .tz-note { margin: 18px auto 0; }
+.hero-cta + .tz-note { margin: -28px 0 44px; }
+.pkg-foot .tz-note { margin-top: 0; }
+.grid-4 + .tz-note { margin-top: 22px; }
+
 .channel-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 44px; }
 .channel {
   display: flex;
