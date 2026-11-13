@@ -3,13 +3,18 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Research – Vantixia</title>
+    <title>Vulnerability Research and Published CVEs | Vantixia</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Original findings from Vantixia's own testing: published CVEs, responsible disclosures and new attack paths in GenAI and agentic systems.">
-    <meta property="og:title" content="Research – Vantixia">
-    <meta property="og:description" content="Original findings from Vantixia's own testing: published CVEs, responsible disclosures and new attack paths in GenAI and agentic systems.">
+    <meta name="description" content="Original findings from Vantixia's own testing: three published CVEs in Budibase, Froxlor and Craft CMS, plus new attack paths in GenAI and agentic AI systems.">
+    <meta property="og:site_name" content="Vantixia">
+    <meta property="og:locale" content="en_IN">
+    <meta property="og:title" content="Vulnerability Research and Published CVEs | Vantixia">
+    <meta property="og:description" content="Original findings from Vantixia's own testing: three published CVEs in Budibase, Froxlor and Craft CMS, plus new attack paths in GenAI and agentic AI systems.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://vantixia.in/research/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Vulnerability Research and Published CVEs | Vantixia">
+    <meta name="twitter:description" content="Original findings from Vantixia's own testing: three published CVEs in Budibase, Froxlor and Craft CMS, plus new attack paths in GenAI and agentic AI systems.">
     <link rel="canonical" href="https://vantixia.in/research/">
     <link rel="alternate" type="application/rss+xml" title="Vantixia Research" href="/research/feed.xml">
     <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
@@ -18,7 +23,69 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Orbitron:wght@700&display=swap" rel="stylesheet">
-    <link href="/css/cyber.css?v=r41" rel="stylesheet">
+    <link href="/css/cyber.css?v=r43" rel="stylesheet">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Research",
+    "url": "https://vantixia.in/research/",
+    "description": "Original findings from Vantixia's own testing: three published CVEs in Budibase, Froxlor and Craft CMS, plus new attack paths in GenAI and agentic AI systems.",
+    "publisher": {
+        "@type": "Organization",
+        "@id": "https://vantixia.in/#organization",
+        "name": "Vantixia",
+        "url": "https://vantixia.in/"
+    },
+    "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "url": "https://vantixia.in/research/cve-2026-124428-craft-cms-icon-svg-arbitrary-file-read/",
+                "name": "CVE-2026-124428: How a Craft CMS Icon Endpoint Reads Files Off the Server"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "url": "https://vantixia.in/research/cve-2026-109962-froxlor-reseller-missing-authorization/",
+                "name": "CVE-2026-109962: When a Froxlor Reseller Can Read the Admin's Server Config"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "url": "https://vantixia.in/research/cve-2026-100682-budibase-arbitrary-file-write-rce/",
+                "name": "CVE-2026-100682: How a PWA Icon ZIP Turns a Budibase Builder into Root"
+            }
+        ]
+    }
+}
+    </script>
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://vantixia.in/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Research",
+                    "item": "https://vantixia.in/research/"
+                }
+            ]
+        }
+    ]
+}
+    </script>
 </head>
 
 <body>
@@ -58,7 +125,7 @@
                 <p class="sub" data-reveal style="--d:.16s">Original findings from our own work: novel attack paths in GenAI and agentic systems, responsible disclosures, and the tooling we build along the way.</p>
                 <p class="sub" data-reveal style="--d:.24s">Everything here is work we did, not commentary on work other people did. Where a finding affects third-party software, it is disclosed to the vendor first and published only after the disclosure window closes.</p>
                 <p class="price-flag mono" data-reveal style="--d:.32s">
-                    <span class="pf-amount">3 pieces published</span>
+                    <span class="pf-amount">3 CVEs published</span>
                     <span class="pf-sep" aria-hidden="true">//</span>
                     <span>Latest: CVE-2026-124428 in Craft CMS</span>
                     <span class="pf-sep" aria-hidden="true">//</span>
@@ -120,40 +187,54 @@
             </div>
         </section>
 
-        <section aria-label="Published research index">
+        <section id="cves" aria-label="Published CVEs">
             <span class="sec-num" data-parallax="0.08">03</span>
             <div class="wrap">
                 <div class="section-head" data-reveal>
-                    <p class="eyebrow"><b>//: 03</b> THE INDEX</p>
-                    <h2>Published research</h2>
+                    <p class="eyebrow"><b>//: 03</b> CVES</p>
+                    <h2>CVEs</h2>
+                    <p>Three published CVEs, each found and reported by Rajnish Kumar and disclosed to the vendor before publication. The credits can be checked independently on <a href="https://db.gcve.eu/credits/dreamer1eh" target="_blank" rel="noopener">GCVE</a>.</p>
                 </div>
 
                 <div class="grid-3">
                     <article class="hud-card red" data-reveal>
                         <span class="corner tl"></span><span class="corner br"></span>
-                        <span class="tag">DISCLOSURE</span>
+                        <span class="tag">CVE-2026-124428</span>
                         <h3>CVE-2026-124428: How a Craft CMS Icon Endpoint Reads Files Off the Server</h3>
+                        <p class="cve-line"><b>Product</b> Craft CMS (craftcms/cms)</p>
+                        <p class="cve-line"><b>Vulnerability class</b> Arbitrary file read, CWE-22 path traversal</p>
+                        <p class="cve-line"><b>Fixed version</b> 5.11.2</p>
                         <p>Craft CMS's app/icon-svg action passed its icon parameter to a helper that resolved aliases and absolute paths, so any control panel user could read SVG-content files from anywhere on the server. Coordinated disclosure, fixed in 5.11.2.</p>
                         <p class="meta mono">Rajnish Kumar <span class="pf-sep" aria-hidden="true">//</span> 10 Nov 2026</p>
                         <a href="/research/cve-2026-124428-craft-cms-icon-svg-arbitrary-file-read/" class="card-link stretch">Read the finding</a>
                     </article>
                     <article class="hud-card cyan" data-reveal style="--d:.08s">
                         <span class="corner tl"></span><span class="corner br"></span>
-                        <span class="tag">DISCLOSURE</span>
+                        <span class="tag">CVE-2026-109962</span>
                         <h3>CVE-2026-109962: When a Froxlor Reseller Can Read the Admin's Server Config</h3>
+                        <p class="cve-line"><b>Product</b> Froxlor server management panel</p>
+                        <p class="cve-line"><b>Vulnerability class</b> Missing authorisation in the API, CWE-285 improper authorisation</p>
+                        <p class="cve-line"><b>Fixed version</b> 2.3.14</p>
                         <p>Froxlor's MySQL server and cronjob API read commands checked only for an admin-type account, so resellers could read admin-only server configuration that the UI hid from them. Coordinated disclosure, fixed in 2.3.14.</p>
                         <p class="meta mono">Rajnish Kumar <span class="pf-sep" aria-hidden="true">//</span> 25 Oct 2026</p>
                         <a href="/research/cve-2026-109962-froxlor-reseller-missing-authorization/" class="card-link stretch">Read the finding</a>
                     </article>
                     <article class="hud-card red" data-reveal style="--d:.16s">
                         <span class="corner tl"></span><span class="corner br"></span>
-                        <span class="tag">DISCLOSURE</span>
+                        <span class="tag">CVE-2026-100682</span>
                         <h3>CVE-2026-100682: How a PWA Icon ZIP Turns a Budibase Builder into Root</h3>
+                        <p class="cve-line"><b>Product</b> Budibase Server</p>
+                        <p class="cve-line"><b>Vulnerability class</b> Arbitrary file write to remote code execution, CWE-22 via unsafe archive extraction</p>
+                        <p class="cve-line"><b>Fixed version</b> 3.45.0</p>
                         <p>A symlink-following ZIP extraction bug in Budibase's PWA icon upload let a BUILDER-role user write arbitrary files as root and reach remote code execution. Responsibly disclosed 21 Aug 2026, fixed in 3.45.0.</p>
                         <p class="meta mono">Rajnish Kumar <span class="pf-sep" aria-hidden="true">//</span> 08 Oct 2026</p>
                         <a href="/research/cve-2026-100682-budibase-arbitrary-file-write-rce/" class="card-link stretch">Read the finding</a>
                     </article>
                 </div>
+
+                <!-- AI security research: add a section here (heading "AI security research", grid-3 of hud-card
+                     cards, same pattern as the CVEs above) only once at least one post is published.
+                     No placeholder cards on the live page. -->
 
 
                 <aside class="mail-capture" id="updates" aria-label="Research updates">
@@ -184,6 +265,7 @@
                         <a href="/contact/" class="btn btn-red">Send us the detail</a>
                         <a href="https://cal.com/vantixia/scoping-call-vantixia" target="_blank" rel="noopener" class="btn btn-cyan">Book a call</a>
                     </div>
+                    <p class="tz-note">Based in Delhi, India (IST, UTC+5:30). Overlaps Gulf business hours, AEST mornings and European mornings.</p>
                 </div>
             </div>
         </section>
@@ -228,13 +310,13 @@
                     <div class="foot-contact">
                         <a href="https://maps.app.goo.gl/Fr34EhDzWp6BSTnC6" target="_blank" rel="noopener"><svg class="icn" viewBox="0 0 384 512" aria-hidden="true" focusable="false"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg> Delhi, India</a>
                         <a href="mailto:info@vantixia.in"><svg class="icn" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg> info@vantixia.in</a>
-                        <a href="https://cal.com/vantixia" target="_blank" rel="noopener"><svg class="icn" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zM329 305c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-95 95-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L329 305z"/></svg> Book a meeting</a>
+                        <a href="https://cal.com/vantixia/scoping-call-vantixia" target="_blank" rel="noopener"><svg class="icn" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zM329 305c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-95 95-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L329 305z"/></svg> Book a meeting</a>
                     </div>
                 </div>
             </div>
             <div class="foot-bottom">
                 <span>&copy; <span id="year">2026</span> VANTIXIA // ALL RIGHTS RESERVED</span>
-                <span class="foot-msme">Recognised as an MSME by the Government of India</span>
+                <span class="foot-msme">MSME registered (Udyam) &middot; GST registered</span>
                 <span>
                     <a href="/privacy/">PRIVACY</a>
                     &nbsp;&middot;&nbsp;
@@ -253,8 +335,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
-    <script src="/js/motion.js?v=r41" defer></script>
-    <script src="/js/cyber.js?v=r41" defer></script>
+    <script src="/js/motion.js?v=r43" defer></script>
+    <script src="/js/cyber.js?v=r43" defer></script>
 </body>
 
 </html>

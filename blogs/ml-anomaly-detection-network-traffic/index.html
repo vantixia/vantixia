@@ -3,13 +3,26 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Machine Learning for Anomaly Detection in Network Traffic</title>
+    <title>ML Anomaly Detection for Network Traffic | Vantixia</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Signatures catch what you've seen. Anomaly detection aims at what you haven't – the price is false positives you must engineer around.">
-    <meta property="og:title" content="Machine Learning for Anomaly Detection in Network Traffic – Vantixia Blog">
-    <meta property="og:description" content="Signatures catch what you've seen. Anomaly detection aims at what you haven't – the price is false positives you must engineer around.">
-    <meta property="og:type" content="website">
+    <meta name="description" content="Signatures catch what you've seen. Machine learning anomaly detection aims at what you haven't, and the price is false positives you must engineer around.">
+    <meta property="og:site_name" content="Vantixia">
+    <meta property="og:locale" content="en_IN">
+    <meta property="og:title" content="ML Anomaly Detection for Network Traffic | Vantixia">
+    <meta property="og:description" content="Signatures catch what you've seen. Machine learning anomaly detection aims at what you haven't, and the price is false positives you must engineer around.">
+    <meta property="og:type" content="article">
     <meta property="og:url" content="https://vantixia.in/blogs/ml-anomaly-detection-network-traffic/">
+    <meta property="og:image" content="https://vantixia.in/img/blog/risecybercrime.jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="1035">
+    <meta property="og:image:alt" content="Bar chart of the estimated worldwide cost of cybercrime, 2018 to 2027">
+    <meta property="article:published_time" content="2026-04-10">
+    <meta property="article:author" content="https://vantixia.in/about/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ML Anomaly Detection for Network Traffic | Vantixia">
+    <meta name="twitter:description" content="Signatures catch what you've seen. Machine learning anomaly detection aims at what you haven't, and the price is false positives you must engineer around.">
+    <meta name="twitter:image" content="https://vantixia.in/img/blog/risecybercrime.jpeg">
+    <meta name="twitter:image:alt" content="Bar chart of the estimated worldwide cost of cybercrime, 2018 to 2027">
     <link rel="canonical" href="https://vantixia.in/blogs/ml-anomaly-detection-network-traffic/">
     <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
@@ -17,7 +30,37 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Orbitron:wght@700&display=swap" rel="stylesheet">
-    <link href="/css/cyber.css?v=r41" rel="stylesheet">
+    <link href="/css/cyber.css?v=r43" rel="stylesheet">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://vantixia.in/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Blog",
+                    "item": "https://vantixia.in/blog.html"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Machine Learning for Anomaly Detection in Network Traffic",
+                    "item": "https://vantixia.in/blogs/ml-anomaly-detection-network-traffic/"
+                }
+            ]
+        }
+    ]
+}
+    </script>
 </head>
 
 <body>
@@ -69,7 +112,7 @@
                     <span>8 min read</span>
                 </div>
                 <div class="article-hero" data-reveal="zoom">
-                    <img class="par" data-fx="parallax" src="/img/blog/risecybercrime.jpeg" alt="">
+                    <img fetchpriority="high" width="1200" height="1035" class="par" data-fx="parallax" src="/img/blog/risecybercrime.webp" alt="Bar chart of the estimated worldwide cost of cybercrime, 2018 to 2027">
                 </div>
                 <div class="article-prose" data-fx="prose">
 <p>Every network security vendor promises the same thing: point our model at your traffic and it will surface the attacks your signatures missed. The pitch is seductive because it contains a real truth. Attackers who avoid known indicators still have to move data, open connections, and behave in ways that differ from your baseline. The question is never whether anomalies exist. It is whether your model can tell a hostile anomaly from the thousand benign ones your network produces every hour.</p>
@@ -89,7 +132,7 @@
 <p>Encrypted traffic pushes you toward metadata and timing rather than payload, and a model built on features you can still observe under TLS ages better than one that quietly depended on plaintext.</p>
 
 <h2>Living with false positives</h2>
-<p>A detector that fires on every deviation is worse than no detector, because analysts learn to ignore it and eventually disable it. The goal is not zero false positives; it is a false-positive rate low enough that each alert earns a look. That means scoring anomalies by severity rather than flagging them binary, enriching alerts with the context an analyst needs to triage in seconds, and suppressing the recurring benign patterns your environment generates on schedule. Tuning is not a launch task. It is the permanent operating cost of the system.</p>
+<p>A detector that fires on every deviation is worse than no detector, because analysts learn to ignore it and eventually disable it. The goal is not to eliminate false positives entirely; it is a false-positive rate low enough that each alert earns a look. That means scoring anomalies by severity rather than flagging them binary, enriching alerts with the context an analyst needs to triage in seconds, and suppressing the recurring benign patterns your environment generates on schedule. Tuning is not a launch task. It is the permanent operating cost of the system.</p>
 
 <h2>Concept drift never stops</h2>
 <p>Networks change. New services appear, traffic shifts to the cloud, remote work rewrites your baseline, and a model trained last quarter slowly stops describing this quarter's normal. Left alone, it degrades in two directions at once: it misses new attacks and it alarms on new-but-benign behaviour. You need a retraining cadence, drift monitoring that tells you when the baseline has moved, and a feedback loop where analyst dispositions flow back into the model. A network anomaly detector is a living system with an operating budget, not a product you install and forget.</p>
@@ -100,6 +143,7 @@
 <h2>The bottom line</h2>
 <p>Machine learning earns its place in network defence as a discovery layer that surfaces the unusual, sitting beside signatures rather than above them. Invest in features and tuning over model novelty, budget for continuous retraining against drift, and keep an analyst between the anomaly and the conclusion. Do that and you catch things you would otherwise miss. Skip it and you buy an expensive alarm that cries wolf until someone mutes it.</p>
                 </div>
+                <p class="follow-cta">Related service: <a href="/services/infrastructure-pentest/">Network and infrastructure penetration testing</a></p>
                 <aside class="mail-capture" aria-label="Research updates">
                     <div>
                         <p class="mc-kicker">AI security research, monthly. No spam.</p>
@@ -126,7 +170,7 @@
                 <div class="grid-3">
                     <article class="hud-card cyan post-card" data-reveal="zoom">
                         <span class="corner tl"></span><span class="corner br"></span>
-                        <div class="post-img"><span class="cat-badge">AI for Security</span><img src="/img/blog/scammers.jpg" alt="" loading="lazy"></div>
+                        <div class="post-img"><span class="cat-badge">AI for Security</span><img width="610" height="423" src="/img/blog/scammers.webp" alt="" loading="lazy"></div>
                         <div class="post-body">
                             <span class="meta"><b>RAJNISH KUMAR</b> &middot; 06 Apr 2026</span>
                             <h3>Automating Reconnaissance With AI (Responsibly)</h3>
@@ -135,7 +179,7 @@
                     </article>
                     <article class="hud-card cyan post-card" data-reveal="zoom" style="--d:.08s">
                         <span class="corner tl"></span><span class="corner br"></span>
-                        <div class="post-img"><span class="cat-badge">AI for Security</span><img src="/img/blog/dangers.jpeg" alt="" loading="lazy"></div>
+                        <div class="post-img"><span class="cat-badge">AI for Security</span><img width="634" height="423" src="/img/blog/dangers.webp" alt="" loading="lazy"></div>
                         <div class="post-body">
                             <span class="meta"><b>RAJNISH KUMAR</b> &middot; 02 Apr 2026</span>
                             <h3>LLMs in the SOC: Summarising Alerts Without Losing Signal</h3>
@@ -144,7 +188,7 @@
                     </article>
                     <article class="hud-card cyan post-card" data-reveal="zoom" style="--d:.16s">
                         <span class="corner tl"></span><span class="corner br"></span>
-                        <div class="post-img"><span class="cat-badge">AI for Security</span><img src="/img/blog/myths.jpeg" alt="" loading="lazy"></div>
+                        <div class="post-img"><span class="cat-badge">AI for Security</span><img width="318" height="158" src="/img/blog/myths.webp" alt="" loading="lazy"></div>
                         <div class="post-body">
                             <span class="meta"><b>RAJNISH KUMAR</b> &middot; 29 Mar 2026</span>
                             <h3>AI-Powered Phishing Detection: Beyond the Blocklist</h3>
@@ -168,6 +212,7 @@
                         <a href="/contact/" class="btn btn-red">Contact us</a>
                         <a href="https://cal.com/vantixia/scoping-call-vantixia" target="_blank" rel="noopener" class="btn btn-cyan">Reserve a meeting</a>
                     </div>
+                    <p class="tz-note">Based in Delhi, India (IST, UTC+5:30). Overlaps Gulf business hours, AEST mornings and European mornings.</p>
                 </div>
             </div>
         </section>
@@ -212,13 +257,13 @@
                     <div class="foot-contact">
                         <a href="https://maps.app.goo.gl/Fr34EhDzWp6BSTnC6" target="_blank" rel="noopener"><svg class="icn" viewBox="0 0 384 512" aria-hidden="true" focusable="false"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg> Delhi, India</a>
                         <a href="mailto:info@vantixia.in"><svg class="icn" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg> info@vantixia.in</a>
-                        <a href="https://cal.com/vantixia" target="_blank" rel="noopener"><svg class="icn" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zM329 305c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-95 95-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L329 305z"/></svg> Book a meeting</a>
+                        <a href="https://cal.com/vantixia/scoping-call-vantixia" target="_blank" rel="noopener"><svg class="icn" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zM329 305c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-95 95-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L329 305z"/></svg> Book a meeting</a>
                     </div>
                 </div>
             </div>
             <div class="foot-bottom">
                 <span>&copy; <span id="year">2026</span> VANTIXIA // ALL RIGHTS RESERVED</span>
-                <span class="foot-msme">Recognised as an MSME by the Government of India</span>
+                <span class="foot-msme">MSME registered (Udyam) &middot; GST registered</span>
                 <span>
                     <a href="/privacy/">PRIVACY</a>
                     &nbsp;&middot;&nbsp;
@@ -237,8 +282,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
-    <script src="/js/motion.js?v=r41" defer></script>
-    <script src="/js/cyber.js?v=r41" defer></script>
+    <script src="/js/motion.js?v=r43" defer></script>
+    <script src="/js/cyber.js?v=r43" defer></script>
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -246,14 +291,20 @@
     "headline": "Machine Learning for Anomaly Detection in Network Traffic",
     "author": {
         "@type": "Person",
-        "name": "Rajnish Kumar"
+        "name": "Rajnish Kumar",
+        "@id": "https://vantixia.in/about/#rajnish-kumar",
+        "url": "https://vantixia.in/about/"
     },
     "publisher": {
         "@type": "Organization",
+        "@id": "https://vantixia.in/#organization",
         "name": "Vantixia",
+        "url": "https://vantixia.in/",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://vantixia.in/img/vantixia-mark.png"
+            "url": "https://vantixia.in/img/vantixia-mark.png",
+            "width": 157,
+            "height": 120
         }
     },
     "mainEntityOfPage": {
@@ -261,8 +312,10 @@
         "@id": "https://vantixia.in/blogs/ml-anomaly-detection-network-traffic/"
     },
     "url": "https://vantixia.in/blogs/ml-anomaly-detection-network-traffic/",
-    "description": "Signatures catch what you've seen. Anomaly detection aims at what you haven't – the price is false positives you must engineer around.",
-    "datePublished": "2026-04-10"
+    "description": "Signatures catch what you've seen. Machine learning anomaly detection aims at what you haven't, and the price is false positives you must engineer around.",
+    "datePublished": "2026-04-10",
+    "image": "https://vantixia.in/img/blog/risecybercrime.jpeg",
+    "inLanguage": "en"
 }
     </script>
 </body>
