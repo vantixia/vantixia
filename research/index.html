@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <title>Research – Vantixia</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Original findings from Vantixia's own testing: published CVEs, responsible disclosures and new attack paths in GenAI and agentic systems.">
+    <meta name="description" content="Original findings from Vantixia's own testing: three published CVEs in Budibase, Froxlor and Craft CMS, responsible disclosures and new attack paths in GenAI and agentic systems.">
     <meta property="og:title" content="Research – Vantixia">
-    <meta property="og:description" content="Original findings from Vantixia's own testing: published CVEs, responsible disclosures and new attack paths in GenAI and agentic systems.">
+    <meta property="og:description" content="Original findings from Vantixia's own testing: three published CVEs in Budibase, Froxlor and Craft CMS, responsible disclosures and new attack paths in GenAI and agentic systems.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://vantixia.in/research/">
     <link rel="canonical" href="https://vantixia.in/research/">
@@ -19,6 +19,43 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link href="/css/cyber.css?v=r41" rel="stylesheet">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Research",
+    "url": "https://vantixia.in/research/",
+    "description": "Original findings from Vantixia's own testing: three published CVEs in Budibase, Froxlor and Craft CMS, responsible disclosures and new attack paths in GenAI and agentic systems.",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Vantixia",
+        "url": "https://vantixia.in/"
+    },
+    "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "url": "https://vantixia.in/research/cve-2026-124428-craft-cms-icon-svg-arbitrary-file-read/",
+                "name": "CVE-2026-124428: How a Craft CMS Icon Endpoint Reads Files Off the Server"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "url": "https://vantixia.in/research/cve-2026-109962-froxlor-reseller-missing-authorization/",
+                "name": "CVE-2026-109962: When a Froxlor Reseller Can Read the Admin's Server Config"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "url": "https://vantixia.in/research/cve-2026-100682-budibase-arbitrary-file-write-rce/",
+                "name": "CVE-2026-100682: How a PWA Icon ZIP Turns a Budibase Builder into Root"
+            }
+        ]
+    }
+}
+    </script>
 </head>
 
 <body>
@@ -58,7 +95,7 @@
                 <p class="sub" data-reveal style="--d:.16s">Original findings from our own work: novel attack paths in GenAI and agentic systems, responsible disclosures, and the tooling we build along the way.</p>
                 <p class="sub" data-reveal style="--d:.24s">Everything here is work we did, not commentary on work other people did. Where a finding affects third-party software, it is disclosed to the vendor first and published only after the disclosure window closes.</p>
                 <p class="price-flag mono" data-reveal style="--d:.32s">
-                    <span class="pf-amount">3 pieces published</span>
+                    <span class="pf-amount">3 CVEs published</span>
                     <span class="pf-sep" aria-hidden="true">//</span>
                     <span>Latest: CVE-2026-124428 in Craft CMS</span>
                     <span class="pf-sep" aria-hidden="true">//</span>
@@ -120,40 +157,54 @@
             </div>
         </section>
 
-        <section aria-label="Published research index">
+        <section id="cves" aria-label="Published CVEs">
             <span class="sec-num" data-parallax="0.08">03</span>
             <div class="wrap">
                 <div class="section-head" data-reveal>
-                    <p class="eyebrow"><b>//: 03</b> THE INDEX</p>
-                    <h2>Published research</h2>
+                    <p class="eyebrow"><b>//: 03</b> CVES</p>
+                    <h2>CVEs</h2>
+                    <p>Three published CVEs, each found and reported by Rajnish Kumar and disclosed to the vendor before publication. The credits can be checked independently on <a href="https://db.gcve.eu/credits/dreamer1eh" target="_blank" rel="noopener">GCVE</a>.</p>
                 </div>
 
                 <div class="grid-3">
                     <article class="hud-card red" data-reveal>
                         <span class="corner tl"></span><span class="corner br"></span>
-                        <span class="tag">DISCLOSURE</span>
+                        <span class="tag">CVE-2026-124428</span>
                         <h3>CVE-2026-124428: How a Craft CMS Icon Endpoint Reads Files Off the Server</h3>
+                        <p class="cve-line"><b>Product</b> Craft CMS (craftcms/cms)</p>
+                        <p class="cve-line"><b>Vulnerability class</b> Arbitrary file read, CWE-22 path traversal</p>
+                        <p class="cve-line"><b>Fixed version</b> 5.11.2</p>
                         <p>Craft CMS's app/icon-svg action passed its icon parameter to a helper that resolved aliases and absolute paths, so any control panel user could read SVG-content files from anywhere on the server. Coordinated disclosure, fixed in 5.11.2.</p>
                         <p class="meta mono">Rajnish Kumar <span class="pf-sep" aria-hidden="true">//</span> 10 Nov 2026</p>
                         <a href="/research/cve-2026-124428-craft-cms-icon-svg-arbitrary-file-read/" class="card-link stretch">Read the finding</a>
                     </article>
                     <article class="hud-card cyan" data-reveal style="--d:.08s">
                         <span class="corner tl"></span><span class="corner br"></span>
-                        <span class="tag">DISCLOSURE</span>
+                        <span class="tag">CVE-2026-109962</span>
                         <h3>CVE-2026-109962: When a Froxlor Reseller Can Read the Admin's Server Config</h3>
+                        <p class="cve-line"><b>Product</b> Froxlor server management panel</p>
+                        <p class="cve-line"><b>Vulnerability class</b> Missing authorisation in the API, CWE-285 improper authorisation</p>
+                        <p class="cve-line"><b>Fixed version</b> 2.3.14</p>
                         <p>Froxlor's MySQL server and cronjob API read commands checked only for an admin-type account, so resellers could read admin-only server configuration that the UI hid from them. Coordinated disclosure, fixed in 2.3.14.</p>
                         <p class="meta mono">Rajnish Kumar <span class="pf-sep" aria-hidden="true">//</span> 25 Oct 2026</p>
                         <a href="/research/cve-2026-109962-froxlor-reseller-missing-authorization/" class="card-link stretch">Read the finding</a>
                     </article>
                     <article class="hud-card red" data-reveal style="--d:.16s">
                         <span class="corner tl"></span><span class="corner br"></span>
-                        <span class="tag">DISCLOSURE</span>
+                        <span class="tag">CVE-2026-100682</span>
                         <h3>CVE-2026-100682: How a PWA Icon ZIP Turns a Budibase Builder into Root</h3>
+                        <p class="cve-line"><b>Product</b> Budibase Server</p>
+                        <p class="cve-line"><b>Vulnerability class</b> Arbitrary file write to remote code execution, CWE-22 via unsafe archive extraction</p>
+                        <p class="cve-line"><b>Fixed version</b> 3.45.0</p>
                         <p>A symlink-following ZIP extraction bug in Budibase's PWA icon upload let a BUILDER-role user write arbitrary files as root and reach remote code execution. Responsibly disclosed 21 Aug 2026, fixed in 3.45.0.</p>
                         <p class="meta mono">Rajnish Kumar <span class="pf-sep" aria-hidden="true">//</span> 08 Oct 2026</p>
                         <a href="/research/cve-2026-100682-budibase-arbitrary-file-write-rce/" class="card-link stretch">Read the finding</a>
                     </article>
                 </div>
+
+                <!-- AI security research: add a section here (heading "AI security research", grid-3 of hud-card
+                     cards, same pattern as the CVEs above) only once at least one post is published.
+                     No placeholder cards on the live page. -->
 
 
                 <aside class="mail-capture" id="updates" aria-label="Research updates">
