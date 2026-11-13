@@ -1,10 +1,10 @@
-# ScrollHero — Next.js + Framer Motion scroll hero
+# ScrollHero: Next.js + Framer Motion scroll hero
 
 A self-contained, drop-in hero section for a **Next.js (App Router)** project,
 built with Framer Motion's `useScroll` and `useTransform`.
 
-> Note: the CyberXield website itself is a static HTML/CSS/JS site (no build
-> step). This component is a **separate deliverable** for a Next.js codebase —
+> Note: the Vantixia website itself is a static HTML/CSS/JS site (no build
+> step). This component is a **separate deliverable** for a Next.js codebase:
 > it is not wired into the static site. The equivalent effect already lives on
 > the static homepage via GSAP ScrollTrigger (`/js/motion.js`, the Shield
 > Protocol section).
@@ -44,7 +44,7 @@ export default function Page() {
 ```
 
 The component is `'use client'` (it uses scroll hooks), so it must run on the
-client — importing it into a server component page as above is fine.
+client. Importing it into a server component page as above is fine.
 
 ## Tuning
 
@@ -56,7 +56,7 @@ client — importing it into a server component page as above is fine.
 ## How the pin works (no plugin needed)
 
 Framer Motion has no dedicated "pin" like GSAP ScrollTrigger. The standard
-pattern — used here — is:
+pattern, used here, is:
 
 ```
 <section style={{ height: '320vh' }}>          // tall spacer = scroll distance
