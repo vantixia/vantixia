@@ -660,4 +660,55 @@
       })
       .catch(function (err) { console.warn("hall of fame list did not load", err); });
   }
+  /* ---------- CVE flip rail ----------
+     Hover and keyboard focus flip the cards in CSS. Touch screens have no
+     hover, so a tap toggles .is-flipped (one card open at a time). The
+     arrow buttons only appear once the row is wider than its box. */
+  var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+  document.querySelectorAll("[data-cve-rail]").forEach(function (rail) {
+    var cards = rail.querySelectorAll(".cve-flip");
+    cards.forEach(function (card) {
+      card.addEventListener("click", function (ev) {
+        if (finePointer.matches || ev.target.closest("a")) return;
+        var open = !card.classList.contains("is-flipped");
+        cards.forEach(function (c) { c.classList.remove("is-flipped"); });
+        if (open) card.classList.add("is-flipped");
+      });
+      /* screen readers on touch move focus rather than tapping: flip to match */
+      card.addEventListener("focusin", function () {
+        cards.forEach(function (c) { if (c !== card) c.classList.remove("is-flipped"); });
+        card.classList.add("is-flipped");
+      });
+      card.addEventListener("focusout", function (ev) {
+        if (!card.contains(ev.relatedTarget)) card.classList.remove("is-flipped");
+      });
+    });
+    rail.addEventListener("keydown", function (ev) {
+      if (ev.key !== "Escape") return;
+      cards.forEach(function (c) { c.classList.remove("is-flipped"); });
+      if (rail.contains(document.activeElement)) document.activeElement.blur();
+    });
+    var block = rail.closest(".cve-rail-block");
+    var navs = block ? block.querySelectorAll("[data-cve-nav]") : [];
+    function syncNav() {
+      var overflow = rail.scrollWidth > rail.clientWidth + 2;
+      navs.forEach(function (b) {
+        b.hidden = !overflow;
+        var dir = Number(b.getAttribute("data-cve-nav"));
+        /* aria-disabled, not disabled: a disabled button drops keyboard focus */
+        var atEnd = dir < 0 ? rail.scrollLeft <= 2 : rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 2;
+        b.setAttribute("aria-disabled", atEnd ? "true" : "false");
+      });
+    }
+    navs.forEach(function (b) {
+      b.addEventListener("click", function () {
+        if (b.getAttribute("aria-disabled") === "true") return;
+        var step = cards[0] ? cards[0].getBoundingClientRect().width + 22 : rail.clientWidth;
+        rail.scrollBy({ left: Number(b.getAttribute("data-cve-nav")) * step, behavior: reduceMotion ? "auto" : "smooth" });
+      });
+    });
+    rail.addEventListener("scroll", syncNav, { passive: true });
+    window.addEventListener("resize", syncNav);
+    syncNav();
+  });
 })();

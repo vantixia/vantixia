@@ -31,7 +31,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Orbitron:wght@700&display=swap" rel="stylesheet">
-    <link href="/css/cyber.css?v=r42" rel="stylesheet">
+    <link href="/css/cyber.css?v=r43" rel="stylesheet">
 </head>
 
 <body>
@@ -320,21 +320,82 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
                     <h2>Proof, not promises</h2>
                     <p>Things you can open and check for yourself before you talk to us.</p>
                 </div>
-                <div class="grid-3 proof-grid">
-                    <article class="hud-card red" data-reveal>
-                        <span class="corner tl"></span><span class="corner br"></span>
-                        <span class="tag">CVE</span>
-                        <h3>Three published CVEs</h3>
-                        <p class="cve-line"><b>CVE-2026-100682</b> Budibase: arbitrary file write to remote code execution. Fixed in 3.45.0.</p>
-                        <p class="cve-line"><b>CVE-2026-109962</b> Froxlor: missing authorisation in the API. Fixed in 2.3.14.</p>
-                        <p class="cve-line"><b>CVE-2026-124428</b> Craft CMS: arbitrary SVG file read via app/icon-svg. Fixed in 5.11.2.</p>
-                        <p class="card-links">
-                            <a href="/research/cve-2026-100682-budibase-arbitrary-file-write-rce/" class="card-link">Budibase write-up</a>
-                            <a href="/research/cve-2026-109962-froxlor-reseller-missing-authorization/" class="card-link">Froxlor write-up</a>
-                            <a href="/research/cve-2026-124428-craft-cms-icon-svg-arbitrary-file-read/" class="card-link">Craft CMS write-up</a>
+                <div class="cve-rail-block" data-reveal>
+                    <div class="cve-rail-head">
+                        <div>
+                            <span class="tag">CVE</span>
+                            <h3>Three published CVEs</h3>
+                        </div>
+                        <div class="cve-rail-tools">
                             <a href="https://db.gcve.eu/credits/dreamer1eh" target="_blank" rel="noopener" class="card-link">Verify on GCVE</a>
-                        </p>
-                    </article>
+                            <button type="button" class="cve-nav" data-cve-nav="-1" aria-label="Previous CVEs" hidden>&lsaquo;</button>
+                            <button type="button" class="cve-nav" data-cve-nav="1" aria-label="Next CVEs" hidden>&rsaquo;</button>
+                        </div>
+                    </div>
+                    <ul class="cve-rail" role="list" data-cve-rail aria-label="Published CVEs">
+                        <li class="cve-flip" style="--d:0.00s">
+                            <div class="cve-flip-inner">
+                                <div class="cve-face cve-front">
+                                    <span class="corner tl"></span><span class="corner br"></span>
+                                    <span class="cve-kicker">Budibase</span>
+                                    <h4 class="cve-title">CVE-2026-100682</h4>
+                                    <p class="cve-class">Arbitrary file write to RCE</p>
+                                    <p class="cve-chips"><span>Fixed in 3.45.0</span><span>CWE-22</span></p>
+                                    <span class="cve-hint" aria-hidden="true">Hover or tap for details</span>
+                                </div>
+                                <div class="cve-face cve-back">
+                                    <span class="corner tl"></span><span class="corner br"></span>
+                                    <span class="cve-kicker" aria-hidden="true">Budibase</span>
+                                    <span class="cve-title cve-title-sm" aria-hidden="true">CVE-2026-100682</span>
+                                    <p>A symlink-following ZIP extraction in the PWA icon upload let a BUILDER-role user write files as root and reach remote code execution.</p>
+                                    <p class="cve-chips" aria-hidden="true"><span>Fixed in 3.45.0</span><span>CWE-22</span></p>
+                                    <a href="/research/cve-2026-100682-budibase-arbitrary-file-write-rce/" class="card-link">Read the Budibase write-up</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="cve-flip" style="--d:0.06s">
+                            <div class="cve-flip-inner">
+                                <div class="cve-face cve-front">
+                                    <span class="corner tl"></span><span class="corner br"></span>
+                                    <span class="cve-kicker">Froxlor</span>
+                                    <h4 class="cve-title">CVE-2026-109962</h4>
+                                    <p class="cve-class">Missing authorisation in the API</p>
+                                    <p class="cve-chips"><span>Fixed in 2.3.14</span><span>CWE-285</span></p>
+                                    <span class="cve-hint" aria-hidden="true">Hover or tap for details</span>
+                                </div>
+                                <div class="cve-face cve-back">
+                                    <span class="corner tl"></span><span class="corner br"></span>
+                                    <span class="cve-kicker" aria-hidden="true">Froxlor</span>
+                                    <span class="cve-title cve-title-sm" aria-hidden="true">CVE-2026-109962</span>
+                                    <p>MySQL server and cronjob API reads checked only for an admin-type account, so resellers could read admin-only server configuration.</p>
+                                    <p class="cve-chips" aria-hidden="true"><span>Fixed in 2.3.14</span><span>CWE-285</span></p>
+                                    <a href="/research/cve-2026-109962-froxlor-reseller-missing-authorization/" class="card-link">Read the Froxlor write-up</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="cve-flip" style="--d:0.12s">
+                            <div class="cve-flip-inner">
+                                <div class="cve-face cve-front">
+                                    <span class="corner tl"></span><span class="corner br"></span>
+                                    <span class="cve-kicker">Craft CMS</span>
+                                    <h4 class="cve-title">CVE-2026-124428</h4>
+                                    <p class="cve-class">Arbitrary SVG file read</p>
+                                    <p class="cve-chips"><span>Fixed in 5.11.2</span><span>CWE-22</span></p>
+                                    <span class="cve-hint" aria-hidden="true">Hover or tap for details</span>
+                                </div>
+                                <div class="cve-face cve-back">
+                                    <span class="corner tl"></span><span class="corner br"></span>
+                                    <span class="cve-kicker" aria-hidden="true">Craft CMS</span>
+                                    <span class="cve-title cve-title-sm" aria-hidden="true">CVE-2026-124428</span>
+                                    <p>The app/icon-svg action resolved aliases and absolute paths, so any control panel user could read SVG-content files from anywhere on the server.</p>
+                                    <p class="cve-chips" aria-hidden="true"><span>Fixed in 5.11.2</span><span>CWE-22</span></p>
+                                    <a href="/research/cve-2026-124428-craft-cms-icon-svg-arbitrary-file-read/" class="card-link">Read the Craft CMS write-up</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="grid-2 proof-grid">
                     <article class="hud-card cyan" data-reveal style="--d:.06s">
                         <span class="corner tl"></span><span class="corner br"></span>
                         <span class="tag">RESEARCH</span>
@@ -632,8 +693,8 @@ tags.async=!0,tags.src="https://vantixiasec.piwiksandbox.com/"+id+".js"+qPString
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
 
-    <script src="/js/motion.js?v=r42" defer></script>
-    <script src="/js/cyber.js?v=r42" defer></script>
+    <script src="/js/motion.js?v=r43" defer></script>
+    <script src="/js/cyber.js?v=r43" defer></script>
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
