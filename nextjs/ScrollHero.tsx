@@ -45,7 +45,7 @@ const MUTED = '#8294b8';
 const OVERLAYS = [
   { tag: 'RECON', title: 'Attack surface mapped', accent: CYAN, pos: { top: '8%', left: '-8%' } },
   { tag: 'EXPLOIT', title: '3 vectors validated', accent: RED, pos: { top: '44%', right: '-10%' } },
-  { tag: 'REPORT', title: 'Zero false positives', accent: CYAN, pos: { bottom: '6%', left: '4%' } },
+  { tag: 'REPORT', title: 'Manually validated findings', accent: CYAN, pos: { bottom: '6%', left: '4%' } },
 ];
 
 /* Fraction of the scroll where overlays begin/finish appearing. */
